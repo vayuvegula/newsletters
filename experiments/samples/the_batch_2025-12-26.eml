@@ -1,0 +1,2628 @@
+Delivered-To: vayuvegula@gmail.com
+Received: by 2002:a05:6a11:b815:b0:69e:f01:b8cd with SMTP id md21csp1321132pxc;
+        Fri, 26 Dec 2025 12:07:09 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFDOug4hBHJ2QyQs4ehgZIxIvM5VZnIhF0VF4k6kU7DKSKrOwVPF7Wfa0/svHGCdjzuorPz
+X-Received: by 2002:a05:620a:29c4:b0:811:8bbe:7a3c with SMTP id af79cd13be357-8bee76c9096mr4033635985a.23.1766779629036;
+        Fri, 26 Dec 2025 12:07:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1766779629; cv=none;
+        d=google.com; s=arc-20240605;
+        b=TlC9TN7RdSbDtA7j8yndKpPUA3Y+yialS4p9+HthDRhbfXWoj3OC4Eokg0RingIffL
+         hpRLgSmpfktKRumC/lI1dPzyy2PKnX4lZlFw0rAJ18JwAkV22ykXw/T0d7cf/Bjb7AHY
+         gGlimVHu9cJQAsUiE0jntFmGQuO7bN+Ju+T+Rd44HeQsdB3oATzpjFPIM12LNatags5Z
+         0sMCcU9qyr0kzpqYKjaSWlc1DXK8FP+vmQbTOZAeXaj4gbKVh4ymIuYkWg3+deEMYHrp
+         jvL3Z8t7UagL1PpZPPx4D74PGIpMMwLXKYEdpMFUVrt6+Hw/gveH/KWCjzBMEcbk0R/L
+         fGBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:list-unsubscribe-post:precedence:mime-version:subject
+         :message-id:to:reply-to:from:date:list-unsubscribe:dkim-signature
+         :dkim-signature;
+        bh=buZtCCGs4puQIT3gwilZqhOwInuFzjZWRSTqYE714WI=;
+        fh=TYrr2Maw2GqB5mNajFuIrlLI+JOC3fGKiHObIgszdVI=;
+        b=KtjUDPs8PotPTiFab8MBtf3vh16Y/QAJDM7Lbz8uPiafSYL/DsK6gxDhtk+sobVZMR
+         mha/U4VtUbi99Zyv2ViOZAqouyz3CbX1fLTUzwFYuFBKf70XdISg1lcHNOgUf2Mrq5jK
+         kCqMb5+yz1Vqh2Fe1l8UG7Z/KKjxdxz6JKU0RH6Xz+pErB5qiqzRTtQM1iSUKi8NQhOv
+         GJtBqrIvKDmQ37Nmtbpf5Bj7BoN8v+B6akxVBv8JjCsKn451PlzyjuiUXTW8nrzGbJb0
+         4vRPbD4dNj+h6aUHHCLIOW9hLw0uvD/Y9f2Q3sdZZ9OAuiOirrReyzqQX983UNXW8zz2
+         atrA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@bf54x.hubspotemail.net header.s=hs1 header.b=PmLf4+zl;
+       dkim=pass header.i=@deeplearning.ai header.s=hs1-5871640 header.b=j8FtAlFQ;
+       spf=pass (google.com: domain of 1axby3whxaudv9mx882ebrf3o3zl26ovz70onm-vayuvegula=gmail.com@bf54x.hubspotemail.net designates 143.244.91.6 as permitted sender) smtp.mailfrom="1axby3whxaudv9mx882ebrf3o3zl26ovz70onm-vayuvegula=gmail.com@bf54x.hubspotemail.net";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=deeplearning.ai
+Return-Path: <1axby3whxaudv9mx882ebrf3o3zl26ovz70onm-vayuvegula=gmail.com@bf54x.hubspotemail.net>
+Received: from bd77gj8.bf54x.hubspotemail.net (bd77gj8.bf54x.hubspotemail.net. [143.244.91.6])
+        by mx.google.com with ESMTPS id af79cd13be357-8c096ffa776si2733148285a.370.2025.12.26.12.07.08
+        for <vayuvegula@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 26 Dec 2025 12:07:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of 1axby3whxaudv9mx882ebrf3o3zl26ovz70onm-vayuvegula=gmail.com@bf54x.hubspotemail.net designates 143.244.91.6 as permitted sender) client-ip=143.244.91.6;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bf54x.hubspotemail.net header.s=hs1 header.b=PmLf4+zl;
+       dkim=pass header.i=@deeplearning.ai header.s=hs1-5871640 header.b=j8FtAlFQ;
+       spf=pass (google.com: domain of 1axby3whxaudv9mx882ebrf3o3zl26ovz70onm-vayuvegula=gmail.com@bf54x.hubspotemail.net designates 143.244.91.6 as permitted sender) smtp.mailfrom="1axby3whxaudv9mx882ebrf3o3zl26ovz70onm-vayuvegula=gmail.com@bf54x.hubspotemail.net";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=deeplearning.ai
+Received: by 172.16.157.3 with SMTP id a0b2377bl4ybydvvr3i5dfx449p6laqat7s7llneked;
+        Fri, 26 Dec 2025 20:06:02 GMT
+DKIM-Signature: v=1; s=hs1; d=bf54x.hubspotemail.net; 
+        i=@bf54x.hubspotemail.net; 
+        h=sender:from:from:reply-to:to:to:cc:cc:subject:subject:list-unsubscribe:form-sub:feedback-id:list-unsubscribe-post; 
+        a=rsa-sha256; c=relaxed/relaxed; 
+        bh=buZtCCGs4puQIT3gwilZqhOwInuFzjZWRSTqYE714WI=; 
+        b=PmLf4+zleb4oGF5dUpOFS6cAMgQGvNT9b6SU0SeaEfxYB41qvgO1ivtMlV9F60
+         Lzh9PGwJc6WyXK8/StrDNToEKgGfD1+8p4bCVbFOX08TE85G2iici71+qsNoWqn
+         fU6LoBug9Bn7bp0NUZ1n+w1c2hFXsHE7i+OHKsK2COhnmL0evgbR5pZhdSUCkY7
+         23y8dRZMDhbtMgzkuasuSMMsiZE4IgnapTVzwINkiYMKKpQbN371td87giJkYkH
+         4e4nHzn0FVsD695/fzAPhyopiYLZzi9sZHjCuC9SViu+dN7P0ytUbzzxo2yfFe6
+         YvD5tHzC19vxwkaD5QgS3cF6YBIg==; q=dns/txt; t=1766779532; 
+        x=1767042332;
+DKIM-Signature: v=1; s=hs1-5871640; d=deeplearning.ai; 
+        i=@deeplearning.ai; 
+        h=sender:from:from:reply-to:to:to:cc:cc:subject:subject:list-unsubscribe:form-sub:feedback-id:list-unsubscribe-post; 
+        a=rsa-sha256; c=relaxed/relaxed; 
+        bh=buZtCCGs4puQIT3gwilZqhOwInuFzjZWRSTqYE714WI=; 
+        b=j8FtAlFQOKa3UacjxQAMKluscLlliqtfVzHhEsxa+wGBhT4F0HtM+O+ZS2nLVy
+         RVrJTskyOW7wtPY701MiMC6Kl11W+b/ON88qjBdJFJB94Vz0M/YOgGrgFk7Oy0w
+         HxCMYYLAZ6bO4phy5pgdt4W8TMXL1fNnF3MKXbnDSG6RKRIemADu5PpjL9uRBuk
+         elwXIBVPTBNGUxwFeQkBYsynIjFakkQNPLA51Kp6oiskb0A8DJtsW7b3W1GwaHn
+         CyrvvSRvux2U+7/nqroKrP6QMS4/4wOq3P/aXAs5++XqY6wlMfQd2PHie1yob5H
+         2CpH5yoTRHTFh+vjmyXwp3lSqqUA==; q=dns/txt; t=1766779532; 
+        x=1767042332;
+Return-Path: <1axby3whxaudv9mx882ebrf3o3zl26ovz70onm-vayuvegula=gmail.com@bf54x.hubspotemail.net>
+X-HS-Cid: 1axe7hppfiz95fyo2nlj5os7dpl2oztexbfw66
+List-Unsubscribe: <mailto:1axcy513hu7jxsoyiioc00japjjq90r9pf6uoi-vayuvegula=gmail.com@bf54x.hubspotemail.net?subject=unsubscribe>, <https://info.deeplearning.ai/hs/subscription-preferences/v2/unsubscribe-all?data=W2nXS-N30h-LWW49yhHx2qFD1fW2-F7GD4tzcbJW34xvxK22RCBDW1_8z--328lylW41K1w22Yr3mZW2YNLS03jpsNnW2FJffz41CGxGW3dx7sb3gqS3CW4cGR7j2HLvcLW3yRTj032rgvtW4cv9-L3XL1PrW4rrHWP2r7h2NW4tkc6R1Sgn5fW2TKWGm3_rhCWW3dkHfm2-wShlW1SwGP343DjjbW2nR4vD2r8vtrW3DLpKC36m-TvW36wpyl2x-SyYW3bww2-30t5wYW2Kzxp234ncl2W2PW0j23DMjKDW30vs1J38l1TcW325nTP1Vy3lYW4cthNN2qSrxWW3_Z9Bc3F9_7QW3P78l53yYF23W2xyxsS3g9ZN1W3_Jrd932s7bCW1Q5qD-43YH4cW1Q3lDq2zNP7yW4mcDHf3C0HhpW1LmB2t38wGpTW4cNz7L1QlM55W3H7MYH4hCv88W2Tly2M1QC3rRW38v1D33BVwLKW3T49jC3jr3HSW2HzPlS4mrMw8W2sClsh36lg8rW4fHmh44kJcPCW38dHRw3_YNmTW1_kdRb4kD5Y7W2Tx5sb1Zc_PvW47LWx-1L72bzW2CX1XL2-fLfxW4tBsD83Vw-jxW1X6r1n4mFvLCW2Wj8TV36hmZ-W4kM8TQ4rCqJDW4r7RMs3yZ7NwW2zWPBW1Qw03SW2Ft3lp32pFZZW1BmzH13Szj1s0>
+Date: Fri, 26 Dec 2025 12:06:02 -0800
+From: "The Batch @ DeepLearning.AI" <thebatch@deeplearning.ai>
+Reply-To: thebatch@deeplearning.ai
+To: vayuvegula@gmail.com
+Message-ID: <1766779453903.6dc9b294-8722-45a5-b72d-362d746dcabb@bf54x.hubspotemail.net>
+Subject: Top Stories of 2025! Big AI Poaches Talent, Reasoning Models Boost
+ Performance, Agents Write Code, Data Centers Drive GDP, China Turns the
+ Tables
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_478179_488210762.1766779532686"
+Precedence: bulk
+X-Report-Abuse-To: abuse@hubspot.com (see
+ https://policy.hubspot.com/abuse-complaints)
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Feedback-ID: aedr4ve:aigt0ddo:aidf:HubSpot
+
+------=_Part_478179_488210762.1766779532686
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+Another year of rapid AI advances has created more opportunities than ever =
+for anyone =E2=80=94 including those just entering the field =E2=80=94 to b=
+uild software.
+
+View in browser (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg=
+5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R7lxC-W50l5tj6lZ3kJN8rTKzWd7LYTVhVK3v=
+3ydmcfW12BT4_9d5kXNW6_d6rp4Gkmv0W1n41dv42mzYbW9grcLy1fcBK_W5-LS7X3KYHT6Vgc9=
+TM5pSt7YW28wLwY3k733GW47S2Rl6ClpYYV33cwr1gcvWWW8K24N81Yky5cW4mH2jf5Br-_YW21=
+p19G9dCC6cW4NRccM2pPSt6N7nz-T_PjBKFW8gBtgK7z4Sr1W5gpJS3657hG4W2kjcGq8mCrnPW=
+2LBdW630Tw3JW8J-sKM6Bf292W5D9xms3n50dnW9hYzFx5NBbN9W7ZyhVP44JXBcW4dK93d6BbP=
+DzW2kPtlm1FB8nkW4GHfnv1S049rW5gh0g81Wnl7cW1KSMlY2M18_fW53FrMZ72ZjjKW5fpQqC7=
+DkJlcW84NbCs8wHqCxW4nFK994BZ7hdW2YXNBm6Sp1jGN2_PF6g5wzZTW83V-lP8TCGVTW4wpqf=
+j47St5YW6HfcC66R0hTVW1rgLjP1MhXxXW2MZk1j8Bd3JLW11Ryyj3b40vHW6-Y25s85pVf0W5j=
+364k9606hmN3stZP7q_4S0W7hft0Z23yPSfW4BNwC51-_P-LV2DTfs4g3cXMW38btbm3yxxfSdY=
+f7rl04 )
+
+The Batch top banner - December 26, 2025 (https://info.deeplearning.ai/e3t/=
+Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3prCCW6N1vH=
+Y6lZ3kWW6G2xLK75XQtJW6NYdg52T2XhWW4NdwRL4gyqzrW2HYnX684XFF1W5knWqG7gNcD2W5Q=
+JXWS6Bgc-0W8t0WyB6bmj70TXxLg7rj4MHN4DWtyVxQsjBW2JkBmJ3vDT9PVmn7VK7tcKxCW2sy=
+LVD94C3X1W8bBr132YT2CCW8dwDX85PWKK2W1nppSQ53ts06W7Z6Bxh2wLRC6W2B0BTT5vyd9bW=
+3zw9-S2YyClGW5W5Wzv8SBCD6N5gY9DM8wjpTN7DQc9VMvs5nW7L6yQm5VXvt-f4_HSQP04 )
+
+Subscribe (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BV=
+W62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3l5QzW6N1vHY6lZ3lTW1x2MpK3pmvWrW6h2Hn-6nng=
+5cW2bNKXZ5NwHlJMCcx03S-7kqW2T-JYL1ZGsfCW10436346Hvz8W3-z_gK6N77s8W32YlPJ4lM=
+mTjW62kGT92fqzNHVRC41Z5Pyb8BW7f64-N7gB7WGV2p_PS7yX_wLW8sckqd4gBz4-W7w1_lX72=
+-dncVGjHVC2-9SdPW5MZl4Z8bmjrNW26l8fL8wtCvDW5dSPGW45jd_ZW6m8v804YKx6PV-t4YP2=
+Dy_NNW3ckd1-6g-SqBV1GVYd2GNytdd9lMKx04 )   Submit a tip (mailto:thebatch@de=
+eplearning.ai?subject=3DRE%3A%20Tips%20and%20News)
+
+Dear friends,
+
+Another year of rapid AI advances has created more opportunities than ever =
+for anyone =E2=80=94 including those just entering the field =E2=80=94 to b=
+uild software. In fact, many companies just can=E2=80=99t find enough skill=
+ed AI talent (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r3=
+5BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1C3prCCW8wLKSR6lZ3lkW112VRS7lG7ZpW4jRvyd5=
+P-7vCW4Hg6YT94ZYP8W3m6XYP8CHJxNW5-wTNZ5KKq6CW8BH2TC77dYzmW5jSdBc560K00W5CsS=
+Cw8R47HDW977F1f2p721_W4LhfPf41q0ZzW40xnsm3FyGqRN7Zk1kHxbN8CW8hbrXw3VClQGW8y=
+t1pH4-Z0dMW46K_jM80lVhFW1Lf1Wm379zxQW1Bqpmp6K9kF4W7NZBfL7Zd6ZcN15jqktGrJw4W=
+6R0nSl8SRLCjW1TsZBR8V80brVJzS9L4FfdNNW5FnPC43C3HsqW46Q3kS76D3JrW3rQPn54ZNb4=
+NW5xCcQ68XM8WdW4698jQ6RTr2BW3lyvVf8nLKGCdf-JTM04 ) . Every winter holiday, =
+I spend some time learning and building, and I hope you will too. This help=
+s me sharpen old skills and learn new ones, and it can help you grow your c=
+areer in tech.
+
+To be skilled at building AI systems, I recommend that you:
+
+- Take AI courses
+- Practice building AI systems
+- (Optionally) read research papers
+
+Let me share why each of these is important.
+
+I=E2=80=99ve heard some developers advise others to just plunge into buildi=
+ng things without worrying about learning. This is bad advice! Unless you=
+=E2=80=99re already surrounded by a community of experienced AI developers,=
+ plunging into building without understanding the foundations of AI means y=
+ou=E2=80=99ll risk reinventing the wheel or =E2=80=94 more likely =E2=80=94=
+ reinventing the wheel badly!
+
+For example, during interviews with job candidates, I have spoken with deve=
+lopers who reinvented standard RAG document chunking strategies, duplicated=
+ existing evaluation techniques for Agentic AI, or ended up with messy LLM =
+context management code. If they had taken a couple of relevant courses, th=
+ey would have better understood the building blocks that already exist. The=
+y could still rebuild these blocks from scratch if they wished, or perhaps =
+even invent something superior to existing solutions, but they would have a=
+voided weeks of unnecessary work. So structured learning is important! More=
+over, I find taking courses really fun. Rather than watching Netflix, I pre=
+fer watching a course by a knowledgeable AI instructor any day!
+
+At the same time, taking courses alone isn=E2=80=99t enough. There are many=
+ lessons that you=E2=80=99ll gain only from hands-on practice. Learning the=
+ theory behind how an airplane works is very important to becoming a pilot,=
+ but no one has ever learned to be a pilot just by taking courses. At some =
+point, jumping into the pilot's seat is critical! The good news is that by =
+learning to use highly agentic (https://info.deeplearning.ai/e3t/Ctc/LX+113=
+/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1C3prCCW8wLKSR6lZ3kDW4z=
+G4js3yVRvBW3Qtpqq9014J9VLMWyJ8B3vFgW4KS2BM66SnTWV1pV0y7vT_4FW6CbwML8GhR3mW5=
+rpvvT2tGWssW8sk7Yj2TWwC0VxrKc26Tvt49N4chCjfSbQ7CN8DZznwn2vbLW4t0tcn42m0czW6=
+gcL1x1g_Ct8W2hH45y75fP3YW2HLtXz7R7YYHN3wLJqTZqPBRW8fFq503BQ-9sW3bBXK78dBdz1=
+W1y6V4K6XNNLZW3ybk4p8RfPjDW5Ptpc77j1LpjVvgxH95Mc2xCW6XXBdf4b2wmWW2BtXrM3fCC=
+LbW3-Xy5D30Q66VW5QHhd_36WB5fW76FkS82KX32TN61lmGp5svzWf6Xj4SF04 ) coders (ht=
+tps://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lT=
+W6R-97G5Hy4BhN7zrx1j3prCCW7Y8-PT6lZ3kqW3GlsLM1vnh4FN6brWChfXR1qW3lLtj270fkb=
+KW2g4c5G3QdhH_W5Jqs2z7DmGm3W31JYNh70qBWlW29vjMM5Ldf0-W6GyJnJ8M3bt1W1tww5-46=
+mvXHW72zfwT316wLTW2y4RSr7mBmZqW95khvj5jBXD2W12JMpD8DhcPqW74ynFF3PYkjgN32g-5=
+q-C_k4N40wqMRTlWFfW4XsYFT7H9KJDW1KFNBH8ksDfFW6FsBD57X4zpqW9671QY71bt1CV_rGN=
+W4kb9S8W7DXFSP8QtRf4W5GHK4G6yk15BW1dX7KX1tSF0YW5vH8xJ7PFFFsVy9v1N8j4sjwf5-y=
+vVq04 ) , the process of building is the easiest it has ever been. And lear=
+ning about AI building blocks might inspire you with new ideas for things t=
+o build. If I=E2=80=99m not feeling inspired about what projects to work on=
+, I will usually either take courses or read research papers, and after doi=
+ng this for a while, I always end up with many new ideas. Moreover, I find =
+building really fun, and I hope you will too!
+
+Finally, not everyone has to do this, but I find that many of the strongest=
+ candidates on the job market today at least occasionally read research pap=
+ers. While I find research papers much harder to digest than courses, they =
+contain a lot of knowledge that has not yet been translated to easier-to-un=
+derstand formats. I put this much lower priority than either taking courses=
+ or practicing building, but if you have an opportunity to strengthen your =
+ability to read papers, I urge you to do so too. (You can also watch an old=
+ video (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62=
+-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3prCCW6N1vHY6lZ3lSW8BhH8B3R6YWvW8DHb2v2Jhtk_W=
+2F8R0M2rqG2fW4Z_QQl17HxG9W5MrTy34vdQt4W3btrcD142m_9W42CstW3jNN1fW2zmYyT3SZr=
+tfW2zlYW0803kCpW6ZSqc_2swDF9W2QFdqD1yXypGW3dSJ1Z4jsz26W6GR0xB1NJzV-W2d1-Hp6=
+6rVyQW1hGGVb7S1LySN56y-5BYB8QpW4RnGh56l91YwW318FBP4NdJLTW4psmMC55pG-CW7cCLR=
+s52Byc8W1yy4gR4__NP2W8D1-FM8kJ6mXf22c4jM04 ) where I give advice on reading=
+ papers.) I find taking courses and building to be fun, and reading papers =
+can be more of a grind, but the flashes of insight I get from reading paper=
+s are delightful.
+
+Have a wonderful winter holiday and a Happy New Year. In addition to learni=
+ng and building, I hope you'll also spend time with loved ones =E2=80=94 th=
+at, too, is important!
+
+Love,
+
+Andrew
+
+Top AI Stories of 2025
+
+A New Era Dawns
+
+2025 may be remembered as the dawn of AI=E2=80=99s industrial age. Innovati=
+ons propelled model performance to new heights, AI-driven applications beca=
+me indispensable, top companies battled over skilled practitioners, and con=
+struction of infrastructure drove the U.S. gross domestic product. As (http=
+s://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6=
+R-97G5Hy4BhN7zrx103prCCW7lCdLW6lZ3nlW6jPlL28XPHk8W81plpS2npT5WW31ZzWC1KlTSj=
+W1JNbsW1zhQLkW6Mg2p62XHLjbVJY7v22GR0ttN9hMLXQc6m3lW2VWlpf5yZ8mcW8lFJ7F3WNSK=
+lW49LZ1m7PCj0ZW8GJggF7F4WLtN2HKX_l4cH-MN6T5SbPB7KhJW23_9-b7w9HqMW6x-g5S3y92=
+5XW3-cpRV4JSxQ0W91_8lz4PcspBW486mN_5lWl0qW2ydc4d3rJDxZN6FVXbq1trVNN95rWbWGm=
+p2QW21vHT-3LvmTGW4Mq0n52nqMP4W5LTyK319FhzSf2DCWRM04 ) in (https://info.deep=
+learning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7=
+zrx103prCCW7lCdLW6lZ3m9W7yNFvp2w_Sz5W3wq3Vl37nXqJW64N3nd11jR4kW9hqdhK4-RFnY=
+W4rHW2k5n-dRbW7-F0Jy3hJtZkMjWynRYhyptW8nFTqV22wVg4W5krxmY7Clyk2W8ppFy12KNg-=
+GW2ls5Rf6YRVwsV137nV5t7g-4W3B5XTy5Hb2zNW5VSZ2t5C6D5dW3xDdNX12yf1VW18fCv46NY=
+tXkW8lv-hK33MHl7W40Q7VF8N96BZVM1yLZ2R41pnVt83bt5J9p0tW4XbgSL4Sr401V2Q6kW3Bc=
+-r4W8qjlZF10Lg8yW7lxRTL4VMqtDf70cT1P04 ) past (https://info.deeplearning.ai=
+/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103prCCW=
+7lCdLW6lZ3lDW7ZM7nn3Dy6B_VMMhmt9k3dttW2-Z79f7Wgy9XW4rG_7F6kdYwXW47Vpjq8YxZt=
+pW9fRBHl52tcK1W7Vd6nh3Cx-KYW25_jPN3L1PmfW1mkBH35lFSCTW5Mm6XT8Gxy_xW7Sv8lY1d=
+4369Vg7ZFM5vLtLvW36qxrc9jbVqZW60NnFB9kk7BPW6WwT-x27GJbtW3sq-y04fFhdJN18jSL-=
+TwV9VW3d8BtL4V5LkdW6TV17k1ftr_XW4r8_tS3Hz6pqW5zK_7d3w5cx8W4nQtpb9g_p-GW3C4B=
+qv2hsCv1W1RSVw64J9ZlCf7jSMz-04 ) winter (https://info.deeplearning.ai/e3t/C=
+tc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103prCCW7lCdLW=
+6lZ3kzW7mPnyr1SWzqtW8_w8YF4-nknKW4VqMwz7m5QRTW78lhMh9gKMVxN2zy01Z_MSMlW5z-_=
+x72nymkbW4SZG9S2DXGbPW5t703x4dz2wZW24FgV-2y-SplVsxc8d1Qbp4cW7KnbD-2Z1S9HN5N=
+dxg8W7t6FN2QwvPPtKwmCN7tR_pQ6qk6DW2g4w9M1G5GwjW3yCb171pd5hbW6ckkpV23D5l5W2s=
+MsJs5zxJgDW6Lnsh75zdZj_W5syh9_8YTCdJVCdjVH7Jg464W5HmH4W6P-jGFW8R6TTR7cYCWGV=
+Pv5DX6HQg8Bf2k6G9g04 ) holiday (https://info.deeplearning.ai/e3t/Ctc/LX+113=
+/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103prCCW7lCdLW6lZ3lwW6y=
+dhCh28Tl3NW4PHSMT5P5J4lW29PhGL3mnSWbW6c7_bz3z73QSW2BH2Qr1Q28dxW3XTmVh72t4zl=
+W7vy8lJ8rqPQnVWqkMP8FhhjrW7QcYnc8QkLbfW6D471n8RHQjgW6Z6b0W6MNRr7W4lfpVt4qtR=
+s0W4br19788q4VhW1RdS097G3n9-Vd0W6Q7lpgzzV6RMPd7kv_rVW7pjXMv2L-19yW8BBl0J4FB=
+3QDW5Trd6d76T3_NW1QH7dj4Sv_M_W4LnFcj2KQnmsW69f33R9dvY9_N67YpJCcn5bbW6hj3nM9=
+1_Gvgf7ZQJ8404 ) seasons (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC4=
+04/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103prCCW7lCdLW6lZ3p2W3TzyG57g=
+j_WxW4nhB4d82rMztVtyg1z7nmN9KW1WB5NC3tsp6WW7cz1fz82G0NrW7mmzh382cgrRW7nrHN5=
+2GqV4NVvzxcv22ltK-N5d4M4TRnwgkW7SR6Kc2zvW4cW8SF23c4gzstpW7pWWNy1WQ1BHW60Ksv=
+N5k2mwlW7n66sh23z1xsW4dgP8v8X7qjWW228W9t2zDY-gW87qs3m8qrVqhW8wljZK4CfMXFF7G=
+tc36ThTMW8MB8zr3LBfJYW5rCxfJ5HN_DGW3JTxzv1gXzlfW3-tKMV7xVgt1V4SRnH6vwSTTf7z=
+kZ4H04 ) , this special issue of The Batch traces the major themes of the p=
+ast 12 months. The coming year promises to consolidate these changes as we =
+weave the technology more tightly into the fabric of daily life.
+
+Thinking Models Solve Bigger Problems
+
+Think step by step. Explain your reasoning. Work backwards from the answer.=
+ As 2025 began, models executed these reasoning strategies only when prompt=
+ed. Now most new large language models do it as a matter of course, improvi=
+ng performance across a wide range of tasks.
+
+What happened: Late last year, OpenAI introduced the first reasoning, or =
+=E2=80=9Cthinking,=E2=80=9D model, o1 (https://info.deeplearning.ai/e3t/Ctc=
+/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5m_5PW50kH_H6l=
+Z3nyMFR7mF39s-WN78g1LJcrcZkW61Sd3M809k6CW7MkDwS99bW54W4jPNP49kSZzgW46kWq06z=
+tFy3W31mllq8qVHm5W6zBVct3t02tGN883H4Q3vvP4W6kb78R2MszMVW77CvDL6vkM6VVRLNbR7=
+nkCNWN6CZBl83TMgYW6rqpSD44VBg-VDKL-N933krjW1mfQ385-m1PXW8h783X2mkmqfTn5xN2V=
+N_3PVntJ3V6_bRYFW2Qyw6L7LRKC8N5F6mFDlKmCqW6JS3-21L4f8pN3B71TkC2HwjW28LgTq7s=
+y_8GW1-x6wQ97n9zwW3ZgS1p6bxz2LW1YZrrp4QymzzW4LyqPq5yzzxGVlVf3j7XQF2dW3gl8SZ=
+57jg6nW8xShwS63HMLvV5ykZS6l8NDFf9jHxtb04 ) , which baked in an agentic reas=
+oning workflow. In January, DeepSeek-R1 (https://info.deeplearning.ai/e3t/C=
+tc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1C3prCCW8wLKSR=
+6lZ3kyW88jsr-66xgcrW1gMGPj96krV3W3zfnGX1S34ynW1JlMvW4VZFXMN1-PBYQ44hg_W96h-=
+MH6S5KQsW4bcZGs8kDwn7W34v1k-4mvy5WW6_NPPX42RGyzW63zQ-82h0dHMW5TRBlf2yQG-bW1=
+L2PK537JWl0VVQVmC40ZH3fW3V77dD4C3V5-W2QDxck64wlztW30465z2Mv2ktW65xXQn3NtD_H=
+W7T2tty9gQ_HqW87BtQ21bc73rW42q3L-5wtbmTW5mr3jS18cfz0W2c_pBq5hXQxqV5qlwx2l5q=
+dGW5VDP5d2hSy7mN85MKrf8P67lN2J-dJLWnGwlVHT4xh92Ty3BW7znQtX9h4vYhf11R73l04 )=
+ showed the rest of the world how to build such capabilities. The result: i=
+mmediate improvements in math and coding performance, more accurate answers=
+ to questions, more capable robots, and rapid progress in AI agents.
+
+Driving the story: An early form of reasoning took off with =E2=80=9CLarge =
+Language Models Are Zero-Shot Reasoners (https://info.deeplearning.ai/e3t/C=
+tc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3prCCW6N1vHY=
+6lZ3kzW5W8dg55HjMhKW38PbtR5vt3VkN7_-z89wzJwmW2FC3v32Y-xtmW6Bgm4W7YCZH-W5Vvv=
+HD7sZrnYW3wf_mK1mRYC6W3KG62Q31fYMDW4kxmWx5nV69-W17mSjt89FG69W2HHwWZ2l77NvW3=
+mDTd08wk4RZW6kjRK48MQZm4W51x3hr25xGsQW1FxPK22y5N-cM49MG4zPsdfW6-TQ471DMR3SW=
+8ZG29q6_T4YYW89Ky6H8WshM7W3m7z_V8__MJ7W6WVg4W8d0ZWvVshZqQ6YNK1sdmT_l004 ) ,=
+=E2=80=9D the paper that introduced the prompt addendum, =E2=80=9Clet=E2=80=
+=99s think step by step.=E2=80=9D The authors found that manually adding th=
+ese words to a prompt improved a model=E2=80=99s output. Researchers soon r=
+ealized they could train this capability into models so they would employ t=
+his and other reasoning strategies without explicit prompting. The key: fin=
+e-tuning via reinforcement learning (RL). Giving a pretrained LLM a reward =
+for producing correct output trained it to =E2=80=9Cthink=E2=80=9D things t=
+hrough before it generated output.
+
+- The first few reasoning models were trained via RL specifically to solve =
+math problems correctly, answer science questions accurately, and/or genera=
+te code that passed unit tests. This enabled o1-preview, for instance, to o=
+utperform its non-reasoning predecessor GPT-4o by 43 percentage points on A=
+IME 2024 (competition math problems) and 22 percentage points on GPQA Diamo=
+nd (PhD-level science questions), while it completed Codeforces=E2=80=99 co=
+ding problems in the 62nd percentile relative to competitive human coders, =
+compared to GPT-4o=E2=80=99s 11th percentile.
+- Reasoning models performed even better when they learned to use tools lik=
+e calculators, search engines, or bash terminals. For example, on a challen=
+ging test (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BV=
+W62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0q3prCCW69sMD-6lZ3kzW8R9z2-91TZxSVc_rd897nzd=
+RW3b48x73gps_TW5lb9cr3xJDblW3-H2js6tRrmMW8MNzt95Hqh3sN7H0CScHY04pV7Dbcs1Kw9=
+gZW8P_BXj45wx69W49Nvkb4STXJGW5YG6ww2b-6hPVN6rmv2HDPkcW6_0zzQ5rwvCYW53dS8d40=
+hJrdN3ZpRL6Dpr6pW6yMnrv5nq0GQW94td4355XdkQW7SyXcL2RYQB9W7PBQk328W1Y6W54Fp9p=
+3s_nMGf1yJrRn04 )  of multimodal understanding and technical expertise in 1=
+00 domains, OpenAI o4-mini with tools achieved 17.7 percent accuracy, more =
+than 3 points higher than it managed without tools.
+- Robotic action models have been trained to reason via RL. For example, re=
+warding ThinkAct (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQx=
+g5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3prCCW6N1vHY6lZ3ndW1fG3G47Z2MRSW5yJ=
+SDL2vyqZDN1cTlj4Yg5W5W2XGXFy7cMXHmW3Y8NSH6n_v6FN7XnhfMB0rTMVgn5cH12NSwTW4T4=
+2hP38HPLCW7y5s_T76pL6QN57hybpbLB_-W8TzGtD5rHp9GW2k2-1D1dDxyFW3Z8bqN9cQ0KNW4=
+DHslq5yftrKW87-KMM6JnDrkW26KjK94rvb3KW7k7TTH3tZ_7WW9krkDH3fHKjWVFf7wh1mqyLw=
+W116qRR4gTnR6N6HjwmprC5KfW2wMz5s50vJ5Qf5GKSNK04 ) for reaching a goal posit=
+ion yielded roughly an 8 percent performance improvement on robotics tasks =
+(https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ=
+2lTW6R-97G5Hy4BhN7zrx0K3prCCW6N1vHY6lZ3mHVmqxC62SgcTlW4v53gC56-1bPW4CmV262h=
+5Mq9VGQPHx2LXJxpW9bDhkj9dnvGdW31Bv0z4WHVDMVynCVR6CBnw2W5nsd_c46wLx2N5mTD1qp=
+Qq-7W2DjDQy5XMKLkVSfJ-d1rQwd3W3HhX8l6pK9l9W4333G_4Q0WjNW5rCcyh7PZ9tqW4yWWXk=
+1mZtXhW3jXfCM91W9-zW98FGVJ7FVFwVW7zMFlK67Dg17W4vV2hT5T6GMNW206WKm60xzgBW55h=
+J8-7GCyC2W6dFqMW3KWNHNf1rC9ST04 )  compared to non-thinking models like Ope=
+nVLA (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-n=
+W61GJ2lTW6R-97G5Hy4BhN7zrx0K3prCCW6N1vHY6lZ3m3W6YCCrB2YyxPJW7WqhTP9m132qW8b=
+6rtw2Wf45rW7rFWB3200cWPN8g1ljxkH8zDW1MVgMH5Nl2YWW5S5rXb2BBPc8W3qntNx65hw0pW=
+7R629h2T0jWwW4K6hjc2Yk748W2vgvBH541dZjN10sgNJBSSBdVk5Z0N76z4G4W2dDvZF7yp_4b=
+W2MYFYx68rj7gW54HlHg5rvtypW6gnS7L8BvWp0W6RrpPC4XtCsgW7sW2V34Xv24wW90MN5m1tN=
+z1TW1S6D802GKVNmN2WlnWmHPw7zd9FGSq04 ) .
+- Reasoning models also help agents to tackle difficult problems. For insta=
+nce, AlphaEvolve (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQx=
+g5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx065fkwKW5BWr2F6lZ3kQW3PgBVd5bqkp7W2yM=
+Npw31gzC9W8pp3d920wL6ZW2Vjr4Z1yPKJrW6Q9GVR1JXLJBW5ZYLFM2tbvdpW68_qgZ7rf5JpW=
+57dPkx1kXx-lW1PkRPd3t5fSqW4dcsvq57DB7mW6ZQsH-8yd6f2W6L1f-r1B4Tg-W47ssCX25V2=
+GXW8C6XsN1xB8qrW480zC099HLrwW7Ttp-52tLz4ZW6K7q2_2gJ1C-W8qZ8H53lFPMVW6LYmq97=
+sw17VW5nDcL66hs520N7VG9308hG0QN3Bk0nNpjs5fW7F65c91YhP_TW2-_5RD7g4hYHW4v1HGq=
+6VKRYHW6rTYT12jZB5kN6ZG518zfSLBW7BTfFn1BngsTW7t-Vy651_pKNVhgr1z7LJm1SW265jg=
+-81gQz4W17yCS-6ZwbfFW28SYH-6_5J68N2nMJqMjxw0cf2jr2_F04 ) used Google Gemini=
+ to repeatedly generate, evaluate, and change code, ultimately producing fa=
+ster algorithms for real-world problems. Similarly, AI Co-Scientist (https:=
+//info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-=
+97G5Hy4BhN7zrw_R5m_5PW50kH_H6lZ3nhN3JZG9FnJSNkW4tG6ky3yQD51W15Jgt595JFydW1j=
+_jH074PTX9W9hfR-71Bk7gdW179hyG1gX7kYN6C2PxV9t9z8N765KRCWS7VXW2x2CDr2F4QJgW1=
+lQtB67jD-x6W5Q1rPl3DxkD9W4t9-w51mCmrFV5gvFm1XM0BKW2qZDgp6MrPKSW8pJJ4l3v4S15=
+W81dbrk48wT8YW9ljLF65WHTZ2W8TtTRH80RZNBW8-Wwsc4zJBCPVWskQD7QBqy2W55rNbY1tT0=
+NsW2psTn14blMvGW4BpPWW24k68NW6Z0DSg2NSqDtW9jn84B8gb0YNW127cyr2YspjBW4Kwtcn2=
+BgrcJW5VQCh12Bw2HyW4rDWlc3KHmRwW7c77MM5tG0D0W86Qgkr8xbFYBW7R3lBM8W25Ryf3FkL=
+V204 )  used Gemini to generate scientific research proposals and then revi=
+ew, rank, and improve them. Among other results, it proposed a hypothesis t=
+o answer a longstanding question about microbial resistance to antibiotics.=
+ Human scientists independently proposed and validated the same hypothesis =
+at about the same time.
+
+Yes, but: Reasoning models may not be as rational as they seem.
+
+- In a controversial paper (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJh=
+C404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1j3prCCW7Y8-PT6lZ3nZV_NPs58=
+bjknRW5WPBjZ1fXcGbW8qKhTR70rl6HW4pJWM12DFWdRW2Mm_Lf1XyQBkW3qfLNr8JgKnLW5pdS=
+m_2Wx82_W3SnVnh75DNyvW92jjjc4GQrczW5PR_wg5hwB58W4hc53s6WrjlcW63Q-rn5hGffZN6=
+SJPchzc51VW7_QgXN7Db8vzW5hVnJH964sbgW8rq-TR5tn81LV-LSsl7dvgYlW8s5V4w90T4MTN=
+78xy6Y51jQfN4S5x6gGp4KxW4S7QN63J0Wt8W2f9Kg93fZVk5W6mX77b2Xlm4hW3V_c3H267c0L=
+W5k86hs5sdMZBW2NQkr180TQtyf2x8fYC04 ) , Apple concluded that reasoning mode=
+ls couldn=E2=80=99t solve puzzles beyond a certain level of complexity, eve=
+n when the models were given algorithms that solved them. The models=E2=80=
+=99 inability to apply the algorithms calls into question apparent similari=
+ties between machine and human reasoning.
+- Anthropic found (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQ=
+xg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5m_5PW50kH_H6lZ3pYVVVt505LgZyCW1d6=
+w0G2Ll3QMV6tV281_pQQdW23-D9x96n-fnW7jZzWz8P2pKsW7tXk089j_2rqW4FmzLT7jphb-Mv=
+1Zrzyr403W374dr57XwlJ0W2Fk7FH3wpWj5W7C8pSD6tNBJsW7D_LwM2NzNqYVkSlYf2Y0n4mW2=
+4Q7yk1Dxf0FW4xmxXQ8wpFpLN4DX_hBWZ1W-VBChJm7zqJPhW2dNxYq2FTSN5W6vhfJ74cq30hV=
+L_tkD4QLRzWW5d_5w090tZS5W307M3B7Vjl-mW1GPGF458BdcKN1NnPbwM36-5W2JgmHX8TpM10=
+W8bwMyV7vlFsYW4mzF5P4VsbSRW1s8yqq282vF7W3f4qn34K_knfW36wtQV6zM7TtW7ln7t13Fq=
+hSgW4rS5q423sRTXf1p957b04 ) that, while a model=E2=80=99s reasoning steps c=
+an help to explain how it reached a conclusion, they may also omit crucial =
+information that contributed to the conclusion. For instance, including rea=
+soning models can be led to produce a particular output by including a hint=
+ in the prompt, but their reasoning steps may fail to mention the hint.
+
+Where things stand: Reasoning dramatically improves LLM performance. Howeve=
+r, better output comes at a cost. Gemini 3 Flash with reasoning enabled use=
+d 160 million tokens to run the benchmarks in Artificial Analysis=E2=80=99 =
+Intelligence Index (and achieved a score of 71), while Gemini 3 Flash witho=
+ut reasoning used 7.4 million tokens (achieving a much lower score of 55). =
+Moreover, generating reasoning tokens can delay output, adding to pressure =
+on LLM inference providers to serve tokens faster. But researchers are find=
+ing ways to make the process more efficient. Claude Opus 4.5 and GPT-5.1 se=
+t to high reasoning achieve the same Intelligence Index score, but the form=
+er uses 48 million tokens, while the latter uses 81 million.
+
+Big AI Lures Talent With Huge Pay
+
+Leading AI companies fought a ferocious war for talent, luring top talent f=
+rom competitors with levels of compensation more commonly associated with p=
+ro sports.
+
+What happened: In July, Meta launched (https://info.deeplearning.ai/e3t/Ctc=
+/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5m_5PW50kH_H6l=
+Z3kBW95hz9N5m4dy0W97KCkV7CN4zdW1dZ8Np6c5HtVW4tSlFL7NR_DkW1s0PrZ8b8zXnW6vwQp=
+p3mw8MpW3cvljn7QpZcmW5W9m9V88QKnRW8mJPtm4zsLzDW79v1Cl8-yPS0W83pgMl5mmK2ZW8m=
+R_Zs2C6d1_N3VKRrgX_4DlW2X_7pS7h4FQKW1xLTzl53BkpsW5Vc07F7kw0GvW82nHSb47VPsVW=
+1VfvlF6GBGXlW984tkm8RmT-zW3q38td8CSs4LVvthhL73gGv1W3BsR2b5qVsRDW4LlJ_x59XPr=
+bVWS7mB7zh9DjW6V8SvN5LJKfLW1CY4SN7bjL0GW80sw8j4393PzW2F_nR97hk0S8W7n1LJl5fn=
+9xjW4jK3Vb3_HxYSW3Wx6pr3b_fW-W23MXWx10Y3XVf1MjzZK04 )  a hiring spree to st=
+aff the new Meta Superintelligence Labs, offering up to hundreds of million=
+s of dollars to researchers from OpenAI, Google, Anthropic, and other top A=
+I companies. The offers included large cash bonuses and compensation for eq=
+uity forfeited by leaving another company. Meta=E2=80=99s rivals, in turn, =
+poached key employees from Meta and each other, driving up the market value=
+ of AI talent to unprecedented levels.
+
+Driving the story: Meta upended traditional pay structures by offering pay =
+packages worth as much as $300 million over four years with liquid compensa=
+tion that sometimes vastly exceeded the stock options that, at other compan=
+ies, vest over many years. Having hired (https://info.deeplearning.ai/e3t/C=
+tc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1W3prCCW95jsWP=
+6lZ3mPW5zbTFw4gWPGgW7FGKx37VbQWCW6zyHXN5c1XzrW20-HyC1zt4mLW9jM44V1PF359N1bH=
+ScmCS2BCW6Vx42V7cwx1yN3VRyM2WL4jDVbQSgG5XdwY0W3Ls7M23rbx5yW5z36d87gKxHvW6pD=
+cHv6xYfx5N7X12nnzTpn-W3pcFmq6vy69XW13rlf14dZMcPV6Lznj5DNsx1N1wyxF9slSSnV8sZ=
+-T2frgc4W7nz-4T8QT6lPW27_G8L8cgtKrVHD7ck5VmfGtW2RcBq42hJ563VzwNHS9lx7hmW6G9=
+bBh4ZKtvvW3JjkWy4VFxqdW8Mj6hC71-Jr-W8PWjY08RCvqbW936bRn7r4sf3W89sz9_6Y8BB7W=
+3qT49S7NJMv9f2PlK5b04 ) Scale AI CEO Alexandr Wang and key members of his t=
+eam, Meta chief Mark Zuckerberg compiled a wish list, The Wall Street Journ=
+al reported (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35=
+BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1j3prCCW7Y8-PT6lZ3l9N2xC4Kc-dVJQN3fdtVkpKc=
+TjW74chYL6GjbbwW1XCSf47YmfKGW1GrVm23k0Z5lW8MNDHc75lX4-W7mnNmB28l_cTVyVMht6L=
+5jVfW190Nj8224SD0W66L2_33Znd2mN4z4D88vbpvGW7qMs9_7Hm5RzW2ZsQkf1tKQ15W4fx_lj=
+5z9R-ZW9cPPV32pScy_N3-K3qxQ2hl3W2lJwGr2P1ZVCW1BPwct604w74W7rQTHP5CJpY4W2Y5R=
+SX6CtnTvW8T8GxV9jDfYlN6r0Tcb-s_z3W2CN66n1N8K7NW4Pd7ZT28CD6pW26BRFZ4xFl5vW4g=
+y0573rxgMgf2LSW8M04 ) .
+
+- Zuckerberg made house calls to convince people to jump ship, sometimes br=
+inging homemade soup (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/V=
+WbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0q5m_5PW69t95C6lZ3lbW8bXmSy2X0YrX=
+W7_-RMY56gg96Vwmv1K2nGTzzW4df3NX1w4swvW5dRW822GwXkqW38C3kn2Nl6bcW929pdk5sHb=
+c0W8Wf1b36CHk-gW2bm0kN4nSNC2W42NqRc6K_JC0N1PT9Dn7q528VB7_yZ66hF62W1vg2yV78_=
+VP7N5L4dZ5Cp9csV858Dz6csQmwW8mkXHp1bkBlVW89cs8y88zWd4W5N3BVl1s77BBW2_Wj6D28=
+3qT5Vk1MWv5RylQ7W8PhTLW7SGK73W8b7q813CNm3bW1_ZrN18l64C-W8sMdFN7H5WqpW41FYLg=
+59Fqj3W5fm5HW9dHMzSW20qQrz7sgMsGW5dBvWz5BDf5VN7CB51cCvXnQW3S3fSV3sfcWWW2Swq=
+q-31NMSHW2ZmHwb3NqDt_MmBrwNqq5zBVqPgQL1mcP0SW4VS0jh4Tml2tW1cm6Mr5kMSSPf4tYC=
+Td04 ) . The effort netted, among others, OpenAI=E2=80=99s Jason Wei and Hy=
+ung Won Chung, two researchers who worked on reasoning models.
+- Andrew Tulloch, who had co-founded Thinking Machines Lab with OpenAI=E2=
+=80=99s ex-CTO Mira Murati, initially turned down a package at Meta that in=
+cluded bonuses worth $1.5 billion, The Wall Street Journal reported (https:=
+//info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-=
+97G5Hy4BhN7zrx1j3prCCW7Y8-PT6lZ3nBW5Kg9TW10BQQ3W6sr_Mc8fPCqpW8yXpTb7rdjlbN2=
+4h-X0-d2qLW3tnBH776H5KRW98wZjs3rpMBYW51cqkJ59sgH6W29b4567SXCF4VD6HyR38_hz3W=
+5YxQTm7vdHVjVL_6xd3fTdsQW4kz3136jhWsfVvCRTq4F2t6hW2b06pn6F3tfJW3FWWYn62wLCC=
+W1s3WMq8tLP2kW5rHNs76nmR3LW2pyrG26m9KsTVNZtvX4m2CdRW3344y86Z_zCzW63k1PR8RH4=
+-bW3jcrQ08Cq77GW2HlBqd7Kh0MXW1g53Z026X1-ZW1FM2H68s9M9LW5PQ9pZ6fF5Gdf1BrtNz0=
+4 ) . A few months later, he changed his mind and joined Meta.
+- Meta hired Ruoming Pang, who oversaw AI models at Apple. The pay package =
+came to hundreds of millions of dollars over several years, Bloomberg repor=
+ted (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW=
+61GJ2lTW6R-97G5Hy4BhN7zrw_R5m_5PW50kH_H6lZ3n6W7jjnHn3gzMdRW6n5BfK9bZG_tW7hX=
+9KV6RS_nFW1g76Fx7YY9RzW2xMcV97h9QhjW20zYmK6qxCQ_Vgm2z66rtQYgW5XWNJ_6PGNT-W8=
+jP0-26g76T-W6RLcwM2mb0P5N4vGJFFSm-srW7Sj7gr1mG-23W75GQl08W85X8W4jxm1B5Dqv3-=
+W1Hbx1Z90YLWTW4ZSHS41kkF0RW19CmhM1NGYpmW7Scfzh3gQQF9W94N9tR33cJWpW99DzRG6m7=
+Xx6W96Tq5J8YPdp8W1MzDq17wl5jPW21dZ4w1JGRqFW2JzT2d8LksLlN2fRZDMLDvpzW54BR0h4=
+kLnMwW3rvd5S7q17JCW4F55cx1RqR1qW1LFkLx7mW-d1W5WJffw43QqJrW2jRZqW7kPHKmW6lhY=
+7L8nlzX0f6vxhdx04 ) . Meta=E2=80=99s offer exceeded the pay packages of top=
+ Apple leaders who weren=E2=80=99t its CEO, and Apple declined to counter i=
+t.
+- Amid the turnover, Microsoft AI CEO Mustafa Suleyman took more than 20 re=
+searchers and engineers from Google, including Amar Subramanya, who was vic=
+e president of engineering.
+- Elon Musk=E2=80=99s xAI hired over a dozen AI researchers and engineers f=
+rom Meta. Musk decried his rival=E2=80=99s =E2=80=9Cinsane=E2=80=9D offers =
+and touted his company=E2=80=99s =E2=80=9Chyper merit-based=E2=80=9D cultur=
+e and greater potential for growth of equity.
+
+Behind the news: The trajectory of salaries for AI engineers reflects AI=E2=
+=80=99s evolution from academic curiosity to revolutionary technology.
+
+- In 2011, when Google Brain started under the direction of Andrew Ng, AI t=
+alent was concentrated in academia. As neural networks found their way into=
+ commercial products like search engines and AI assistants, machine learnin=
+g engineer roles became a standard corporate tier.
+- In 2014, when Google acquired DeepMind, AI salaries significantly outpace=
+d those in software engineering in general. DeepMind=E2=80=99s staffing cos=
+ts came to around $345,000 per employee, The New York Times estimated (http=
+s://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6=
+R-97G5Hy4BhN7zrx1C3prCCW8wLKSR6lZ3m5W78vKb42S-HX5W7gZkhp7-BS3rW2zBy9q5215RG=
+W3CGSwH2QzMYkW16VJsN5pnbXBW3PqqtG1Mr1FlN2ZzX0wCz6W1W6LR1VD7Y3yRpW9kClWd3zB8=
+HyW1WLZWK1KYr_HW1qq7Mj2yl_6BVyhbmm2ph2FXW8qkWM02JB80vN1bc4l5272j_W4Hg6Hv4ml=
+L8qW89vt-X6ZgvpQW1rKdWV4BhJPhW83mX5W1G_RFGW1f2DV647xHHXM-631gMrRQ5W5l9JhJ5x=
+QM2wW39x9PX3lyH9sW87b_Vf7w68VmW6TbpsL4YXzlTVVhGm03jy_DSW21Cfzl3drRDrW9lC_Zf=
+2RyYwNW6cxv0N7XkFGrf3Vcrrl04 ) . By 2017, when Google introduced the transf=
+ormer architecture, top compensation had risen as high as $500,000.
+- Circa 2023, with the rise of ChatGPT compensation took another jump. Pay =
+packages for top-level software engineers reached beyond $700,000, accordin=
+g to one report (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg=
+5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1C3prCCW8wLKSR6lZ3nkW7FxkFz1zwnNDW8Q9N=
+nK64TXHDW1Jpq-g5ZzVhgW8ds21z4_SPpxW25LfwH5lkmW8VP8s-h638ryTW4mMBb38cgMhGW7p=
+BRd-7zvs-jW84g7C895KZM3W8V355w9jdhjFW2sl_hX652tPWW6Q_hGg3S_jNpM_7TD-XPMW3Vt=
+YzfZ5pHpmzW6Z6WSW1mn4-fMsmkKn9XRwsW7Wljdc5h_7SSVbJwy47JYbNfN3TBmkXDr71vW910=
+xjM2mytkqW7QLvj07JyP38W5Qvj268tfMsxN7jRtjnYrbPfW91rB-46rmfBSN22DngyjjKmDN6Y=
+wz8rkJr4nW4CH5Hv9fZZ6XW5vHXMJ51_zp9f4cX8VT04 ) .
+
+Where things stand: As 2026 begins, the AI hiring landscape is much changed=
+. To fend off recruiters, OpenAI has offered more stock-based compensation =
+than its competitors, accelerated the vesting schedule for stock options aw=
+arded to new employees, and handed out retention bonuses as high as $1.5 mi=
+llion, The Wall Street Journal reported (https://info.deeplearning.ai/e3t/C=
+tc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5m_5PW50kH_H=
+6lZ3pfM9zw6zZLG61W8b8X0k8MNLhQW4_r6wr1bgV7fW7X7DcB5SLxbFW1WWg5l9kYVtqW2r5ld=
+s91d2_TW29-vkd6yyDjQW5QBYwC7LCdxcW5m2JJ_73dMh6W4651QN2zDYgqVfd_5F51nBqHW4kC=
+wp23BrrJmW2VJ8yh4qJQL2W6n6TDM7qB2PZN3Hl41_5QZpHW4-3lHM5X9gRzW5flY6V8-m_-zW1=
+Bntx376wjGfN67PdBnhjFDCW26pMDk2lRRVXN60S4_VPbWgWW3fvvh69k_hQPW8RbvPW30v2qPW=
+8xK5Rm36-G9ZW5L9KFd3rSjpsW6tbKjL1hdG5hW69Q3VP3ZG1zlW33gPrP98kgjlW34TFNm2XW3=
+JkW4TlGGj2yTjsfW6JBQkn147w-bW1QprRf5MVsx3f2rS2NP04 ) . Despite talk of an A=
+I bubble in 2025, high salaries are rational for companies that plan to spe=
+nd tens of billions of dollars to build AI data centers: If you=E2=80=99re =
+spending that much on hardware, why not spend a small percentage of the out=
+lay on salaries?
+
+Data-Center Buildout Goes Big
+
+Top AI companies announced plans to build data centers that are projected t=
+o burn through trillions of dollars and gigawatts of electricity in the nex=
+t few years.
+
+What happened: The AI industry=E2=80=99s capital spending topped $300 billi=
+on this year alone, much of it allocated to building new data centers to pr=
+ocess AI. This was a preliminary budget, as companies mapped out ambitious =
+plans to construct facilities the size of small towns with the energy needs=
+ of medium-size cities. The race to build enough processing power to satisf=
+y hoped-for demand for inference and training could cost $5.2 trillion by 2=
+030, the consultancy McKinsey & Company projected (https://info.deeplearnin=
+g.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0q5m=
+_5PW69t95C6lZ3kFW6J5hpC8J9jz1W6Q_5J066B05XVjswcY7t0RXZW4NfxVq4bpV-bW84Kn1l1=
+4v9F6W5YnTpF2Rr4m5W4WfJzP8DQ1VNW6L58bn3PKl-DN5hJD4WDxkynW2pLBlc1NJDXSVZPK7K=
+3Vqf-wW3jYMTT5K7YPYN6Jv1DCZXdgkW2Xn5cY1-df_SN2rz20WCpFZ7W2NXShl1MmzfSW1rfSF=
+x57ZGspMQn30j_YJJTW2CyjnB69Hh6VW6kfXZp5hxWQVW25QsSy209D68N65Cl1wsxNDJW92wbx=
+b4D_mHSW3JyKtn7YVBQ2W1kgG_c32v69HW5nYYK03gT5QVW8fJJWB6kWfBPW1ChQhj9bL1JjW5j=
+k7NG79NBqnW8jzNP86SXJHHW729Qrp8WwkRjW3V2L9v1_SW3VW56T_-b6YHxlDVcVPXJ8xzfbSW=
+3YqCBD36xmWpW5jSb0l2_Ks6df7MfF1P04 ) .
+
+Driving the story: Top AI companies announced a cascade of data-center proj=
+ects across the world. Each gigawatt of data-center capacity will cost roug=
+hly $50 billion to build.
+
+- In January, OpenAI launched Stargate, a $500 billion project in partnersh=
+ip with Oracle, SoftBank, and the Emirati investment firm MGX. Ultimately t=
+he company announced plans (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJh=
+C404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0q5m_5PW69t95C6lZ3ldW497LY9=
+5p-SDzW5nLkCk71mlsfW4VtFHn8hr-cMW5T4rwQ5_KMkgW32yH7b6YtcrGN3qBnx8cjBBzVppfH=
+843yDWPW34Zr3q2YvnzqW6l0rv_36wpH-W2tfNPy5zjRKCW4MpMsp8RbjCxW2jW_217bbD1JW83=
+Mtct7BxcqtVZSFGR1PL6r9W90RGK61qTbQ_W7nkqfQ4FXxjqW22DP-S3Vlt7xW2rvzqr775zLrV=
+8qqCY36-X3cW4BjQ4x7G-wQHW1tCryK2qcHwqVb5k6v4hRz2CW3r3t5d8Ryrf-W5lD_dV72ZC1y=
+W64pppb6WwG28W66ygP_5qlgfPW2tPmHt2zS3ZfW1j1kWv5x56gdW3h_pDx7xlhY_W97krQ33ND=
+5D2W6Y6tlb1BCFmJW40jPGz1xC9FGW6wZdp68GlDF2W5F0tg417dcmnW8zSv0H7QJphmW8sT1s3=
+7HGr69f5tQb7K04 )  to build 20 gigawatts of data-center capacity worldwide =
+and forecast demand up to 5 times that amount. OpenAI CEO Sam Altman said h=
+e hopes eventually to add 1 gigawatt of capacity per week.
+- Meta spent around $72 billion on infrastructure projects in 2025, primari=
+ly in the U.S., a figure executives said would rise considerably in 2026. T=
+he company=E2=80=99s Hyperion project includes a $27 billion, 5-gigawatt da=
+ta center in rural Louisiana. The project=E2=80=99s funding deal will keep =
+the assets and debt off Meta=E2=80=99s books.
+- Microsoft spent $80 billion on data center projects worldwide in 2025, in=
+cluding facilities in Wisconsin and Atlanta that will be connected by a ded=
+icated fiber-optic network to operate as a massive supercomputer. To supply=
+ electricity, the company signed a 20-year deal to restart the Three Mile I=
+sland nuclear reactor in Pennsylvania, which will supply 835 megawatts star=
+ting in 2028. The company also pledged to expand its European cloud and AI =
+capacity to 200 data centers across Europe.
+- Amazon expected to spend $125 billion on infrastructure in 2025 and more =
+in 2026. Its $11 billion Project Rainier is a 2.2 gigawatt data center in I=
+ndiana that runs on 500,000 Amazon Trainium 2 chips. In addition, Amazon pl=
+anned to spend roughly $14 billion to expand data centers in Australia, and=
+ about $21 billion in Germany between 2025 and 2029.
+- Alphabet expected to spend up to $93 billion on infrastructure in 2025, u=
+p from a forecast of $75 billion. The company announced a $40 billion proje=
+ct to add 3 data centers in Texas through 2027. It also committed $15 billi=
+on to a project in India, announced roughly $6 billion in investments in Ge=
+rmany, and rolled out new or expanded projects in Australia, Malaysia, and =
+Uruguay.
+
+Yes, but: Can the U.S. economy and infrastructure support such immense inve=
+stments? There are reasons to wonder.
+
+- The expense of the data-center buildout will require (https://info.deeple=
+arning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zr=
+w_R5m_5PW50kH_H6lZ3mgW4w5Sq95wLrQsW4fwMW63KwjRpW2rzdXN5c9kkYVFwFXV3KFGHbW3g=
+Kb7K29sjGSW389RKB7wd--KW9cxmmS6JPx6xV7z8yQ4QCq4YW3j5jxg43rr0GW29T6CH5lrww0W=
+3q6ykw7V6f5LW3Vhhbf2WvF_9W70hhB_8STrvBW3hWbKT8BSh68W99YjCs6vq_nSW33QQWn4-TC=
+6XVDhtsY8t9pp0W1YJ-Dv818BhMW6jcTGn1wvF3bW1wWYxd6xf_xbN1v2HHkxbtMsW3S8kJr6Rz=
+KdtW6qfY3528x3d6W2pml_z81VL02N5GmcwKM_kc8N3ClR-gFgf_YW2c9m6F1fgRYsW4R2mym4d=
+_wJ1W4g8_382HMvYzW13zxWs5jbY65W3736JW8CwwnLW6L6fsk7bc0kMf4P4Pmq04 ) an esti=
+mated $2 trillion in annual AI revenue by 2030, according to consultants at=
+ Bain & Co. That would be more than the combined 2024 earnings of  Amazon, =
+Apple, Alphabet, Microsoft, Meta, and Nvidia.
+- The current electric grid may be insufficient to power these data centers=
+. Two facilities in Silicon Valley are sitting idle because local utilities=
+ don=E2=80=99t have the capacity to connect them to the grid, according to =
+(https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ=
+2lTW6R-97G5Hy4BhN7zrw_R5m_5PW50kH_H6lZ3nKW2W9kfG3p0j7CW38-gKX1f7wvlN2KCYPvQ=
+2tG_N8sSn1S4qQ-9VJcYj42xqMWQW1VqCCs58h6crW4h7kxF3kMbHCM37kmt9zyhZW5GZ4Nb3l1=
+v8RVK1Z5l9gHN5xW93wqlY34N4CfW2HQs0Q2qmsPSW63hFsZ2m7mwPW34r8Dv1M5445W8D2y6K2=
+Xmy1NW2mkTfk5DFRmvVsnm9C958ywgW8DHZMp6bCTzbW46GNnK7G-d60W91C7544NVkQcW8rL8K=
+Q8R7JD9W8Pnn8p4dDNGLN5k9G1s5p1Y7W6h5g3M5kmQWcW7MkhxV5w21X9N35LTk_DJfR3N5zWt=
+_5TYNYkW4TMlvx2GWmjZW37qMNl6jZCXlW3NZ5TG4FTRczW8FNwLB7Thqs1W5TkjXH3bW7mRf87=
+lxPn04 ) Bloomberg.
+- In mid-December, Blue Owl Capital, which had been in talks to help financ=
+e a $10 billion data center for Oracle and OpenAI, pulled out of the deal, =
+Financial Times reported (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC4=
+04/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1j3prCCW7Y8-PT6lZ3lXW75mzDV6K=
+f_k7W8NZPDz27V-_PW5Yl7RM3SYrX6W30K-4887JkNDW79dTD-2ZQwrbW5Dk77B3YwXGTN42xcF=
+F-gk_MVr-yh81g0HD-MZgvwRmsmnQW5rVrLv7m3Z3lW1qh01W788qqqV3TlNm1x1qlgW7qgyg38=
+CGXbCN1Fcs5-Z1jGxVVbVfk2-n1ZyW7VFMHH46z5k5N30TPpGGk64-W8ym8zc6KYcvqN8vS87db=
+dXDGW5VGxN15dfB2QN7rqZ2QcDRbhW3N6pNp5J1sPcW8mrTDd32YD6yW6bR_rw6dQpcFW5c5dHZ=
+207tRzN4VfJ6FLlsZLf4rYbtY04 ) . The report cited concerns about Oracle=E2=
+=80=99s growing debt amid the data-center buildout. Blue Owl continues to f=
+inance other Oracle-OpenAI data-center projects.
+
+Where things stand: Despite concerns about an AI bubble, the boom in buildi=
+ng infrastructure is generating real jobs and sales in an otherwise tepid e=
+conomy. Investment in data centers and AI accounted for nearly all the grow=
+th of the U.S. gross domestic product in the first half of 2025, according =
+to Harvard economist Jason Furman. At this stage, there is evidence to back=
+ the idea that 2025 lifted the curtain on a new industrial age.
+
+Agents Write Code Faster, Cheaper
+
+Coding apps moved beyond autofill-style code completion to agentic systems =
+that manage a wide range of software development tasks.
+
+What happened: Coding emerged as the application of agentic workflows with =
+the most immediate business value. Claude Code, Google Gemini CLI, OpenAI C=
+odex and other apps turned coding agents into one of Big AI=E2=80=99s fierc=
+est competitive battlegrounds. Smaller competitors developed their own agen=
+tic models to remain in the game.
+
+Driving the story: When Devin, the pioneering agentic code generator, arriv=
+ed in 2024, it raised the state of the art on the SWE-Bench benchmark of co=
+ding challenges from 1.96 percent to 13.86 percent. In 2025, coding agents =
+that use the latest large language models routinely completed more than 80 =
+percent of the same tasks. Developers embraced increasingly sophisticated a=
+gentic frameworks that enable models to work with agentic planners and crit=
+ics, use tools like web search or terminal emulation, and manipulate entire=
+ code bases.
+
+- When reasoning models arrived late in 2024, they immediately boosted codi=
+ng power and cut costs, as reasoning enabled agents to map out tasks to be =
+completed by less expensive models. The addition of variable reasoning budg=
+ets made it easier for agents to use a single model, devoting more tokens t=
+o planning and fewer to making simple edits. By the end of 2025, Gemini 3 P=
+ro (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW6=
+1GJ2lTW6R-97G5Hy4BhN7zrx0q5m_5PW69t95C6lZ3nvVm2wKw83f7-MW8t7t_51CqctGW5VRZK=
+S10ZN5vN12VDgdhN2zxW5lSHKt93W9bXW7MtXw33_d7KwW2cFGNw3g4cgVW8500504HK1rZW42j=
+S3J6B4DH7W6DQGN-59_0zQW6SK1CM5lJyn0W4bsCVK92kp_2W17yp6Y25ZwpxN7PyPdllzFm6W3=
+_lCkq5wqWWTW1Yl6Mv29ZYs6W8tPPq82MRL5bW97_Nzz3xvS5XW2kfrJs76LZsTW3vvhPc2hNKG=
+HW70VJbF8NNn-0W9dbTFy8JyjhfMl_jBWtw_XCW7SqFDC6m4-jJVRSLSm6Bj4w3N5FzgKVPqF38=
+VGs2Hh416XywV8TC1Y3KGJVHVMRv_11ZJ9cdN79FPBxP8rf0W3X_bk23NCHWdW4ZWNxj7VpQmVW=
+6NwfK220Tp_2W1DGjwD3TLlk4W88WRyP2mMswdW4K4RG85c66p9f5h05yz04 ) , Claude Opu=
+s 4.5 (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-=
+nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5m_5PW50kH_H6lZ3kZN7tNc8Vn4YtzW6b-KF93TBmhLW4z=
+-wGm7kpmKdW7l08508lYyHbW5tDgL-384wfzW8DqGBZ3mTghrW3hqj1G3yWrYcW979qvD4L6m-G=
+W6rhRh57N4hY8W2cJ2_G92btnsW2YPjTS71Fq-JW2LM7Rp7SPT9_N3H039Ccd-cSW5vssPq7fTG=
+sqW7THPqX3WC6bkW8qDhXc6M-ZWjW6mbyw551kDTMW6KbyyT3F36v7W15ryvL8H4V3YW76C5d92=
+8gqgKW563TSM2fCN8nW43Tw5m7m4vbwW82DPdX4cKYYCW4ZV3563lsvGvW1-YJg76bybVPW2gFq=
+YM5H567nW7X5Zj_7gpZ0QN3ybT5c7Ns1MW19DFtx5whBd3V4Q7wn1NfHp-W1pKy753GKPz1MyK2=
+9p-b834f64MHkv04 ) , and GPT-5.2 (https://info.deeplearning.ai/e3t/Ctc/LX+1=
+13/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1W3prCCW95jsWP6lZ3prW=
+23Nr-b4l73DRW7MyvbT4kXZPjW6FlTWp1NkRvcW7jmrpp4Z-gs1W6N4_rZ707mNDW26frj62LnR=
+TFW1vM35D1H3ycQSqLq22D_WtN18KtDsH4tc6W7t6t421___C2W2hgd1-7SYjH-W7gmHRh5y2m5=
+GVk0xnn36n5t0W8yyXgh88FhhDN3YtwDmH7HbyW6J11FS85fJM2W9ghkMg5y0RWdW7HF8Qy8_QP=
+08W1Xmk7Z14VfJvN5rJSw1jJL0bW5N-csL9fS5wWW2zcb7l49rzZxN8ccmQhMZ3ZfW2h9X6x6fW=
+GT1W38rTnf6gfWL1W4nmNfl1b4MHPW4CSw9h3Cz40DW7XPqD195w5JTW2pMzD18-yGPfW61YbL-=
+1tZY1Hf4wrgF404 ) emerged as top models for coding and agentic workflows.
+- Open-weights models quickly followed. Z.ai GLM-4.5 (https://info.deeplear=
+ning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0=
+q5m_5PW69t95C6lZ3p9W4gwtt-8t8yh3W17Xy-f7BY2qTW4jzgsv6lyQ1ZW87fNwD2_Q7M2N823=
+H08VnvhwW6TmDZZ4JZF8VW9gjF3z5CWBmMN9hZw1V7FrlXW3QXVxR24pxBTW17VwY15p77bbW5_=
+8-yF7jqr5DW5bCsrB8KbPkTW1z69c88wF1S6W2y0fXm86GHm8W7-4qXF8nlms5W9jFH6k6GJRZZ=
+W29Bx9Z26PMzfW1BvJqQ61ZwjFW3hZx7Z67Xx6kW95WvQx5bckH0W12tYzc7tcldqV3HHRb1wYd=
+HZW847xwH3rPkhDN67Yv3K8spYdW1N5yJl5By36JW8C8VVL8BdGSmW6M2TsR7CRKLKW3v72_v1c=
+PRYPN3Yn7GXC57s8W8508GH8pbs5_W74kFD43WH9pXW8QGHVj46mStMW133gr66-Ptx0W1wmVyv=
+67zBXZW1fx3wV6wnrkMW99Zpyn19pptKf6rT5gs04 ) and Moonshot Kimi K2 (https://i=
+nfo.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G=
+5Hy4BhN7zrw_R5m_5PW50kH_H6lZ3mHW7kK_wz5rBqk_W66x8Lz4z5PKwW8Phv7p66rKXcW8Pq8=
+724B08y1W235KfV8rFxKHVMjBJQ3GK_W1W99jB0T4Xp_2kVKYQJ_4yQ0pNN96drl3VNPKcW274x=
+tK6y4_5DW6Vb0pK8w-WSRN8cHv7kdwyncW83Glvl8flCB7VwLzPw857KXwW4b46qs6F8vDjW1Dw=
+XLN4sH9zZW43Gm0T1fSDTgW2x-zfR3DDG2pW461P_m1k5dj2W4hrtv_8b4wndV7TyKR2TJRxwW3=
+4hkS97vVl2lW2Y0LnJ80cTv7N64DRHzKgysTW8HGcXN6wmX9rW1W4T7d2rzVRtW8_Rm3D4LgB60=
+W2D5n0W2kqh-_W91G_gH8C_zk3W3qCQNv6Sl85WW9lFbly6vWL8sW8PYFJW7pSGvGd1R-cT04 )=
+  emerged as open-weights favorites, enabling automated-coding startups to =
+cut their costs dramatically. Released in July, Qwen3-Coder (https://info.d=
+eeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4B=
+hN7zrx065m_5PW5BWr2F6lZ3lNMp38-ywtk3fW40cH9s5Jy18qW7HGYKn2q1qq8W943sLn3Kk9t=
+JW6rzScv6X-8fGW4X4LD23_v7WhW1k3snr15V8q7VQcXl9953xC4W1DK-8K1RS6Z-W5_lrMR5qV=
+TdsW4fd7-w2LYXsDW8mF7KP4Z6nbhVNVysp4mW114W7csP7H4rfYw_W5GkjwL2GtcngW956YkZ1=
+BrBZDW56JHL14j_9MVW47nWFg3hXFSfW4g6Gp14rtQf_W6YTN-75DXtzYVFSSs515KPsLVgZryg=
+8Bs-QxW67VJ664FpmF4W9flGZB52334ZW4pPG5G5hhbRQW7YH7023rgyftW1QH8W_5LcyQwM8Z-=
+kPHbb70W4fD1bk60TknJW670mtf4q4vYLW5jYLyq2gn-_QN12P3V8xs1KkW7p-1Rf6WXmJsW9dm=
+m0T79FQSjf4_Jycl04 ) provided a hefty 480 billion-parameter model trained o=
+n over 5 trillion tokens of code, nearly matching the performance of Claude=
+ Sonnet 4.
+- Anthropic wrapped an agentic framework around Claude to create an applica=
+tion: Claude Code. Introduced in February, Claude Code was an instant hit a=
+nd set expectations for what agentic coding systems should do. OpenAI respo=
+nded with its Codex (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VW=
+bQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx065m_5PW5BWr2F6lZ3l2W3nRNjd3Kn15WW=
+8pXmG-4zrTXRW3t3tvG8Fns14VPVqtG5gcZqRW2hWpTz8dNFdGW2nF4M317-25hW4Blhfl5d-dv=
+5V1Sc642V63MDVZD7Jq86NrTxV-MX9698CVKPW3_PKtG87nTbpW2PrLJC5Qc8G3W7bWmrt3x-7m=
+JW7Ftqp17F4r3-W7rJFTT7Tr4nqW73rrGX96qGk8W6kCnkS1YVx26W77Rc_B8VNfTNW26Szcj5p=
+PXyvW6zvF7y7ldnYdW1723rZ8_qk8wW3pbrGt5gn_pBW7KbSKH6MpBgSW2RKs1L5zxHdNW7z920=
+C2BzBhfW3XSC023qPJHMW3YtsST6W1CjvN6lXnqSr_R_bW7_wSzR3V76YjW73VXzs1jBw6gW95x=
+G1K76lxN0N5HDjL-fm98fN652SNypPQYLW2bC7jn2ZQPYKf6SMrWn04 ) application based=
+ on coding-specialized versions of its GPT-5 series. Where Claude Code init=
+ially ran locally, the Codex app ran in a browser, helping to popularize co=
+ding agents that run in the cloud. By the end of the year, these agents wer=
+e able to manage longer-running problems using multiple sub-agents =E2=80=
+=94 typically an initializer to start tasks and track progress and various =
+coding agents to complete different tasks =E2=80=94 each with its own conte=
+xt window.
+- A tug-of-war between model makers and developers of integrated developmen=
+t environments (IDEs) led popular IDE providers like Anysphere (Cursor) and=
+ Cognition AI (Windsurf) to build their own models. Conversely, Google buil=
+t its own IDE, Antigravity, which debuted in November.
+
+Behind the news: Agentic systems steadily ratcheted up the state of the art=
+ on the popular SWE-Bench coding benchmark, and researchers looked for alte=
+rnate ways to evaluate their performance.
+
+- These efforts led to SWE-Bench Verified, SWE-Bench Pro, LiveBench, Termin=
+al-Bench, =F0=9D=9C=8F-Bench, CodeClash, and others.
+- Because different providers trust (or cherry-pick) different benchmarks, =
+it has become more difficult to evaluate agents=E2=80=99 performance. Choos=
+ing the right agent for a particular task remains a challenge.
+
+Yes, but: At the beginning of 2025, most observers agreed that agents were =
+good for generating run-of-the-mill code, documentation, and unit tests, bu=
+t experienced human engineers and product managers performed better on high=
+er-order strategic problems. By the end of the year, companies reported aut=
+omating senior-level tasks. Microsoft, Google, Amazon, and Anthropic said t=
+hey were generating increasing quantities of their own code.
+
+Where things stand: In a short time, agentic coding has propelled vibe-codi=
+ng from puzzling buzzword to burgeoning industry. Startups like Loveable, R=
+eplit, and Vercel enable users who have little or no coding experience to b=
+uild web applications from scratch. While some observers worried that AI wo=
+uld replace junior developers, it turns out that developers who are skilled=
+ at using AI can prototype applications better and faster. Soon, AI-assiste=
+d coding may be regarded as simply coding, just as spellcheck and auto-comp=
+lete are part of writing.
+
+China=E2=80=99s AI Chip Industry Takes Root
+
+The United States government=E2=80=99s effort to deprive China of AI comput=
+ing power backfired as China turned the tables and banned U.S.-designed chi=
+ps.
+
+What happened: China=E2=80=99s government issued a directive that all new s=
+tate-funded data centers must be built using chips made by domestic supplie=
+rs, Reuters reported (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/V=
+WbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5m_5PW50kH_H6lZ3ptW5w4Q-J2bJn_2=
+W5RTfrD2cw7b5Vdkjss135WS8Vz40KC3fjQdPW8vcMsj5pY4q_W18WK2q7fsvLmW36QfGb5fqJj=
+lW8DKS_V9cpjhqW7y8gcc9jg4JxW28BL856CjD_4W1n0YBY1Msp9vW8Y2kXX9fPcM5W1wtWs93j=
+SsZyVsklKS1R2dMlW43BBWZ20xbJ1W4tvdQp8pR1Q7W7N1cgc286RbXW1hXGm86lmJ-_W7Xl0B_=
+5Cf8VVVJq3-02b3MGtW7q8gj349jR7jVNV-Rr4Xp7W6W59J7S16pqf4NVffJbQ2ml8H9W8q104s=
+2FMchqW68kSD16JrR4cW8SYBzq7lrwvQW2FljJZ3NLqlSW6BBKcS2xqgmjN8QWf5k7sBJpW22tV=
+wz3CM0jbW6rkYkm1j6D7qf2rlDsR04 ) in November. The policy emerged shortly af=
+ter the U.S. reversed (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/=
+VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx065m_5PW5BWr2F6lZ3ljVH_kMm5sm7rs=
+W8K4lRK5YSCf5W6Z97t54ZmFl4W8NGhc81PjmF3W1sBygs2GLW1ZW3P_q5p8RYK9KW1QLSZR8Q6=
+1MmW5YSKln3FRLsYN5HwNwXffZPrN7mMX0rYv2phW7JXYwV46rsLTW6JCXlW1pNmfHW4l9bx61Q=
+NncnW1sX-SK8f3nwGW4RbJ9z8c28y3W6Ncdbp8z1FP-W9lV64v3KWZr3N8LWg4bCqyBpW5r-_4H=
+137zC-W3Fy67B5gjT_8VkyqsM6XJTRBW2yGBkf1mjGh5W4ldQbW28fBX6W4LYYFC2L0D6RW1zfX=
+XR520zcRW3ZCZns2t8kwyW7k025m6W3PgDW7RwMf718-7MwW2KsfhC51-9KgW1RWgDM6nX3DwW5=
+4WdPv6tlwbkW8hjvPh5cSgDmW3P0Lgn3VWY5LW6qT8L07_L9x_f3fT8MW04 ) its years-lon=
+g ban on sales to China of advanced chips manufactured using U.S. technolog=
+y, including products of AI-chip leader Nvidia and its rival AMD. Rather th=
+an constrain China, U.S. policies spurred investment and innovation in Chin=
+a=E2=80=99s semiconductor industry.
+
+Driving the story: The U.S. government aimed to block China=E2=80=99s acces=
+s to AI on the belief that the technology would have as much geopolitical i=
+mportance as oil. President Trump took a hard line in his first term from 2=
+017 to 2020, limiting China=E2=80=99s access to cutting-edge technology, an=
+d he doubled down on this policy throughout 2025. However, the U.S. approac=
+h looked increasingly untenable as China=E2=80=99s semiconductor industry m=
+ade surprising progress, the immense economic value of the AI chip market b=
+ecame clear, and trade restrictions locked Nvidia, now one of the world=E2=
+=80=99s most valuable companies, out of its largest potential market.
+
+- In April, Trump blocked (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC=
+404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5m_5PW50kH_H6lZ3kHW6cvG-52=
+_4dLlW8-5D5Z4BzkpfW87Phqt52GdLmVTbBl26ZcLKmW8DJ3Tt5-59myW3FdR852-Kj7ZW6Szs7=
+61nZHxBW9jh0QM4n2BH_V8kXlx4bZBZPW88gHLT36RJSMW4dryxv8n47_YW1W98LN86MWVjW2-_=
+kTS7pmsMPW4zcYjV1q9M3hW1zr7v153mtjPW4hNStw5MPFDHN5WCKpfGQnpZW8zh47F5bcHzLW4=
+dhMTn3l2GDNN5YbG0T1pbZxW5FPmkR5F5-yBW8s_72592PSZsW18Q0XZ5bH8G8W42McJF3vVPqW=
+W2WMykq1dr-c-W52Tw869d0bdJW7pnHP-4LG6ggW9k2NNZ12kXLZW8b7jrZ19KH-CMY-K8Md9ZR=
+7W5KD1Yv2QD2cjN4rG5VnvfY99f627rg804 )  sales to China of Nvidia and AMD=E2=
+=80=99s lower-performing chips, which had been designed to satisfy earlier =
+export controls. Nvidia said the tighter restrictions cost the company $5.5=
+ billion.
+- China=E2=80=99s Huawei CloudMatrix 384 system proved capable of deliverin=
+g performance that rivals competing Nvidia systems. A cluster of 384 Huawei=
+ Ascend 910C chips, the system consumes significantly more energy to power =
+5 times as many chips as Nvidia=E2=80=99s systems.
+- In August, after Nvidia and AMD met with President Trump, who subsequentl=
+y met with China=E2=80=99s President Xi Jinping, the White House reversed c=
+ourse. The U.S. reauthorized sales to China of made-for-export chips under =
+an unprecedented deal that required U.S. chip vendors to give the governmen=
+t 15 percent of any resulting revenue.
+- In October, exploding demand for AI hardware temporarily drove Nvidia=E2=
+=80=99s market capitalization beyond a staggering $5 trillion, up from $3 t=
+rillion in mid-2024. Consequently, shutting the company out of China potent=
+ially limited the company=E2=80=99s value by tens of billions of dollars.
+- China responded to the energy-inefficiency of its domestic chips by offer=
+ing energy subsidies of up to 50 percent to companies that purchased chips =
+made by Huawei and other domestic suppliers. Over the past 15 years, China=
+=E2=80=99s ability to generate electrical power has surged while U.S. power=
+ generation has remained relatively flat, according to data (https://info.d=
+eeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4B=
+hN7zrx1j3prCCW7Y8-PT6lZ3nHW3prhT74LplW3W2pdJ3z3pl-yNVbsFW04wl5rMW7pH6DV67QZ=
+kFN34QNPW9vGCtW5w_qJM5DZCz9W6Ynfqw5rh4X8W1nRrn64J1VXmW4DCqR84PP4rzVL6YBQ1y7=
+hYQW7BqGzD65CXC8W5x01Z18PXgkPW50FqdZ8yF50JW6P6R8y4yB-ZTVt3Llp4T9tyWW5GDTB82=
+cWb6sW4wgkhF7Lw9tRW5Skw3y1tNWKGW5sCNFw84SvYQN2KVdn1SkrS0W4dHdkB73r0l0W93fNR=
+m3YmQ1mN4jwsK2Rh4xKVW2DbS56H_6cW41KcRT8FkrwcW3B7TSh3MrNjXf771h4H04 ) from t=
+he International Energy Association. In 2025, President Trump signed execut=
+ive orders to make more federal land available for lease and development by=
+ the energy industry and to fast track permitting for nuclear reactors.
+- In November, after China banned U.S. chips, President Trump further softe=
+ned (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW=
+61GJ2lTW6R-97G5Hy4BhN7zrx1j3prCCW7Y8-PT6lZ3lmVX9K2T2h5wM-W1cJ29k3CTjXQV83cW=
+r4570M4W2GYXDf5YmN5FW1C-KTR6VMLTcW7B8Xl44Nj4nhW7wKd1m6ZbxjgW3sHq5M49dLx-W6F=
+7TCT48FDvvW2-pXP-1bhlyrN7DXd6SXXCN-W2hVM5c3t4_6gVBYjnz4jLpZdW2Yc2-B62Dzt9W6=
+7yT627SXK6yN5tfmDqqvk-xW2q7L6l17qFC5VS2_NM6XmNTkW45vrt-1_j717VSm9lW9c3XKqW8=
+sF0yC88fwgZW7TPGjf6LzgVyW7QWdXG3Rk-fRW6_SWlM6Ttv24W1-5g9z8CfTdlW6dzg7P1X914=
+Qf3wVzmg04 )  U.S. restrictions, allowing Nvidia and AMD to sell their made=
+-for-export chips.
+
+Behind the news: U.S. efforts met with some success denying China access to=
+ the latest chip-manufacturing equipment. However, with respect to the chip=
+s themselves, the U.S. barriers proved to be porous.
+
+- A thriving market for high-end Nvidia chips sprang up in China=E2=80=99s =
+tech hub of Shanzhen.
+- Chinese tech giants including Alibaba and ByteDance reportedly gained acc=
+ess to advanced AI computing power through cloud vendors who operate legall=
+y in other countries.
+- DeepSeek reportedly stockpiled earlier Nvidia chips in advance of U.S. re=
+strictions and optimized its DeepSeek-R1 and DeepSeek-V3 models to run well=
+ on outdated hardware.
+
+Where things stand: China is signaling that it=E2=80=99s willing to do with=
+out American hardware. That may be a sign of confidence, given Huawei=E2=80=
+=99s progress. It may also be a bluff, as some authorities evaluate China=
+=E2=80=99s semiconductor industry still to be years behind the frontier of =
+high-volume chip fabrication. Either way, the hard-line U.S. strategy backf=
+ired, and its relaxation of trade restrictions is a concession to economic =
+and diplomatic realities.
+
+Work With Andrew Ng
+
+Join the teams that are bringing AI to the world! Check out job openings at=
+ DeepLearning.AI (https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQx=
+g5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3prCCW6N1vHY6lZ3kqW8QF1NB5x3vVLW2bl=
+jpV7RNN6zW9hJPsZ4Zwl8gW4Qwxs68xqnlJW5Mx4rT7RTny6N98Vqlt-4rJnW9hlr_F1CzMNyW6=
+JVNgl2sBdVnW1MQ3n-89VKgSW5JFVcf8gHP8lVNPB422VDdFLW23ZQp-6791RHW7z8Kg45P4Vzz=
+W6MnTt49czq6xW6mGNDB6zvQxLW3fq0Mc3cWbqLW428ZSS6jGnz0VV7ywn6dy5CGW2DMLXz1V8G=
+hVW4n2XN03SRpWgW4rtWrF21LMvCW7yk8BN8dz3H_dcBHz404 ) , AI Fund (https://info=
+.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy=
+4BhN7zrx0K3prCCW6N1vHY6lZ3myW6yfhN73V3B8pW68nrvQ2hTkjKW2d3cGq2ZGDlMW5SYb9X2=
+V4cVFW8yZvB05JrmQDW7RJ_7h7qHyrTW5M-cBM5xVCJKW8VSYp_7kVV1lVNZ7dw4KKcH4W58J3Y=
+c7RX332VlT4xK44cZYDW5Fd_vb1DNM5jW3_V2GH5vSvwxW7_c-L22XS7rsW2dmMFL1jpNR-W2DQ=
+lSg9hfJs0W1VVLNS4Mn6tJV_2Nck8QNkX-W2J1kfJ8GBsGtW6lJCtB7jsnH7W5fBxjV29wZbtN2=
+3G1wpDgqKwf8Mm7Vl04 ) , and Landing AI (https://info.deeplearning.ai/e3t/Ct=
+c/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0q3prCCW69sMD-6=
+lZ3lTW3PhDlj8ZYm9tW3Pb47M6cC382W2kXQ4W26pLR5W5_QN0_40W89VW1mZYW230PXwQW5XLL=
+nJ8ztfghVyTcdH1dhrYNW1s1MkP4rpqJ3W3b-wRZ21f2L2W5KW5gX4BkYtHW70Tsxf13mcztW3G=
+P69t5Ld4jBW9jSmKw2Xw47TVmqtYg2l0_z5W3jlLL87TGtFLW6T3-SN16pp_LW43QNYd8T869SW=
+7GY6FD7VtXSkW4-32_r2dhdQ_W51hh3B8KmjS4dQWfwb04 ) .
+
+Subscribe and view previous issues here (https://info.deeplearning.ai/e3t/C=
+tc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3l5QzW6N1vHY=
+6lZ3lTW1x2MpK3pmvWrW6h2Hn-6nng5cW2bNKXZ5NwHlJMCcx03S-7kqW2T-JYL1ZGsfCW10436=
+346Hvz8W3-z_gK6N77s8W32YlPJ4lMmTjW62kGT92fqzNHVRC41Z5Pyb8BW7f64-N7gB7WGV2p_=
+PS7yX_wLW8sckqd4gBz4-W7w1_lX72-dncVGjHVC2-9SdPW5MZl4Z8bmjrNW26l8fL8wtCvDW5d=
+SPGW45jd_ZW6m8v804YKx6PV-t4YP2Dy_NNW3ckd1-6g-SqBV1GVYd2GNytdd9lMKx04 ) .
+
+Thoughts, suggestions, feedback? Please send to thebatch@deeplearning.ai (m=
+ailto:thebatch@deeplearning.ai?subject=3DRE:%20Thoughts,%20Suggestions,%20f=
+eedback) . Avoid our newsletter ending up in your spam folder by adding our=
+ email address to your contacts list.
+
+DeepLearning.AI, 400 Castro St., Suite 600, Mountain View, CA 94041, United=
+ States
+
+Unsubscribe (https://info.deeplearning.ai/hs/preferences-center/en/direct?d=
+ata=3DW2nXS-N30h-zfW36kV9B2KY4VBW3JTW3N4fhDqDW1XpPzP2RMjHWW2xNZbm2FsjxxW2CF=
+0QW2-st0VW3Kb3dT3_BxK6W3Ffmp4250VZsW2xtM4k3SNZH8W386SY92Rj-9sW4mzpGW3Cg17CW=
+1VrLGt3ZTjp6W2r8zwC2PyKv2W2FG8Ds23nybRW3BV7gM2B0CFzW2WpZNN2Kx4y4W3_XXL42Rtk=
+lhW2Htk_F3GKNGZW2MPTWS3J-lrYW2TRFnJ32BdjqW3dx6LB4tzBnXW2Wy-jH2KHQrFW1W-4Yv2=
+WL1YrW2WPszb47Pt3TW3XNzvh3LHMB-W4rDcVl3JL14pW3NDGJ33NDDYgW2Hy37w2MDJMkW24-m=
+V-218ksWW4mrh833jsh9YW38fxt_3_T-hdW2RHxtG32b0yJW3jvShp4kcVWBW3GKTRR4tG55cW3=
+K5RP-4fw_CyW2z-zgK2WPQZwW2qFhW41VdTVLW1BGjcR217VBqW2p9yCZ1ScRxDW2MGQ542-CPD=
+kW2HsTVD45nb8xW2HH-w532B_RfW1Bpc8k2RQhZkW2qCdGK3GYtvLW36zLwt36m3JgW3ZM43L3C=
+9MdKW4kG6sG4fDXx0W1Sf4LV1SbBbrW22VWW81Z97KcW2xzkXx2CFsmhW4hxf6d43pccyW4rBFQ=
+q3DKH73W1Xrw1p2Fvn9WW1Lzl7Y2-pyCQW3VLKkH34vQNgf3XvxdJ04&_hsenc=3Dp2ANqtz-_R=
+SHqJMdvqGt9YhWWJxwIdSsRjIZJDv53qCJ3Q-JSGNsKwS3Qv7FBQcuoOIQbSD9uyTNn9IB5t9oX=
+20JJa7QijZZN9cQ&_hsmi=3D395926826 )
+Manage preferences (https://info.deeplearning.ai/hs/preferences-center/en/p=
+age?data=3DW2nXS-N30h-zfW36kV9B2KY4VBW3JTW3N4fhDqDW1XpPzP2RMjHWW2xNZbm2Fsjx=
+xW2CF0QW2-st0VW3Kb3dT3_BxK6W3Ffmp4250VZsW2xtM4k3SNZH8W386SY92Rj-9sW4mzpGW3C=
+g17CW1VrLGt3ZTjp6W2r8zwC2PyKv2W2FG8Ds23nybRW3BV7gM2B0CFzW2WpZNN2Kx4y4W3_XXL=
+42RtklhW2Htk_F3GKNGZW2MPTWS3J-lrYW2TRFnJ32BdjqW3dx6LB4tzBnXW2Wy-jH2KHQrFW1W=
+-4Yv2WL1YrW2WPszb47Pt3TW3XNzvh3LHMB-W4rDcVl3JL14pW3NDGJ33NDDYgW2Hy37w2MDJMk=
+W24-mV-218ksWW4mrh833jsh9YW38fxt_3_T-hdW2RHxtG32b0yJW3jvShp4kcVWBW3GKTRR4tG=
+55cW3K5RP-4fw_CyW2z-zgK2WPQZwW2qFhW41VdTVLW1BGjcR217VBqW2p9yCZ1ScRxDW2MGQ54=
+2-CPDkW2HsTVD45nb8xW2HH-w532B_RfW1Bpc8k2RQhZkW2qCdGK3GYtvLW36zLwt36m3JgW3ZM=
+43L3C9MdKW4kG6sG4fDXx0W1Sf4LV1SbBbrW22VWW81Z97KcW2xzkXx2CFsmhW4hxf6d43pccyW=
+4rBFQq3DKH73W1Xrw1p2Fvn9WW1Lzl7Y2-pyCQW3VLKkH34vQNgf3XvxdJ04&_hsenc=3Dp2ANq=
+tz-_RSHqJMdvqGt9YhWWJxwIdSsRjIZJDv53qCJ3Q-JSGNsKwS3Qv7FBQcuoOIQbSD9uyTNn9IB=
+5t9oX20JJa7QijZZN9cQ&_hsmi=3D395926826 )
+------=_Part_478179_488210762.1766779532686
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www=
+.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3=
+.org/1999/xhtml" xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:=
+v=3D"urn:schemas-microsoft-com:vml" lang=3D"en"><head>
+    <title>Top Stories of 2025! Big AI Poaches Talent, Reasoning Models Boo=
+st Performance, Agents Write Code, Data Centers Drive GDP, China Turns the =
+Tables</title>
+    <meta property=3D"og:title" content=3D"Top Stories of 2025! Big AI Poac=
+hes Talent, Reasoning Models Boost Performance, Agents Write Code, Data Cen=
+ters Drive GDP, China Turns the Tables">
+    <meta name=3D"twitter:title" content=3D"Top Stories of 2025! Big AI Poa=
+ches Talent, Reasoning Models Boost Performance, Agents Write Code, Data Ce=
+nters Drive GDP, China Turns the Tables">
+   =20
+   =20
+   =20
+<meta name=3D"x-apple-disable-message-reformatting">
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+    <!--[if gte mso 9]>
+  <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    <w:WordDocument xmlns:w=3D"urn:schemas-microsoft-com:office:word">
+      <w:DontUseAdvancedTypographyReadingMail/>
+    </w:WordDocument>
+  </xml>
+ =20
+  <style>
+    ul > li {
+      text-indent: -1em;
+    }
+  </style>
+<![endif]-->
+<!--[if mso]>
+<style type=3D"text/css">
+ body, td {font-family: Arial, Helvetica, sans-serif;}
+ .hse-body-wrapper-table {background-color: #ffffff;}
+</style>
+<![endif]-->
+<!--[if mso | IE]>
+  <style type=3D"text/css">
+    .hse-column-container { border: none !important; padding: 0 !important;=
+ }
+  </style>
+<![endif]-->
+   =20
+     =20
+ =20
+ =20
+   =20
+  <meta name=3D"generator" content=3D"HubSpot"><meta property=3D"og:url" co=
+ntent=3D"https://info.deeplearning.ai/top-stories-of-2025-big-ai-poaches-ta=
+lent-reasoning-models-boost-performance-agents-write-code-data-centers-driv=
+e-gdp-china-turns-the-tables"><meta name=3D"robots" content=3D"noindex,foll=
+ow"><!--[if !((mso)|(IE))]><!-- --><style type=3D"text/css">@media only scr=
+een and (max-width:639px){img.stretch-on-mobile,.hs_rss_email_entries_table=
+ img,.hs-stretch-cta .hs-cta-img{height:auto !important;width:100% !importa=
+nt}
+.display_block_on_small_screens{display:block}.hs_padded{padding-left:20px =
+!important;padding-right:20px !important}
+.hs-hm,table.hs-hm{display:none}.hs-hd{display:block !important}table.hs-hd=
+{display:table !important}
+}@media only screen and (max-width:639px){.hse-border-m{border-left:1px sol=
+id #ccc !important;border-right:1px solid #ccc !important;box-sizing:border=
+-box}
+.hse-border-bottom-m{border-bottom:1px solid #ccc !important}.hse-border-to=
+p-m{border-top:1px solid #ccc !important}
+.hse-border-top-hm{border-top:none !important}.hse-border-bottom-hm{border-=
+bottom:none !important}
+}.moz-text-html .hse-column-container{max-width:600px !important;width:600p=
+x !important}
+.moz-text-html .hse-column{display:table-cell;vertical-align:top}.moz-text-=
+html .hse-section .hse-size-12{max-width:600px !important;width:600px !impo=
+rtant}
+@media only screen and (min-width:640px){.hse-column-container{max-width:60=
+0px !important;width:600px !important}
+.hse-column{display:table-cell;vertical-align:top}.hse-section .hse-size-12=
+{max-width:600px !important;width:600px !important}
+}@media only screen and (max-width:639px){.hse-body-wrapper-td{padding-top:=
+20px !important}
+#section_1706730515171 .hse-column-container{background-color:transparent !=
+important}
+#section_1706730515171 .hse-column-container{background-color:transparent !=
+important}
+}</style><!--<![endif]--><style type=3D"text/css">#hs_body #hs_cos_wrapper_=
+main a[x-apple-data-detectors]{color:inherit !important;text-decoration:non=
+e !important;font-size:inherit !important;font-family:inherit !important;fo=
+nt-weight:inherit !important;line-height:inherit !important}
+a{text-decoration:underline}p{margin:0}body{-ms-text-size-adjust:100%;-webk=
+it-text-size-adjust:100%;-webkit-font-smoothing:antialiased;moz-osx-font-sm=
+oothing:grayscale}
+table{border-spacing:0;mso-table-lspace:0;mso-table-rspace:0}table,td{borde=
+r-collapse:collapse}
+img{-ms-interpolation-mode:bicubic}p,a,li,td,blockquote{mso-line-height-rul=
+e:exactly}
+.ShadowHTML p,.sh-modified-inline p{margin:0}</style></head>
+  <body id=3D"hs_body" bgcolor=3D"#ffffff" style=3D"margin:0 !important; pa=
+dding:0 !important; font-family:Helvetica, Arial, sans-serif; font-size:18p=
+x; color:#3b3b3b; word-break:break-word">
+    <div id=3D"preview_text" style=3D"display:none;font-size:1px;color:#fff=
+fff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;=
+" lang=3D"en">Another year of rapid AI advances has created more opportunit=
+ies than ever for anyone =E2=80=94 including those just entering the field =
+=E2=80=94 to build software.</div>
+   =20
+<!--[if gte mso 9]>
+<v:background xmlns:v=3D"urn:schemas-microsoft-com:vml" fill=3D"t">
+    <v:fill type=3D"tile" size=3D"100%,100%" color=3D"#ffffff"/>
+</v:background>
+<![endif]-->
+    <div class=3D"hse-body-background" lang=3D"en" style=3D"background-colo=
+r:#ffffff" bgcolor=3D"#ffffff">
+      <table role=3D"presentation" class=3D"hse-body-wrapper-table hse-full=
+-width-template" cellpadding=3D"0" cellspacing=3D"0" style=3D"margin:0; pad=
+ding:0; width:100% !important; min-width:320px !important; height:100% !imp=
+ortant" width=3D"100%" height=3D"100%">
+        <tbody><tr>
+          <td class=3D"hse-body-wrapper-td" valign=3D"top" style=3D"font-fa=
+mily:Helvetica, Arial, sans-serif; font-size:18px; color:#3b3b3b; word-brea=
+k:break-word; padding-top:20px">
+            <div id=3D"hs_cos_wrapper_main" class=3D"hs_cos_wrapper hs_cos_=
+wrapper_widget hs_cos_wrapper_type_email_flex_area" style=3D"color: inherit=
+; font-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"wi=
+dget" data-hs-cos-type=3D"email_flex_area">  <div id=3D"section_17067305151=
+71" class=3D"hse-section hse-section-first" style=3D"padding-left:10px; pad=
+ding-right:10px">
+   =20
+   =20
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; margin:0 auto">
+   =20
+    <!--[if (mso)|(IE)]>
+      <table align=3D"center" style=3D"width:600px;" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation">
+      <tr>
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"width:600px">
+<![endif]-->
+<div id=3D"column_1706730515171_0" class=3D"hse-column hse-size-12">
+  <div id=3D"hs_cos_wrapper_module_17067305151702" class=3D"hs_cos_wrapper =
+hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; =
+font-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widg=
+et" data-hs-cos-type=3D"module"><div style=3D"overflow:hidden">
+  <table role=3D"presentation" class=3D"hse-pre-header hse-secondary" width=
+=3D"100%" cellpadding=3D"0" cellspacing=3D"0" style=3D"text-align:right; fo=
+nt-family:Arial, sans-serif; font-size:12px; line-height:135%; color:#23496=
+d; margin-bottom:0; padding:0" align=3D"right">
+    <tbody>
+      <tr>
+        <td align=3D"right" valign=3D"top" style=3D"color:#3b3b3b; word-bre=
+ak:break-word; text-align:right; font-family:Arial, sans-serif; font-size:1=
+2px; padding:10px 0; margin-bottom:0; line-height:135%">
+          <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VW=
+bQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx067mmznW5BWSxg6lZ3psW5BJflr5TYvrgW=
+5ZZs9t1YMLkVW2x8p7l82wnF4W38V11t7LZp7cW64PPG82QZvSdVVZ-QD3GRJPqW3dZW8t8jTj6=
+YW8xW87s1Q7lJhW5sfLH617HGMmN5h00G-K7rX1W9gsC2P4Lc4KPVJdkcF6z16NLW33FpJP4lV7=
+Z_N3n98TqSngrHW7Sg7xz8_Cy4pW21zY1k5SKxXFW47bDh17sW-JJW7WT1Lg6HGmpQMjJNWfgJp=
+5XW3hKG_N1qxBqKN8MPFCvRQxDSW4vPjFG7rcpt2W65l_LP33CDKzW8lhz-X7m8sRsW3Hs0Jn16=
+CsV2W5xwjNC14S4k1W4VgGFB765r_0W2pd4xL7hY8kMN1Kk5_9nb79XW34JCtV4_yXPrW4kHltt=
+8WgHP6W626P2w8_kcgDW5K973D5JVk3yVKQrZt4nbHKhW6fCNN58xbvxhW8lwYZK1c6SmSW7Y7Q=
+Lp31TxMzN29RNmJF3FgxW9f91J_8hvRb-W36FT9P7pHc8CN12xxGld_TdtW5_Mzn44r2zgPW8X_=
+5kn1vkBSlW2Dd7ST3QVfdbW7CD8Fb5k8wSVW9bTW2_7bf_bBW2xVjv_6mx86QW6RMyK61j0XhGW=
+1n7T6D23C70HW23nqkm2yp60cf878Ctb04" style=3D"color:#237B94; font-weight:nor=
+mal; text-decoration:underline; font-style:normal" data-hs-link-id=3D"0" da=
+ta-hs-link-id-v2=3D"z+z6rCGr" target=3D"_blank">View in browser</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div></div>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+  </div>
+  <div id=3D"section_0" class=3D"hse-section" style=3D"padding-left:10px; p=
+adding-right:10px; background-color:#ffffff" bgcolor=3D"#ffffff">
+   =20
+     =20
+      <!--[if gte mso 9]><table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" style=3D"widt=
+h:100%" bgcolor=3D"#ffffff"><tbody><tr><td valign=3D"top"><![endif]-->
+   =20
+   =20
+      <div class=3D"hse-column-container" style=3D"min-width:280px; max-wid=
+th:600px; margin:0 auto; padding-bottom:10px; padding-top:10px">
+   =20
+    <!--[if (mso)|(IE)]>
+      <table align=3D"center" style=3D"width:600px;" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation">
+      <tr>
+    <![endif]-->
+    <!--[if (mso)|(IE)]>
+  <td valign=3D"top" style=3D"width:600px;padding-bottom:10px; padding-top:=
+10px;">
+<![endif]-->
+<!--[if gte mso 9]>
+  <table role=3D"presentation" width=3D"600" cellpadding=3D"0" cellspacing=
+=3D"0" style=3D"width:600px">
+<![endif]-->
+<div id=3D"column_0_0" class=3D"hse-column hse-size-12">
+  <div id=3D"hs_cos_wrapper_hs_email_body_old" class=3D"hs_cos_wrapper hs_c=
+os_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font=
+-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" =
+data-hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"pres=
+entation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"font-family:Helvetica, A=
+rial, sans-serif; color:#3b3b3b; word-break:break-word; text-align:center; =
+padding:0px; font-size:0px">
+        <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQ=
+xg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103qgz0W7lCdLW6lZ3nRW4Bk4Yg1Y6_xdW6l=
+t_HK5RHvt9W2WVnbx3Y-zvjW1DCbrp2ZpwsNW7pb5ZB13S5mMW8VqG3w7w4L9mW4rykT77D5dcn=
+W8LGslp4Vs381VpQ13Z92bHDlVpYyjn6hmVLFVNf8dn6MS7WHN7FX5-g8L1MvW79rD-264sJZ9W=
+5712p531DS-cW6XLM5M4G4dVYW7cMRVC4ZZTT5W27mVFs6L8q1PW339jjP42Y-J1W98WCZ22hV2=
+gwW4kzqvy7wyl6RW7TSHJL1J1hJbW5KWVT_3ml527W73SdB211bXr_W3VLQPq521T47f8v4f4n0=
+4" target=3D"_blank" style=3D"color:#00a4bd" data-hs-link-id=3D"0" data-hs-=
+link-id-v2=3D"hgAQx2nE">
+        <img alt=3D"The Batch top banner - December 26, 2025" src=3D"https:=
+//info.deeplearning.ai/hs-fs/hubfs/The%20Batch%20top%20banners%20(68).png?w=
+idth=3D1200&amp;upscale=3Dtrue&amp;name=3DThe%20Batch%20top%20banners%20(68=
+).png" style=3D"outline:none; text-decoration:none; border:none; max-width:=
+100%; font-size:16px" width=3D"600" align=3D"middle" class=3D"stretch-on-mo=
+bile">
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+<div id=3D"hs_cos_wrapper_hs_email_body_old1" class=3D"hs_cos_wrapper hs_co=
+s_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font-=
+size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" d=
+ata-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_hs_email_body_old1_" c=
+lass=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text"=
+ style=3D"color: inherit; font-size: inherit; line-height: inherit;" data-h=
+s-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><div style=3D"=
+line-height:125%; text-align:center" align=3D"center"><span style=3D"font-s=
+ize: 15px; font-family: Helvetica, sans-serif;"><a href=3D"https://info.dee=
+plearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN=
+7zrx0K3lYM-W6N1vHY6lZ3pFVN_RCS294tqwN38v3YxVt7zlW7Z3CrV6C_tsbW78MSXZ2mVJTFW=
+8F9wf31pTQY8W29Wh1M6Gh3_GW8-8ZMK4f1DwfW29jYfs83znbzW3mtmz_69bgmhW1v-KSj1P0q=
+B1W1kYwy53m2R-lW2R_pCc8Wz13gW7zhRpT8m94fqW1xY8Gp4cQYkQW4c4NQT8g9vl7W7wqJB86=
+x8b3WW8VJdqx14s273V9lV-c1Hf3_YW7pCRYp6gTCxVW71_gwk1bjJbXW2cCXkn27rYPTW5qWLj=
+61gM5V8f57K_jd04" target=3D"_blank" style=3D"font-size:15px; font-style:ini=
+tial; color:#f53b0d; text-decoration:underline" rel=3D"noopener" data-hs-li=
+nk-id=3D"0" data-hs-link-id-v2=3D"Y5q3J6B/">Subscribe</a> &nbsp;&nbsp;<a hr=
+ef=3D"mailto:thebatch@deeplearning.ai?subject=3DRE%3A%20Tips%20and%20News" =
+target=3D"_blank" style=3D"font-size:15px; font-style:initial; color:#f53b0=
+d; text-decoration:underline" rel=3D"noopener" data-hs-link-id=3D"0" data-h=
+s-link-id-v2=3D"dpgz9vS1">Submit a tip</a></span></div>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-family: Georgia, serif;">=
+Dear friends,</span></p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-family: Georgia, serif;">=
+Another year of rapid AI advances has created more opportunities than ever =
+for anyone =E2=80=94 including those just entering the field =E2=80=94 to b=
+uild software. In fact, <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+=
+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1W3qgz0W95jsWP6lZ3l1=
+W2YHmyb2RpkzcW4jL34B3qR7htW4YfX1l362KhqW3KjzDt7QGb_qW5rcf1p3NzjgNW35Q9Wp7XT=
+2txW6nQlPm51vmSNW5WNDsN8JJ-S9N31Gk2wQ8WLNW1353938GD4gBW7LN5Q592yShwW2SLdj14=
+JvT5BW954xv17y5FDZW6snRrB8Vq5w3W2gk07b52KZJLVj36GJ2t_80BW7LM0-R5B1N2SW970cS=
+N7TMQZXW1SbBVK27qTQfW8PZ4z-3qsx0XN3brGmzTYXcbW7VPVMK8wkSQGW3Dc4N13Zr-tVW3JN=
+_K881CS4jVY9-J63nV1NXW860MsV4q45n_N1XB2DNScl6ZW6QDKTZ7Vv5wgW7rwJB61V4YLgW4C=
+NvnJ1K5fwcf6DFt8d04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-=
+id=3D"0" data-hs-link-id-v2=3D"ner1i0MQ" target=3D"_blank">many companies j=
+ust can=E2=80=99t find enough skilled AI talent</a>. Every winter holiday, =
+I spend some time learning and building, and I hope you will too. This help=
+s me sharpen old skills and learn new ones, and it can help you grow your c=
+areer in tech.&nbsp;<br></span></p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-family: Georgia, serif;">=
+To be skilled at building AI systems, I recommend that you:</span></p>
+<ul style=3D"line-height:150%">
+<li style=3D"line-height: 150%;"><span style=3D"font-family: Georgia, serif=
+;">Take AI courses</span></li>
+<li style=3D"line-height: 150%;"><span style=3D"font-family: Georgia, serif=
+;">Practice building AI systems </span></li>
+<li style=3D"line-height: 150%;"><span style=3D"font-family: Georgia, serif=
+;">(Optionally) read research papers&nbsp;</span></li>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-family: Georgia, serif;">=
+Let me share why each of these is important.&nbsp;</span></p>
+<p style=3D"line-height:150%"><span style=3D"font-family: Georgia, serif;">=
+<br>I=E2=80=99ve heard some developers advise others to just plunge into bu=
+ilding things without worrying about learning. This is bad advice! Unless y=
+ou=E2=80=99re already surrounded by a community of experienced AI developer=
+s, plunging into building without understanding the foundations of AI means=
+ you=E2=80=99ll risk reinventing the wheel or =E2=80=94 more likely =E2=80=
+=94 reinventing the wheel badly!</span></p>
+<p style=3D"line-height:150%"><span style=3D"font-family: Georgia, serif;">=
+&nbsp;<br>For example, during interviews with job candidates, I have spoken=
+ with developers who reinvented standard RAG document chunking strategies, =
+duplicated existing evaluation techniques for Agentic AI, or ended up with =
+messy LLM context management code. If they had taken a couple of relevant c=
+ourses, they would have better understood the building blocks that already =
+exist. They could still rebuild these blocks from scratch if they wished, o=
+r perhaps even invent something superior to existing solutions, but they wo=
+uld have avoided weeks of unnecessary work. So structured learning is impor=
+tant! </span><span style=3D"font-family: Georgia, serif;">Moreover, I find =
+taking courses really fun. Rather than watching Netflix, I prefer watching =
+a course by a knowledgeable AI instructor any day!</span></p></div></div>
+<div id=3D"hs_cos_wrapper_hs_email_body_old2" class=3D"hs_cos_wrapper hs_co=
+s_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font-=
+size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" d=
+ata-hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"prese=
+ntation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"font-family:Helvetica, A=
+rial, sans-serif; color:#3b3b3b; word-break:break-word; text-align:center; =
+padding:10px 0px; font-size:0px">
+        <img alt=3D"Hands knit a red sweater with white snowflakes, sitting=
+ in a warm room with a crackling fire and snowy view." src=3D"https://info.=
+deeplearning.ai/hs-fs/hubfs/LETTER_Knitting1_1200px.jpg?width=3D1200&amp;up=
+scale=3Dtrue&amp;name=3DLETTER_Knitting1_1200px.jpg" style=3D"outline:none;=
+ text-decoration:none; max-width:100%; font-size:16px" width=3D"600" align=
+=3D"middle" class=3D"stretch-on-mobile">
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+<div id=3D"hs_cos_wrapper_hs_email_body_old3" class=3D"hs_cos_wrapper hs_co=
+s_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font-=
+size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" d=
+ata-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_hs_email_body_old3_" c=
+lass=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text"=
+ style=3D"color: inherit; font-size: inherit; line-height: inherit;" data-h=
+s-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><p style=3D"li=
+ne-height:150%"><span style=3D"font-family: Georgia, serif;">At the same ti=
+me, taking courses alone isn=E2=80=99t enough. There are many lessons that =
+you=E2=80=99ll gain only from hands-on practice. Learning the theory behind=
+ how an airplane works is very important to becoming a pilot, but no one ha=
+s ever learned to be&nbsp;a pilot just by taking courses. At some point, ju=
+mping into the pilot's seat is critical! The good news is that by learning =
+to use highly <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC40=
+4/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1W3qgz0W95jsWP6lZ3l5W3ck92729G=
+XXdW5VCg8Q7pWh5VW1x384y3N9jF4W4ydp-X57sgHQMZsqW3SjzsJW3g4s7Y7QgqK1W4D-Vn15H=
+TSrgW7jQW873SGjCrN2h_fcGxdvVqW4hY7Yp4-8qmpW8GN5kd7HWV9RW3sQJHZ6S_58ZW4B5-nt=
+36GF-JVgSpZ18-DBrTW6--kKY7_-HFlN6WGzslk7FplW7CJSlP6JL6XXW6QN5ww6gnyrnW4KX8M=
+N504YLbW8Qfv6B5kXzQ2VNJ38C1lgnZZW2v_SYK1Sy-lJN8pPvs7dSgB6V4xn4W3zlJyNW8M7sh=
+75nyfPQN3qgkk4xSzdRN61xWM8TvG_9W5jGPtm2tJm0CW5JvCKT6p-L0DW4fQhzj8hycPtf4-WT=
+Z604" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-h=
+s-link-id-v2=3D"0KaJGnuw" target=3D"_blank">agentic</a> <a href=3D"https://=
+info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97=
+G5Hy4BhN7zrx1C3qgz0W8wLKSR6lZ3mlW7mNVh56Hp1L-W955NxK5tpjR0W42LyqJ20gfKgVnSQ=
+th6J59h0W91rVjc2LMnXMW1JgRvR4W6pT2W7FdjS53z5xGJN2SFbx6stGr3VR5Z5S41p84PW2-v=
+dNn2X2Y43W8myLBD7p6ZQCW3H_M026RcN-xW75XVjk89WYZ7N2_z-HwSWXcNW5t4DQB38K_pdW6=
+thPj_1Vlq9zW741rhB5nZlbpW5Jtjvg2gC1GSW4Dgchh2thw4HW7bMWWc6-JKzsW9f9XT12ptnv=
+KVChj944mlqk1W1BrdQz1vjDSPV4nbcw2t3QyFW2ldgx52hBbCmW5YyC1b4TtQ_ZW4Gdp_V5LYk=
+fQW7Qqc1-60MW4Xf8s0TSb04" rel=3D"noopener" style=3D"color:#237b94" data-hs-=
+link-id=3D"0" data-hs-link-id-v2=3D"rV5TWYJm" target=3D"_blank">coders</a>,=
+ the process of building is the easiest it has ever been. And learning abou=
+t AI&nbsp;building blocks might inspire you with new ideas for things to bu=
+ild. If I=E2=80=99m not feeling inspired about what projects to work on, I =
+will usually either take courses or read research papers, and after doing t=
+his for a while, I always end up with many new ideas. Moreover, I find buil=
+ding really fun, and I hope you will too!&nbsp;</span></p>
+<p style=3D"line-height:150%"><span style=3D"font-family: Georgia, serif;">=
+<br>Finally, not everyone has to do this, but I find that many of the stron=
+gest candidates on the job market today at least occasionally read research=
+ papers. While I find research papers much harder to digest than courses, t=
+hey contain a lot of knowledge that has not yet been translated to easier-t=
+o-understand formats. I put this much lower priority than either taking cou=
+rses or practicing building, but if you have an opportunity to strengthen y=
+our ability to read papers, I urge you to do so too. (You can also watch an=
+ old <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5=
+r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103qgz0W7lCdLW6lZ3lFVWljHC6fwHxkN68wZbK=
+CJ018W4z4FkX4PQxClW6m_2Cw1GprxNW56z0c61nnBF7W2Z0bTk2v6QbXW2cVT3s7cLCRCW2RQb=
+4F887C-KW5G-rzQ18f5hbN2PS5hPsqb5dW2VhggQ6nZJSfW2V37lp4yT9MkW7CRBsS77NvcDW8K=
+93HC3ZX5L-W6cmWC084pfXNW5XcV3c3dtl8DW5f8HZ784jNXQVPwHh26gY5WbW6s1zHj75CQ0SW=
+4dn42H3CCWclW8lBkd67zZc2XW2MwySd2B1pSqW1MqS6_8F9JpxW896L2J7k_hm2f5cvNlW04" =
+rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link=
+-id-v2=3D"RFIWNZb+" target=3D"_blank">video</a> where I give advice on read=
+ing papers.) I find taking courses and building to be fun, and reading pape=
+rs can be more of a grind, but the flashes of insight I get from reading pa=
+pers are delightful.&nbsp;</span></p>
+<p style=3D"line-height:150%"><span style=3D"font-family: Georgia, serif;">=
+<br>Have a wonderful winter holiday and a Happy New Year. In addition to le=
+arning and building, I hope you'll also spend time with loved ones =E2=80=
+=94 that, too, is important!</span></p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-family: Georgia, serif;">=
+Love,</span></p>
+<p style=3D"line-height:150%"><span style=3D"font-family: Georgia, serif;">=
+Andrew&nbsp;</span></p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"font-size:18px; line-height:1.5">&nbsp;</p></div></div>
+<div id=3D"hs_cos_wrapper_hs_email_body_old7" class=3D"hs_cos_wrapper hs_co=
+s_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font-=
+size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" d=
+ata-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_hs_email_body_old7_" c=
+lass=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text"=
+ style=3D"color: inherit; font-size: inherit; line-height: inherit;" data-h=
+s-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><h1 style=3D"m=
+argin:0; font-family:Helvetica, Arial, sans-serif; font-size:32px; line-hei=
+ght:125%">Top AI Stories of 2025</h1></div></div>
+<div id=3D"hs_cos_wrapper_module_17665346766562" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"pr=
+esentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"font-family:Helvetica, A=
+rial, sans-serif; color:#3b3b3b; word-break:break-word; text-align:center; =
+padding:5px 0px 10px; font-size:0px">
+        <img alt=3D"Home office desk with a red swivel chair and computer m=
+onitor decorated with holiday garland, winter scene visible through the win=
+dow." src=3D"https://info.deeplearning.ai/hs-fs/hubfs/Intro_1200px_3.jpg?wi=
+dth=3D1200&amp;upscale=3Dtrue&amp;name=3DIntro_1200px_3.jpg" style=3D"outli=
+ne:none; text-decoration:none; max-width:100%; font-size:16px" width=3D"600=
+" align=3D"middle" class=3D"stretch-on-mobile">
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+<div id=3D"hs_cos_wrapper_hs_email_body_old12" class=3D"hs_cos_wrapper hs_c=
+os_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font=
+-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" =
+data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_hs_email_body_old12_"=
+ class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_tex=
+t" style=3D"color: inherit; font-size: inherit; line-height: inherit;" data=
+-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><h1 style=3D=
+"margin:0; font-family:Helvetica, Arial, sans-serif; line-height:125%; font=
+-size:32px; font-weight:bold">A New Era Dawns</h1>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%">2025 may be remembered as the dawn of AI=E2=
+=80=99s industrial age. Innovations propelled model performance to new heig=
+hts, AI-driven applications became indispensable, top companies battled ove=
+r skilled practitioners, and construction of infrastructure drove the U.S. =
+gross domestic product. <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+=
+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103qgz0W7lCdLW6lZ3nq=
+W88Hv0X8BhJSDW28lhhF7-wDMxW1m8yCw6Td2kyW6V-xBP3wy-MRW1TCcm42-0_JdN8hQpHqnCd=
+1sW3gLmB_2hHtx_W3rZbQg1yc6rCW28fmSf4KPgTMW8Vc6Mt5Y0qS1W4yWPZZ1rKSpCN8Ykjvqy=
+hpcJW30t1FH78tX6MW2mBt-f5h14d7W2N4Z3n797-gXW2blLMP2XGwB8W8tt_KJ2h_CJ3W109Cc=
+b70M0rMW3jVntq3gscW4W95P4Y482km3pW7z9ssK73vXd_W8wvWH24KblNtW50pJj-36MPbqW8F=
+sVn674NnLxf5_ZGtq04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-=
+id=3D"0" data-hs-link-id-v2=3D"Mzm8kFdw" target=3D"_blank">As</a> <a href=
+=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW6=
+1GJ2lTW6R-97G5Hy4BhN7zrx103qgz0W7lCdLW6lZ3k-VTwm7p1TkPgcN4VFvVQwhKNKW7yw504=
+63GLQgW492HdL3G7P3-W6RlNS140GpQ5VlLkM53qfhJ6W5wx0hN5BCxdDW7cn3Ft4MMzPnVzJGv=
+25_0bkqW55Q-f326gh96VVcsRw8kLnWmW37gwM16VrXSBW2qtrPJ2l6ZF9W3wr6975x_-XQW14R=
+V6l73C3bHW5TMtlq7NSQ_lW2hkkv36q1d66W8q_HKV88lmnxW1NV9mp4clT_yW6kv7Xp26LBVfV=
+s-f_p1zrJ2GW6xfSm_2cy4MZW3v2ynV1qHHj8W583XLc73bpJCf5yFQW-04" rel=3D"noopene=
+r" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"8Ki4=
+SMLA" target=3D"_blank">in</a> <a href=3D"https://info.deeplearning.ai/e3t/=
+Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103qgz0W7lCdL=
+W6lZ3mxW4St_j88SYD38W1GFGJk6n6SDGW8zSPcL1ScJSQW5Xr4sp2lPxQ7W7qgJjy8Gft9HW2b=
+lRX25rsrrCV9dMTh3j0WlDN6ymQRKTffLlVlmDvn4lT_jXN5CmhVjdjTDlW80m8VV2VqbkrVsMN=
+gH5Ch-0-W9l_wgT6c-Yw0W8DZ0bK1HGy5KW19X-tg58C6hVW8rptyq1jcGycVhWVfd4wL96jW1Y=
+3Xfv1dDVm7W4NzDB-4prk6gW6ztNHz6Jc9LVW7SY8zZ2MpJ9XW74Xlft7Zv7hDVWySRT2KpgCqW=
+8KBN_16-pTP_f2kVRH004" rel=3D"noopener" style=3D"color:#237b94" data-hs-lin=
+k-id=3D"0" data-hs-link-id-v2=3D"XCAoOZb/" target=3D"_blank">past</a> <a hr=
+ef=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-n=
+W61GJ2lTW6R-97G5Hy4BhN7zrx103qgz0W7lCdLW6lZ3mmW94yFgm1kpcC_W1M9x1H4rKrzLW8T=
+FRfc8jS8yLW30HvSQ1b6MkpN6F62r1_YNBJVT7-3Q23XCm6W4GLFfp2rLTbzW5cXDrQ4f4XKSW4=
+xR0mw2R17JLW75NFhN6tY7mgW1_RPjL49KgHqW2H6h6C1k515rW76Yr6k8L-R9ZV_Fv2C7w-60D=
+W4xXjX244VRGcW9fj5Zv8BBy7PW5jwVJG2xhMl7W7f78T_8-fp0qW6-70-_1ZtdgFW6r54Vv707=
+7MZW5XQSZh55XbPkW7wq1CJ6fXFVMW1VZW8g6f5xGjW3ZLz1-2Y2HwRf580QJ604" rel=3D"no=
+opener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D=
+"qUSeFfKb" target=3D"_blank">winter</a> <a href=3D"https://info.deeplearnin=
+g.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103q=
+gz0W7lCdLW6lZ3lpW88-jTM4l5fRNW2Rp7-n3Np2JdW17xdxM6__LWmW2mQ_k48BtX01VBGV4c5=
+tp4DBN2C1_tWlv0TbW5qJszv6PgF5yV8JBBY3WmFPYW3gv0326cRksFMRWR6BG9rQHN7P1lBzhn=
+Nc0W7Pyt6H52LksbM2L7jC8g2dfVf58VB9k3ZzJW101QFr7NXSRPW3rsr3G3BcKBMW7h82bc4p-=
+SwfW7nGhkg2WqvqCW8t7JZh6nYnkzW55HxPv5k1-V7W5ymZvz1r7_W-W1vPcmH5P26LKW6PvF48=
+2Qd5Y9W6drH8v5N-7D2f3f6F_b04" rel=3D"noopener" style=3D"color:#237b94" data=
+-hs-link-id=3D"0" data-hs-link-id-v2=3D"PT8n94Qm" target=3D"_blank">holiday=
+</a> <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5=
+r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103qgz0W7lCdLW6lZ3mlW3nlkjM8dr67bW2f_L8=
+W9dzrtqW7-g6RH5T05J8W8PLvj892fYBDN3d4t8q518w3W5qZQ5r4g7CCYN9hx60pJr3jlW3Btq=
+136GQrC8W8t8Sdx516Y4QW6ftz276Yh0m6W3YBBsX575cLzW2TGzMj3VbbFhW5-Wny55qQMd6W7=
+MxKFX1Nns5RW293XMD4mKpS5W8HwWsx14gM_MW7x1V_h8vbPNDW3GKVdp3cDT9gW8r4d_-3Js4l=
+mW1s3Zvg40swzCW2ZsDCL85M7CNW63VmZs2JxM_5N5MsxMTNTtXSW2d4SkR3W2bs2f67yynd04"=
+ rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-lin=
+k-id-v2=3D"M8lrae/h" target=3D"_blank">seasons</a>, this special issue of <=
+span style=3D"font-style: italic;">The Batch</span> traces the major themes=
+ of the past 12 months. The coming year promises to consolidate these chang=
+es as we weave the technology more tightly into the fabric of daily life.</=
+p>
+<p style=3D"line-height:150%">&nbsp;</p></div></div>
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" class=3D"" style=3D""><tbody><tr><td style=3D"font-family:Helvetica,=
+ Arial, sans-serif; font-size:18px; color:#3b3b3b; word-break:break-word; p=
+adding:0px 0px 10px"><div id=3D"hs_cos_wrapper_module_17370396178185" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><table role=3D"none" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"vertical-align:top"=
+ width=3D"100%">
+  <tbody><tr>
+    <td align=3D"center" style=3D"font-family:Helvetica, Arial, sans-serif;=
+ color:#3b3b3b; font-size:0; word-break:break-word">
+      <p style=3D"font-size:1px;border-top:1px solid #000000;width:100%;mar=
+gin:0 auto;"></p>
+      <!--[if mso]>
+        <table role=3D"none" align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"font-size:1px;border-top:1px solid #000000;wid=
+th:600px;">
+          <tr>
+            <td style=3D"height:0;line-height:0">&nbsp;</td>
+          </tr>
+        </table>
+      <![endif]-->
+    </td>
+  </tr>
+</tbody></table></div></td></tr></tbody></table>
+<div id=3D"hs_cos_wrapper_module_17665350660781" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"pr=
+esentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"font-family:Helvetica, A=
+rial, sans-serif; color:#3b3b3b; word-break:break-word; text-align:center; =
+padding:5px 0px 10px; font-size:0px">
+        <img alt=3D"Snowman in Thinker pose on snowy landscape, with a pers=
+on building it." src=3D"https://info.deeplearning.ai/hs-fs/hubfs/REASONING_=
+SnowThinker5b_roughened.jpg?width=3D1200&amp;upscale=3Dtrue&amp;name=3DREAS=
+ONING_SnowThinker5b_roughened.jpg" style=3D"outline:none; text-decoration:n=
+one; max-width:100%; font-size:16px" width=3D"600" align=3D"middle" class=
+=3D"stretch-on-mobile">
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+<div id=3D"hs_cos_wrapper_module_17665346844073" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_module_176653468440=
+73_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich=
+_text" style=3D"color: inherit; font-size: inherit; line-height: inherit;" =
+data-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><h1 styl=
+e=3D"margin:0; font-family:Helvetica, Arial, sans-serif; line-height:125%; =
+font-size:32px; font-weight:bold">Thinking Models Solve Bigger Problems</h1=
+>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%">Think step by step. Explain your reasoning. W=
+ork backwards from the answer. As 2025 began, models executed these reasoni=
+ng strategies only when prompted. Now most new large language models do it =
+as a matter of course, improving performance across a wide range of tasks.<=
+/p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">What happe=
+ned:</span> Late last year, OpenAI introduced the first reasoning, or =E2=
+=80=9Cthinking,=E2=80=9D model, <a href=3D"https://info.deeplearning.ai/e3t=
+/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5nR3bW50kH=
+_H6lZ3kvW53FSjc1PS7TsW5MHZw-82X9R6N8rjJfzcbChxVBYpNc3PH3rvW1Php_074rdrHW2QH=
+2LL7cVR3BW33Cr7W4z4lRnW79-VHt11drrkVY6rDp6y58G-W2SBdjK68KR4gW5Ty85D90g8zSW5=
+R1F1s6dYLK2W6YHpJ08t8qdJW1LRTZG4KcR31W6L2fVg2_bH_RW10C00f4tSSJvW5Pt1yr2_TbZ=
+lW78Br3X9lzvvCW2J3Bjk8qZtqRVNxCgP7TMym-W5rllD87Q5wNCW2-jJYB2T8MXkW3JLsYn504=
+dt9W38llMr7r_ct_Vdgpqm3mvY3kVBRKDW30rGqzW1l5Y_46Mb8r6W8zXZzb3XbNjDW618Zdl1N=
+6DZGVwhKKh7L1YjxW89B_Z_69yyTBW8Tmpzq60BPnbf83WcDg04" rel=3D"noopener" style=
+=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"pzUv4q0F" ta=
+rget=3D"_blank">o1</a>, which baked in an agentic reasoning workflow. In Ja=
+nuary, <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQx=
+g5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1W3qgz0W95jsWP6lZ3m1W15pjWQ4FHm-ZW6JB=
+wlz5mYS2sW5m2k615P1kPqN9bBj9W2mKg_V1lwQX2QJB22W7dZvMq93K9kzV_bVb46YQ-MXW4Jg=
+lv-47_dqkW8x2q-44DpwsfVcTw615vp594N5vX_y-KJK4kW3TTvv43-pN_2W89zDX21GN47FN2S=
+dFK2PWwfYN3bfgNr7n9KpW1n0spT1HFgB7W1KJ9Fn63DVVbVWF2tg7ZdPd8W4_lr2V1rvQYKN5n=
+79TSGsVg2W2gBDyG3jZfpzW96hykY2hRDx_VjKq7B8WgJFnW7f-f3t6LHVP_W5lQm3X3HskScW2=
+VNJYL83_FWCW9bhwzT3BCdGfW81Yt7w5LmVrRN10xQTx-Fq1qW12v28K6QHNsHdBKhdx04" rel=
+=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id=
+-v2=3D"kCHHZqkQ" target=3D"_blank">DeepSeek-R1</a> showed the rest of the w=
+orld how to build such capabilities. The result: immediate improvements in =
+math and coding performance, more accurate answers to questions, more capab=
+le robots, and rapid progress in AI agents.</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Driving th=
+e story:</span> An early form of reasoning took&nbsp;off with =E2=80=9C<a h=
+ref=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-=
+nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3qgz0W6N1vHY6lZ3pCN5ytnh9gjhHyW8lpNVz63bcpsMnD=
+wMRxFcrvW9ch2C-5p4XwKW2QD-mC8rZPsXN3rGWPpWnsxRW3jDD836TBbcMW3-pS0D4_HDKQW19=
+FffB2bQFrsW3sYfzR7w0J9RW8PB0rW6gMrdfW8zfzDS1SGCC_VYNJtS5VFfvmVdMBhG7b0J27W2=
+FbGVS1RQfN8W5SKmrg2nWVdfW789syp8zxL00W3T-8G-7fQh9xW8Ppy0x3ZFxXSW2F4k-J6Bs_0=
+JW7qcWCN24-96hVBcFjt1TJ7QJf1NsNwv04" rel=3D"noopener" style=3D"color:#237b9=
+4" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"1Jmb+HtV" target=3D"_blank">=
+Large Language Models Are Zero-Shot Reasoners</a>,=E2=80=9D the paper that =
+introduced the prompt addendum, =E2=80=9Clet=E2=80=99s think step by step.=
+=E2=80=9D The authors found that manually adding these words to a prompt im=
+proved a model=E2=80=99s output. Researchers soon realized they could train=
+ this capability into models so they would employ this and other reasoning =
+strategies without explicit prompting. The key: fine-tuning via reinforceme=
+nt learning (RL). Giving a pretrained LLM a reward for producing correct ou=
+tput trained it to =E2=80=9Cthink=E2=80=9D things through before it generat=
+ed output.</p>
+<ul style=3D"line-height:150%">
+<li style=3D"color: #222222;" aria-level=3D"1"><span style=3D"color: #00000=
+0;">The first few reasoning models were trained via RL specifically to solv=
+e math problems correctly, answer science questions accurately, and/or gene=
+rate code that passed unit tests. This enabled o1-preview, for instance, to=
+ outperform its non-reasoning predecessor GPT-4o by 43 percentage points on=
+ AIME 2024 (competition math problems) and 22 percentage points on GPQA Dia=
+mond (PhD-level science questions), while it completed Codeforces=E2=80=99 =
+coding problems in the 62nd percentile relative to competitive human coders=
+,&nbsp;compared to GPT-4o=E2=80=99s 11th percentile.</span></li>
+<li style=3D"color: #222222;" aria-level=3D"1"><span style=3D"color: #00000=
+0;">Reasoning models performed even better when they learned to use tools l=
+ike calculators, search engines, or bash terminals. For example, on a chall=
+enging <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQx=
+g5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3qgz0W6N1vHY6lZ3q4W48fHqH1GGVvhW99F=
+m6F7p2DJ_W2tmh214-J-NHVFtlds2b3q2XW90RzcK6-WlgDVFh6RS8L_b_pW5HzkqY6vy7jFW87=
+ylW26wMTRsW8ksg864rHWkhW885D2c4yBnZ3W75PXDy4HBQpNW1bkvz96HrPDSW4FQP-27MQ-xZ=
+W23_tWy21LwkXW4ssh9R4KZ4D-W1kT7vQ6G8DBDW50Nyhy8Xkhn7W6zdr435_1GZwN9gm2yYWlB=
+f7W2Q1vkv3MhPJRW6pjZMJ8lFmTvW5gydVT5ZWk0Cf2G9XgC04" rel=3D"noopener" style=
+=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"hzCVql2E" ta=
+rget=3D"_blank">test</a>&nbsp;of multimodal understanding and technical exp=
+ertise in 100 domains, OpenAI o4-mini with tools achieved 17.7 percent accu=
+racy, more than 3 points higher than it managed without tools.</span></li>
+<li style=3D"color: #222222;" aria-level=3D"1"><span style=3D"color: #00000=
+0;">Robotic action models have been trained to reason via RL. For example, =
+rewarding&nbsp;<a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC4=
+04/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3qgz0W6N1vHY6lZ3nZN5QBbcQ-l=
+9wXN7YX3Y3ZGsXwW6jJhzg45HcYVW7ZWsqh2RYGS_W1RTbw-3Jp3PLW6mvZXw6lW-sLW2j9gfj5=
+RfNXYW5HjXP37wx9WJW8bQcPr1kf0ZGVTMGXY8g2cKJW1V_slW6htJ6dW4gpyWJ3ctY_CW7W4L4=
+81hx3dqW5--lp35mFs-7Vb4g4V8NQHmVW72Nc872CcqNPN4sk0Gl85tJLW81m-0B8XwYzPW3pPn=
+cQ38WMDGW4dBzmr3Rt0m6W6xHVRy4--tfbW4ppcyt5_4YBvdC7B_g04" rel=3D"noopener" s=
+tyle=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"XSW5PUJJ=
+" target=3D"_blank">ThinkAct</a></span><span style=3D"color: #000000;"> for=
+ reaching a goal position yielded roughly an 8 percent performance improvem=
+ent on robotics <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC=
+404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3qgz0W6N1vHY6lZ3lqW1v8tKQ1=
+sPyksW4vfpqJ27sNmZW1TLf5F2lClYGW13zz2-5b-RjkW4wTqyC2vgrxPW8VmDN77dLWxCW6JPG=
+WM7ZhcjqVGYhCs7f4cFsW55FPq87G7rYxW3xXxk81xcMnlN4tVWMDthYMcW2TFzfy85l9KPW6nP=
+5-N4kdWfXW3Ksgjb9j_C7cW3xhhKY8S0vGhW2mJVzN7ldcJjV10_1X5XHtkZW4ZTZYz5CQqWyW1=
+m4xn23Ch114W3lnYBN3qHDWSN7WL0W_GjKtLW7_ytgw1JDffvdzLQHn04" rel=3D"noopener"=
+ style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"6dTKjf=
+cy" target=3D"_blank">tasks</a>&nbsp;compared to non-thinking models like <=
+a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW=
+62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3qgz0W6N1vHY6lZ3psW7xSDkH4xp5zrN5y-2WVgZfTd=
+T6BqB17tdGnW7rvDw56FsKsxW43NB4t2PpC49W5Bq_s38tzMPcW8fWtQN2lVXWdW4TlJGH1X4K1=
+PN6wzmZy9VsYkW6dh-6J6sq43yW6R3cjs1nQ_2WVJvh5z4r9hTTW53r81R2GhkzgW6VCdkH3Jp8=
+h_W2lM26S36K-ydW6kPQ2M19Nq0gN19VD86rnswDVmJtpH6KXVjcW2wz3Dz4Q0jypW42r5y66ZW=
+fDwW6crcvt87WFfBV8Ksym8bHRVGf1k1r7204" rel=3D"noopener" style=3D"color:#237=
+b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"1bKASGBI" target=3D"_blank=
+">OpenVLA</a>.</span></li>
+<li style=3D"color: #222222;" aria-level=3D"1"><span style=3D"color: #00000=
+0;">Reasoning models also help agents to tackle difficult problems. For ins=
+tance, <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQx=
+g5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0q5g8t6W69t95C6lZ3mJV9SJcF8Ffv-qW39cL=
+hd9m10ysN1XrbX2pS0j8W4hNkTX70g7tMW3clR733TmQ-lVNDkq18fxmy6W6F-j3b3cNDCZW4rQ=
+Z9Z13Sdh7W3d7PM34t9CCmW7mR5ZD2mhjWfW1bWsbx9gPKZ0W8xGc-R2R-_5zW6VZcDz3Y29SYW=
+5rpjGC7dHRY9W2ym_Zp1xcCG1W6Xp2WQ79LTznN7nhCNGlR5L1W1Qs6WQ9kKhQ0W3P5vd-1DHKw=
+KW5X_20r5bz2fBW4GNl1f4-Bf2KW3jKnG417X5pJW4VKNhB1fMgjYW483m675V9yDpVvpC_R3fx=
+jGqW27DVqw8mkJGCW4gMvnT1HxHZ5W3f82mJ4n6dr7W73_RSf845PNsW1yFJm48XKGGfW678b9S=
+6330ptW61zzs05TDfdPVn_L2Q92vTmwN8BcMdxxXkKqW8h4pfl54qgmbW5zS1r_4BPb3kdptCTH=
+04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-=
+link-id-v2=3D"ttPlJQTO" target=3D"_blank">AlphaEvolve</a></span><span style=
+=3D"color: #000000;"> used Google Gemini to repeatedly generate, evaluate, =
+and change code, ultimately producing faster algorithms for real-world prob=
+lems. Similarly, <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJh=
+C404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx065nR3bW5BWr2F6lZ3kKVfcnzc1=
+G_76hW76TH7C2NrmHHW3vDQCX29yFm-W6tZ4G55Q6_T4W52S1bV7QmDgsW89mCbz2LYlDlW8lMx=
+R_8KYrhJW8BdpkF13XcwtW7MLCXj235GJ0W7k4C5F9gngL6W755GLS18xqCmW44yCTR5TFhLhW4=
+M_gmy8jv4HfW4HRWyF6vLN9MW5bnFT84V1j4cW8nCz2V1DpXVNW2QZ-fY1hkhZfW700WWh1Z97G=
+hW2HMTFX2nnSt5W8jvbPK6pTDChW6n99Pt6s4WkPW2mQ11b7nc9bnW6QnNZX8rvLspW1QBk_Q2w=
+RCrhW2NZXdK4jPnNjW7MPFYY7ldf1TW1GLgWh1RHXwzW50_Wqm7cJqmfW4JRlQ56Nfkj2V2T4Xy=
+6y8NmNW4vy1tc7k8YGZW5C_MFB4z43-YW76y5CJ5CXZRvMHn-PW9P6Mbf16NT2404" rel=3D"n=
+oopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=
+=3D"OLEDFuAC" target=3D"_blank">AI Co-Scientist</a>&nbsp;</span><span style=
+=3D"color: #000000;">used Gemini to generate scientific research proposals =
+and then review, rank, and improve them. Among other results, it proposed a=
+ hypothesis to answer a longstanding question about microbial resistance to=
+ antibiotics. Human scientists independently proposed and validated the sam=
+e hypothesis at about the same time.</span></li>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Yes, but:<=
+/span> Reasoning models may not be as rational as they seem.&nbsp;</p>
+<ul style=3D"line-height:150%">
+<li aria-level=3D"1">In a controversial <a href=3D"https://info.deeplearnin=
+g.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1j3q=
+gz0W7Y8-PT6lZ3lzW4pd52G6vVPGYW8SqkrZ21rvVVN3hdNpckzhP9Vpskft3hVPK6N37Bf31DH=
+zXjW5vpBjy3V6Gr_W3gs0244K86M-W54WzD71Nk0sYW4-Qmg21LDPdWW2SwXGB1wH_0JVBKBZl4=
+F1SHBN41bfv4p6l_ZW1qkl0L2fdWxnW74kcsG3f8gm5W85-pnS5l-yVJW38FD0r1Q9sBWVv0RV9=
+6tDGKzN2d_x86VVT5vW4qfPfr70hkcvN2PLL0gPldBfW7B0ZVR3YB7vZW2ShcGw1_RC63MX3Y1d=
+Vz6nhW1Slrvc9j7yjPW3dS07T5Jdd0tW6ZnKKX8wjf_Zf4HBQvj04" rel=3D"noopener" sty=
+le=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"E3jqW2hJ" =
+target=3D"_blank">paper</a>, Apple concluded that reasoning models couldn=
+=E2=80=99t solve puzzles beyond a certain level of complexity, even when th=
+e models were given algorithms that solved them. The models=E2=80=99 inabil=
+ity to apply the algorithms calls into question apparent similarities betwe=
+en machine and human reasoning.</li>
+<li aria-level=3D"1">Anthropic <a href=3D"https://info.deeplearning.ai/e3t/=
+Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5nR3bW50kH_=
+H6lZ3llN1Nh_CJmkYcjW6HCq_78yzkNGW3WLShH82ZZqgW9lF3W758Dm3VW4N9T9t6MNXLYW82C=
+5dc15kp1YW7Sr5Vf7dtD3PW8BfbTG1TzB-BW1CWwRG3f5fWXVKFck_1LPS2sW2CMT1K7ByMfgV-=
+pnml8QZLZ7W35-sj74yKlH9MnPkRtCCfcxW3-5v6b929yBqN5r6hGQ-nGNCW68GDQB2ct3x6W6g=
+DZfd1h55D8W2DX3ZZ7zKnySW36wLGK29swCdW7sf4Yd1gkl59W2kbYwQ49tf2-W1vswVQ8ll49v=
+W3ncrCg41f8lFW36fM2L4JVxJmVjM5vR153hZBW6dr98X2z6TLWW3wP7PY1GkqK8W8dWvlb7gX5=
+FcW4wS4w95F-dXgW5k-5QZ5Hm6PkW1s-ft24T5hd9f7TDtM-04" rel=3D"noopener" style=
+=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"Q3+lW/01" ta=
+rget=3D"_blank">found</a> that, while a model=E2=80=99s reasoning steps can=
+ help to explain how it reached a conclusion, they may also omit crucial in=
+formation that&nbsp;contributed to the conclusion. For instance, including =
+reasoning models can be led to produce a particular output by including a h=
+int in the prompt, but their reasoning steps may fail to mention the hint.<=
+/li>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Where thin=
+gs stand:</span> Reasoning dramatically improves LLM performance. However, =
+better output comes at a cost. Gemini 3 Flash with reasoning enabled used 1=
+60 million tokens to run the benchmarks in Artificial Analysis<span style=
+=3D"color: #000000;">=E2=80=99</span> Intelligence Index (and achieved a sc=
+ore of 71), while Gemini 3 Flash without reasoning used&nbsp;7.4 million to=
+kens (achieving a much lower score of 55). Moreover, generating reasoning t=
+okens can delay output, adding to pressure on LLM inference providers to se=
+rve tokens faster. But researchers are finding ways to make the process mor=
+e efficient. Claude Opus 4.5 and GPT-5.1 set to high reasoning achieve the =
+same Intelligence Index score, but the former uses 48 million tokens, while=
+ the latter uses 81 million.</p>
+<p style=3D"line-height:150%">&nbsp;</p></div></div>
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" class=3D"" style=3D""><tbody><tr><td style=3D"font-family:Helvetica,=
+ Arial, sans-serif; font-size:18px; color:#3b3b3b; word-break:break-word; p=
+adding:0px 0px 10px"><div id=3D"hs_cos_wrapper_module_17665351155292" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><table role=3D"none" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"vertical-align:top"=
+ width=3D"100%">
+  <tbody><tr>
+    <td align=3D"center" style=3D"font-family:Helvetica, Arial, sans-serif;=
+ color:#3b3b3b; font-size:0; word-break:break-word">
+      <p style=3D"font-size:1px;border-top:1px solid #000000;width:100%;mar=
+gin:0 auto;"></p>
+      <!--[if mso]>
+        <table role=3D"none" align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"font-size:1px;border-top:1px solid #000000;wid=
+th:600px;">
+          <tr>
+            <td style=3D"height:0;line-height:0">&nbsp;</td>
+          </tr>
+        </table>
+      <![endif]-->
+    </td>
+  </tr>
+</tbody></table></div></td></tr></tbody></table>
+<div id=3D"hs_cos_wrapper_module_17241662452411" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"pr=
+esentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"font-family:Helvetica, A=
+rial, sans-serif; color:#3b3b3b; word-break:break-word; text-align:center; =
+padding:5px 0px 10px; font-size:0px">
+        <img alt=3D"A man in a snowy scene offers an apple to a surprised h=
+orse hitched to a sleigh with a woman inside." src=3D"https://info.deeplear=
+ning.ai/hs-fs/hubfs/TALENTWAR_3_BetterFrontHooves_1200px.jpg?width=3D1200&a=
+mp;upscale=3Dtrue&amp;name=3DTALENTWAR_3_BetterFrontHooves_1200px.jpg" styl=
+e=3D"outline:none; text-decoration:none; max-width:100%; font-size:16px" wi=
+dth=3D"600" align=3D"middle" class=3D"stretch-on-mobile">
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+<div id=3D"hs_cos_wrapper_hs_email_body_old9" class=3D"hs_cos_wrapper hs_co=
+s_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font-=
+size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" d=
+ata-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_hs_email_body_old9_" c=
+lass=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text"=
+ style=3D"color: inherit; font-size: inherit; line-height: inherit;" data-h=
+s-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><h1 style=3D"m=
+argin:0; font-family:Helvetica, Arial, sans-serif; line-height:125%; font-s=
+ize:32px; font-weight:bold">Big AI Lures Talent With Huge&nbsp;Pay</h1>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%">Leading AI companies fought a ferocious war f=
+or talent, luring top talent from competitors with levels of compensation m=
+ore commonly associated with&nbsp;pro sports.</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">What happe=
+ned:</span> In July, Meta <a href=3D"https://info.deeplearning.ai/e3t/Ctc/L=
+X+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5nR3bW50kH_H6lZ3=
+l5V9JHfC3fB1JyW2dvsvc47qMGKW16xlZl3vHfCMN7W-FPY4hjpsW22rkrv38DF8xW8Rmh5l72B=
+xZ2W1ChDlM2wrWG6W8G0sq-8Pmll6W2dRVLL3XF9dxW2PWR1t9cD3jdW5wzYcK5PWw-bW9k9v0R=
+5wmMqhW8Xv-YD4_wP9BW8jhSQS6LT726W7skM642kmxq8W8bd1MB2w9hHFN2TJjBQ66tFmW7bNr=
+5d9kwQzjW3ZMhQ-7nWm_RW16kvW96XWFWqW5_8Wmr8zThMKW9bgzbF8nq8G2W1KYLc97PZTrMVg=
+qFSW4J2XkHW6NKY9N4cgymKW5lct8J4WcQFZW4khP3w7HrtCyVmzQ-L3v6lftW3vVypx5_2BqpV=
+s65_G2KmDN7W3CwK8F8bBQd7W1skmkt2kqSqHf6B-JcP04" rel=3D"noopener" style=3D"c=
+olor:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"XIJ02gl/" target=
+=3D"_blank">launched</a>&nbsp;a hiring spree to staff the new Meta Superint=
+elligence Labs, offering up to hundreds of millions of dollars to researche=
+rs from OpenAI, Google, Anthropic, and other top AI companies. The offers i=
+ncluded large cash bonuses and compensation for equity forfeited by leaving=
+ another company. Meta=E2=80=99s rivals, in turn, poached key employees fro=
+m Meta and each other, driving up the market value of AI talent to unpreced=
+ented levels.</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Driving th=
+e story:</span> Meta upended traditional pay structures by offering pay pac=
+kages worth as much as $300 million over four years with liquid compensatio=
+n that sometimes vastly exceeded the stock options that, at other companies=
+, vest over many years. Having <a href=3D"https://info.deeplearning.ai/e3t/=
+Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5nR3bW50kH_=
+H6lZ3pDW5nQwwY448RBSVf1lVK5NQGQrW2NvWRB4Wd0xdW2tPx4G6nT9F5W26lHpv1-78NDW4X0=
+NDb5H_JBWW3blgNm29KP_XW37t51R63lDcYMwN_6pkFpyvW50Y6rJ1R08L0W7yqs0Q4tzn9nW1k=
+plHT23JlDJN2gWMw2F9cbzW4Q25Hc259YhDW7TPpQ68VW0nZW8SSv-c32sT6cW73hCWf5_YTnrW=
+2Jhnzj7yhC9-W7LPpfh2G1kRwW3fc7Sh1KrQmFVt6MwZ33sKgZW4WqHf45RwmJ6W6CV6-h1jSGX=
+ZW6cbSFk9lDHPjW8knd8s2wswv4W6mZ1Dd77BMzyW3tBkfc1V7SB1N51HlV0_V3bnW1JQlfn8l_=
+dgYW8wb1Bn1YmXp2V8-S3v2w7CxxW7mHYKP7xM17mf2VD39K04" rel=3D"noopener" style=
+=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"wGQJLoRx" ta=
+rget=3D"_blank">hired</a> Scale AI CEO Alexandr Wang and key members of his=
+ team, Meta chief Mark Zuckerberg compiled a wish list, <span style=3D"font=
+-style: italic;">The Wall Street Journal</span> <a href=3D"https://info.dee=
+plearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN=
+7zrx1C3qgz0W8wLKSR6lZ3q3W8zbKF03g-cb5W7wJybt8_7HQvVDhCt08PZjs_W54pBjQ44BjDK=
+W1vRShQ4csLZVW1sQKXP2zF27MW4WD3v69gdnfYW8D5fcp73cWq7N6hVXVCDspgfW6GqDM49gVf=
+5RW9lD3-Y6vyJpkN1059fLs_Lf7VJjgt4373HHKW2GG1343N3t-0W5xwRww6NfpLgW2xPBfs35C=
+0VVW85NWH_3wn6pgW1P48hV5GVL2cW1H7GW48yvNl0W3k54J0610tywW3TJSF95vZ3nrW98D2yt=
+8CHb4_W6hY6Xr2By8XJW5JK9dT7JL6SDW7nQm5964z84FW8-MDKB3FWmvtW8gMjwM4bkHp7W4Hk=
+Dh_8tKZ_Zf6l4YNl04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-i=
+d=3D"0" data-hs-link-id-v2=3D"187epQYt" target=3D"_blank">reported</a>.&nbs=
+p;</p>
+<ul style=3D"line-height:150%">
+<li aria-level=3D"1">Zuckerberg made house calls to convince people to jump=
+ ship, sometimes <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJh=
+C404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K5nR3bW6N1X8z6lZ3pSW2_VWjS=
+5QlKglW7P2ZxF4LpMpNW9m06Z53-G-BVW7GqwTw4q2HKBN702vTZNnq-8W3T03nD4Xs954VDfPr=
+N6BzN9xW1gjGWs69SJWsW68WVk345qK6QW2yP-_l2FY-LsW4lrXPK40pdFyW2FCmKg91z1vXW7w=
+Cw_k2DCGbFVSKYs_78gFs2W77NldS7vG4tvW24ldjp7S9Z2kW4SrbnX8pHbTYW5sqn4H84-zDqW=
+6-K-7g6QPPdRW74bM4T8sGmB4W2mvk9p923MmHN7m5Wg76Pg65W8MVB4N3bpJR1W1RJ9cR2W9dv=
+KW1_bwpr4tn1rNW4tFxFW4rn61GW2ZmDN62GvPtxW23FK2x8nx5wRW3nQ-Vm1Pr3T1W1JwgcL8X=
+KNZTW3SvzzG3nMkQMW7C4rVG1nnmbcW8ystFH1LtZP9W7ZmTvs4nRckbW6x6pNt1zwCN6W1ZFRq=
+t5zzQ5XW4w3kNt7XBt4NVtJx2-4SCW8xf1GN28C04" rel=3D"noopener" style=3D"color:=
+#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"UblwruAh" target=3D"_b=
+lank">bringing homemade soup</a>. The effort netted, among others, OpenAI=
+=E2=80=99s Jason Wei and Hyung Won Chung, two researchers who worked on rea=
+soning models.</li>
+<li aria-level=3D"1">Andrew Tulloch, who had co-founded Thinking Machines L=
+ab with OpenAI=E2=80=99s ex-CTO Mira Murati, initially turned down a packag=
+e at Meta that included bonuses worth $1.5 billion, <span style=3D"font-sty=
+le: italic;">The Wall Street Journal</span> <a href=3D"https://info.deeplea=
+rning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx=
+1C3qgz0W8wLKSR6lZ3m_W6gYLWw1g8PB_VD1pMt6_lXHZVBHzR0835bKTW51VpjS7XXqZ4W6CL1=
+vr6xKvS6W72FsVS5zQ6BTW2-QKKp1ch_SmW5wN_kQ4JcJj0V3VWl-9kx0R9W5MCWpS4dSsKMN5v=
+D5BNvfPH7N6kNN9jpTxyMW5kNkpz60LvqmW10JJzy72CtS7W4GCmpP6rR9yRW5dxSyX13P11wW6=
+p3v0T8g8jWtW4kvvGg8mjl35W7ZFfDW3jM4-tW8RmVg15ktK77N2sxh8-2tDXKW6F3d2p28B29d=
+W1ymGw_443s4KW4k3v026NX4wHW2bF7qL1wkc_XW3-9zDW4s4YBrW876ygM7LJyX4W7PLmDz65D=
+hNBf6X846x04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0=
+" data-hs-link-id-v2=3D"hG+2gP/P" target=3D"_blank">reported</a>. A few mon=
+ths later, he changed his mind and joined Meta.</li>
+<li aria-level=3D"1">Meta hired Ruoming Pang, who oversaw AI models at Appl=
+e. The pay package came to hundreds of millions of dollars over several yea=
+rs, <span style=3D"font-style: italic;">Bloomberg</span> <a href=3D"https:/=
+/info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-9=
+7G5Hy4BhN7zrw_R5nR3bW50kH_H6lZ3pyW3XW6gc2bHN6pN1Zkyy2bNd4fW7g6ZWd7T1bgKW3Sp=
+dKJ8zbN2KW58YZq_2CL0b7W77LmTb3LHhBVW3YlqDV1hPWSZW4VHylF6kH8RkW3HBM-Q1TvWCrW=
+9jjHBF4Pw-sTVVR3Lt88fmBfW4jwP3R6hMLlwW3KpjsL1sKG5FW88pndt2cdKP9W1V63WL25qN9=
+bW7_zLKg6cgJNCW3mr_j52pPFRXW1-z1Kl5GQwMtW322b_t4zgH6LW1sdR628K6dRsW17hkW01y=
+qkrTW2_NfSn8jKgckW26Zn-y6gzCvSW5d55k740_WLWW5XBdkG3Tl8gxW8H0NzX4dvcf-W4-WXs=
+V6CP0krW1x_WWg2_Rg9PN3Nv18wB1GQyW1wGb0384VdzlW1fMcB12zMy2HW8xJDmT1dR5WDdfpx=
+yP04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-h=
+s-link-id-v2=3D"XigM02II" target=3D"_blank">reported</a>. Meta=E2=80=99s of=
+fer exceeded the pay packages of top Apple leaders who weren=E2=80=99t its =
+CEO, and Apple declined to counter it.</li>
+<li aria-level=3D"1">Amid the turnover, Microsoft AI CEO Mustafa Suleyman t=
+ook more than 20 researchers and engineers from Google, including Amar Subr=
+amanya, who was vice president of engineering.</li>
+<li aria-level=3D"1">Elon Musk=E2=80=99s xAI hired over a dozen AI research=
+ers and engineers from Meta. Musk decried his rival=E2=80=99s =E2=80=9Cinsa=
+ne=E2=80=9D offers and touted his company=E2=80=99s =E2=80=9Chyper merit-ba=
+sed=E2=80=9D culture and greater potential for growth of equity.</li>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Behind the=
+ news:</span> The trajectory of salaries for AI engineers reflects&nbsp;AI=
+=E2=80=99s evolution from academic curiosity to revolutionary technology.&n=
+bsp;</p>
+<ul style=3D"line-height:150%">
+<li aria-level=3D"1">In 2011, when Google Brain started under the direction=
+ of Andrew Ng, AI talent was concentrated in academia. As neural networks f=
+ound their way into commercial products like search engines and AI assistan=
+ts, machine learning engineer roles became a standard corporate tier.</li>
+<li aria-level=3D"1">In 2014, when Google acquired DeepMind, AI salaries si=
+gnificantly outpaced those in software engineering in general. DeepMind=E2=
+=80=99s staffing costs came to around $345,000 per employee, <span style=3D=
+"font-style: italic;">The New York Times</span> <a href=3D"https://info.dee=
+plearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN=
+7zrx1W3qgz0W95jsWP6lZ3q5N7yp6mWK_1bNW7wmhn12bHWy6W4HMzJt8QFP76W2sXMs16Pzpcz=
+W3-VD1J8vqkl6W4Sv9kt6RZ2dTW7snJGq19905ZW38fmRt50-n0TW7n81P174chdmN3YbCJY6DF=
+HTW21SBnX1HfXWxW3wvxwJ1-HyfvW1dRYV15yFR-6W2z41yl61dtfWV_08Vt6FJ5zKW4GK-f-4B=
+1gh7W1yLt3S2T-plQW4yW8CD13R4pfMxp8V2D-ztGN12dbmxdtRz7W793lr64SnKnnW155Q_S7w=
+TNtPW3k4bBh4lVT-9W2gNMpJ7WTd3nW24Ql6w4xx6L6W1RcgbL2X1j-FW3KTS2l3P_mN0W8nFYm=
+58Xkb4KW2DqK4Y7RZHWpW31X0gY2YT0ccf9gqfMR04" rel=3D"noopener" style=3D"color=
+:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"xFQaBiYJ" target=3D"_=
+blank">estimated</a>. By 2017, when Google introduced the transformer archi=
+tecture, top compensation had risen as high as $500,000.</li>
+<li aria-level=3D"1">Circa 2023, with the rise of ChatGPT compensation took=
+ another jump. Pay packages for top-level software engineers reached beyond=
+ $700,000, according to one <a href=3D"https://info.deeplearning.ai/e3t/Ctc=
+/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1W3qgz0W95jsWP6l=
+Z3mzW8xm5631XmH_fW1hmHrz5_gCp1W247HWP9jngBkW5bftjn1BvHdBVD2Wjh1QHsP7W6qnvj4=
+3Lgdk9W782PBJ7P4NgrN4Vlz0tg3kTkW3xDNyL4w88vYW7yFKYL830SHbW2Fmmg442jB1fW1pSk=
+HZ5LpdtjW1z4RFX3YlcpWW6_dT-v3gqBVjW7PX-Mt7q5KLyMhXPcLhhfzgW5yLZVd6SQ1JmW9dN=
+Phc3lLr99W3MRfHL4B_jMBW24rgjv4jDKPNV653gc7kQl16N3K49TPmZYLjW7h0dVC8xcj8nW1t=
+kCtd1sT197W6-_GlX2J9YRwM5JPRGtsQ6ZW5T655352gj5_W10wh-M3kSQ8tW575xMs63mQ1GW4=
+xjMft7gShHhf8dBXKW04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link=
+-id=3D"0" data-hs-link-id-v2=3D"gWIZwJ58" target=3D"_blank">report</a>.</li=
+>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Where thin=
+gs stand:</span> As 2026 begins, the AI hiring landscape is much changed. T=
+o fend off recruiters, OpenAI has offered more stock-based compensation tha=
+n its competitors, accelerated the vesting schedule for stock options award=
+ed to new employees, and handed out retention bonuses as high as $1.5 milli=
+on, <span style=3D"font-style: italic;">The Wall Street Journal</span> <a h=
+ref=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-=
+nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5nR3bW50kH_H6lZ3nwW2v5CPz2XXlFGW2sSqvb2zd0bxVY=
+_z8X4Brd1cW8ddKNW24GL0kW7p4-X83_xB8CW2ZhpHg34L905W9j4cYQ6k_P5LW86mq831zpcc0=
+W8tqhRC4GzfxdW3rqsy16mKh3FW4f66Ks7NbLkKW96FD_w5V7rsjN5K45SfCQFyrW30V8Yw41y6=
+FqW3F9-1H2HQbg_W6WWyv968NkzMM2dGmzBD4v4W2tvkvV257tc1W1gNsgm3Jm4c4W67N9K22BP=
+vk9W16M5Vm2WhS9RW8kC4m84QgZ-wW3d42wg2C3m4jW5YdG5s3YN2X_W3LcB-b4jgyqLW6-wYzb=
+2vMYXhW8RjVXp258JW-W1mN_gh6nX-XRN4DMG0SZLw1DW7Sthz87q-9QZW6XzdKm36fqX-W3szm=
+K150_sjcf61qd4s04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=
+=3D"0" data-hs-link-id-v2=3D"sZBXxq52" target=3D"_blank">reported</a>.&nbsp=
+;Despite talk of an AI bubble in 2025, high salaries are rational for compa=
+nies that plan to spend tens of billions of dollars to build AI data center=
+s: If you=E2=80=99re spending that much on hardware, why not spend a small =
+percentage of the outlay on salaries?</p>
+<p style=3D"line-height:150%">&nbsp;</p></div></div>
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" class=3D"" style=3D""><tbody><tr><td style=3D"font-family:Helvetica,=
+ Arial, sans-serif; font-size:18px; color:#3b3b3b; word-break:break-word; p=
+adding:0px 0px 10px"><div id=3D"hs_cos_wrapper_hs_email_body_old22" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><table role=3D"none" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"vertical-align:top"=
+ width=3D"100%">
+  <tbody><tr>
+    <td align=3D"center" style=3D"font-family:Helvetica, Arial, sans-serif;=
+ color:#3b3b3b; font-size:0; word-break:break-word">
+      <p style=3D"font-size:1px;border-top:1px solid #000000;width:100%;mar=
+gin:0 auto;"></p>
+      <!--[if mso]>
+        <table role=3D"none" align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"font-size:1px;border-top:1px solid #000000;wid=
+th:600px;">
+          <tr>
+            <td style=3D"height:0;line-height:0">&nbsp;</td>
+          </tr>
+        </table>
+      <![endif]-->
+    </td>
+  </tr>
+</tbody></table></div></td></tr></tbody></table>
+<div id=3D"hs_cos_wrapper_module_17241662955853" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"pr=
+esentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"font-family:Helvetica, A=
+rial, sans-serif; color:#3b3b3b; word-break:break-word; text-align:center; =
+padding:5px 0px 10px; font-size:0px">
+        <img alt=3D"Snow-covered wood stacks surround a person with an axe,=
+ standing by a small fire in a forest setting." src=3D"https://info.deeplea=
+rning.ai/hs-fs/hubfs/DATACENTERS_Woodman_Revise4b_1200px.jpg?width=3D1200&a=
+mp;upscale=3Dtrue&amp;name=3DDATACENTERS_Woodman_Revise4b_1200px.jpg" style=
+=3D"outline:none; text-decoration:none; max-width:100%; font-size:16px" wid=
+th=3D"600" align=3D"middle" class=3D"stretch-on-mobile">
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+<div id=3D"hs_cos_wrapper_module_17370395015403" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_module_173703950154=
+03_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich=
+_text" style=3D"color: inherit; font-size: inherit; line-height: inherit;" =
+data-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><h1 styl=
+e=3D"margin:0; font-family:Helvetica, Arial, sans-serif; line-height:125%; =
+font-size:32px; font-weight:bold">Data-Center Buildout Goes Big</h1>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%">Top AI companies announced plans to build dat=
+a centers that are projected to burn through trillions of dollars and gigaw=
+atts of electricity in the next few years.</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">What happe=
+ned:</span> The AI industry=E2=80=99s capital spending topped $300 billion =
+this year alone, much of it allocated to building new data centers to proce=
+ss AI. This was a preliminary budget, as companies mapped out ambitious pla=
+ns to construct facilities the size of small towns with the energy needs of=
+ medium-size cities. The race to build enough processing power to satisfy h=
+oped-for demand for inference and training could cost $5.2 trillion by 2030=
+, the consultancy McKinsey &amp; Company <a href=3D"https://info.deeplearni=
+ng.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K5=
+nR3bW6N1X8z6lZ3mrW5DNpXN8SZjYWW3qGql_1pm1yJW2CM56d1YmbqsVHXdMl8cSNhDW95g8s8=
+3wcvZWW7n6zRc8hSN0VW6Ykj6S33N-J5Vp6YPG2vqmb4W5yz1Kc8y9Q7CW3f1rFF4tLWkqW2Rjn=
+G72qHKhhW5GWxVG7xG9M3W7yPd4X32MJmwW1Qb7vj5y-ybwW2NKKc61YdRWFN35rGTtk_B5VW4v=
+9n143p9hMNW1rDlg46pk0fsW1q5hXk29qqxzW3m1ZlF2ZbyNDW7nPjT24_7dKlVzz5nD84WMb5W=
+404XVW2DvYY3W125-5N546NWvN2k1z3qdXJZkW74j8rf7QpmXFVg95dR6nV6GbW6w71B05SJZ84=
+W6-DdlR6V1X3bW6KlmZw15GbHVW1bp5GY3LQsL_W2xgjXw7ZjWfdW43kMlB4kN19_W5blC3b169=
+x3pW6WzXZr7KP4tzW6_KCXN49y8sxN5jh4SdS7f6XW6VPKJq20-7L6f5MTLgC04" rel=3D"noo=
+pener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"=
+MxNJqrg1" target=3D"_blank">projected</a>.</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Driving th=
+e story:</span> Top AI companies announced a cascade of data-center project=
+s across the world. Each gigawatt of data-center capacity will cost roughly=
+ $50 billion to build.</p>
+<ul style=3D"line-height:150%">
+<li aria-level=3D"1">In January, OpenAI launched Stargate, a $500 billion p=
+roject in partnership with Oracle, SoftBank, and the Emirati investment fir=
+m MGX. Ultimately the company announced <a href=3D"https://info.deeplearnin=
+g.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0q5n=
+R3bW69t95C6lZ3myW1sBQzh14Ms4jW2PRvsC7cDfQYW32v7_t49wsdnW6DN-YM2TmtDYW5yyFSQ=
+7CnsmwW5k4k0Z201QKyW7R4Sf57C3hZyW6j3nGb4804JxF6F_S_cch-6W6xCV2y1kLk2lW501L9=
+S3m1XKTW4McD7s3wMrXJW24cgRQ7P7ML4W6_St0C5z8fqJW3G2-897Dq4CTW4gtBVY99LL_1W3W=
+H06v2l7c8mW95KFk61dwptGW4Nmjgx5td8KVW5WGQdV7YtqN6VKh3Y-4SFPP7W2-jqxP3_HQYnW=
+314H-N1wc03SW13_sqp3MDFtXN1Q3KCnQYQqNV-n_R-5nMV17VBHGHk9hH3qyW7Z193_4bdYC4W=
+3KPDQJ1DdfhfW1mCfK42C722CW3yqC4997TvMwN23-pBdwlHmHN1YBSVhQyZpMW6yFLHf5FKN8s=
+W4_s5w-4PtHsnW8XNkCw7Kv-0Nf8pQyRd04" rel=3D"noopener" style=3D"color:#237b9=
+4" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"6A27VEWl" target=3D"_blank">=
+plans</a>&nbsp;to build 20 gigawatts of data-center capacity worldwide and =
+forecast demand up to 5 times that amount. OpenAI CEO Sam Altman said he ho=
+pes eventually to add 1 gigawatt of capacity per week.</li>
+<li aria-level=3D"1">Meta spent around $72 billion on infrastructure projec=
+ts in 2025, primarily in the U.S., a figure executives said would rise cons=
+iderably in 2026. The company=E2=80=99s Hyperion project includes a $27 bil=
+lion, 5-gigawatt data center in rural Louisiana. The project=E2=80=99s fund=
+ing deal will keep the assets and debt off Meta=E2=80=99s books.</li>
+<li aria-level=3D"1">Microsoft spent $80 billion on data center projects wo=
+rldwide in 2025, including facilities in Wisconsin and Atlanta that will be=
+ connected by a dedicated fiber-optic network to operate as a massive super=
+computer. To supply electricity, the company signed a 20-year deal to resta=
+rt the Three Mile Island nuclear reactor in Pennsylvania, which will supply=
+ 835 megawatts starting in 2028. The company also pledged to expand&nbsp;it=
+s European cloud and AI capacity to 200 data centers across Europe.</li>
+<li aria-level=3D"1">Amazon expected to spend $125 billion on infrastructur=
+e in 2025 and more in 2026. Its $11 billion Project Rainier is a 2.2 gigawa=
+tt data center in Indiana that runs on 500,000 Amazon Trainium 2 chips. In =
+addition, Amazon planned to spend roughly $14 billion to expand data center=
+s in Australia, and about $21 billion in Germany between 2025 and 2029.</li=
+>
+<li aria-level=3D"1">Alphabet expected to spend up to $93 billion on infras=
+tructure in 2025, up from a forecast of $75 billion. The company announced =
+a $40 billion project to add 3 data centers in Texas through 2027. It also&=
+nbsp;committed $15 billion to a project in India, announced roughly $6 bill=
+ion in investments in Germany, and rolled out new or expanded projects in A=
+ustralia, Malaysia, and Uruguay.</li>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Yes, but:<=
+/span> Can the U.S. economy and infrastructure support such immense investm=
+ents? There are reasons to wonder.</p>
+<ul style=3D"line-height:150%">
+<li aria-level=3D"1">The expense of the data-center buildout will <a href=
+=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW6=
+1GJ2lTW6R-97G5Hy4BhN7zrx065nR3bW5BWr2F6lZ3kBW1YpnvX6SPNFFN7x03Gy4KWxlW93Bb6=
+C3cVypDW58MLPG8zM_M_MgZqB_mGQ60W4dgC3n56jrQKW17Wl5b79NyX2W928LQJ606WL8W5Hv1=
+h_69s74rN7F6J_B7ll6KW7CD4f71qq_jhW16W0-d5TxnYwW1vzvL57xHPf_W27jvPG4hLyThW1m=
+j0v75ChWCWW56m6T5306PgHW9cKS3C7gSgDGVthrT15s4tF5W5NRLCK4NsCM8VC9fz04z--vVW8=
+9vPF84Stff1W6QqrYP6qYK8HW7qLT3r7KyQ6qW4g371d2gy3VTW7X3Q_j8cK-MWW70GybM6B0zx=
+_W6H_GQm5plvlkW96qq4J1ZlwWGW532h9F8QNKG9W6-xygN4RbzzwW4jrMTZ3Yj51SW3PTnD21t=
+BMxVW1jtr7C8BC52cW8Nlh7f5B1Z74f6DvqN204" rel=3D"noopener" style=3D"color:#2=
+37b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"6ulNkVvk" target=3D"_bla=
+nk">require</a> an estimated $2 trillion in annual AI revenue by 2030, acco=
+rding to consultants at Bain &amp; Co. That would be more than the combined=
+ 2024 earnings of&nbsp; Amazon, Apple, Alphabet, Microsoft, Meta, and Nvidi=
+a.</li>
+<li aria-level=3D"1">The current electric grid may be insufficient to power=
+ these data centers. Two facilities in Silicon Valley are sitting idle beca=
+use local utilities don=E2=80=99t have the capacity to connect them to the =
+grid, <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg=
+5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5nR3bW50kH_H6lZ3mZW98m3l-70GxTbW8v1c=
+hS4xgZhcW6v-yRk1t9_B-W2MY5Gv344ZZ_W4BSY1N3KVPygW3-qpVR1KbqV1W8CpJ_P4K2pPtW9=
+0qcwD8V1wMLW835XsG40YyZGDPPd0rGw4mV3jz4l90gbGmN9f2b6WC-1rvW2Mn10n365CxnN8dp=
+tXb7Z7VnW4Smy302LQ0xKW6MDq5T6C3fyxW8Cxhf_7Q6mzZN8XCpgCQ1shdW2MVsnY7mjxh3W7s=
+ybjZ13dFkhW3nDwW15R0PtYN3kxHnXkqFRQW8RbMZx2Xjw9kW2TyWwv4pjlGWVTRRt74LncyLV4=
+HhJS5BMt4nVmsS5y5rV6WZW1jTpcP3ZY-rzW3c3y0F3qRdG6W1ntJkV95GybQW7KPBHF483VFDN=
+1v4nN5PYv9df1QXpKC04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link=
+-id=3D"0" data-hs-link-id-v2=3D"Nv1rZssN" target=3D"_blank">according to</a=
+> <span style=3D"font-style: italic;">Bloomberg.</span></li>
+<li aria-level=3D"1">In mid-December, Blue Owl Capital, which had been in t=
+alks to help finance a $10 billion data center for Oracle and OpenAI, pulle=
+d out of the deal, <span style=3D"font-style: italic;">Financial Times</spa=
+n> <a  href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r=
+35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1j3qgz0W7Y8-PT6lZ3pqW6n50PH8wVWyDW2V1mzP=
+68FB0QW8RYg951lB09HW622nG37V_VgCW3zzgH830WKJsW4q3YyR8jlSt4W30-QrZ3lzDRVW7S1=
+cf24MwbkCW6LqtD97K315LW1lYJtl8nn6cLW9hgwWQ3Bm3yRW10gM_N62T7KKW1ZBY2M2Dz1W_N=
+4D2dy6hw5GTW4QSW3s1W77G1W2dFhcT7lFTL_W4Gs-154c65mcW98twBf1G_L_FW8xVH-N14mx7=
+fW5q11xT5Y68D4W18F0W292g8L0W8gvQ614g3BwcMNg5GrNk-0vW1ZK3t28LlyWgW6386MT7hfw=
+67W7qYhHH30LtvTf2p5Q3b04" rel=3D"noopener" style=3D"color:#237b94" data-hs-=
+link-id=3D"0" data-hs-link-id-v2=3D"Rl3ucoUG" target=3D"_blank">reported</a=
+>. The report cited concerns about Oracle=E2=80=99s growing debt amid the d=
+ata-center buildout. Blue Owl continues to finance other Oracle-OpenAI data=
+-center projects.</li>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Where thin=
+gs stand:</span> Despite concerns about an AI bubble, the boom in building =
+infrastructure is generating real jobs and sales in an otherwise tepid econ=
+omy. Investment in data centers and AI accounted for nearly all the growth =
+of the U.S. gross domestic product in the first half of 2025, according to =
+Harvard economist Jason Furman. At this stage, there is evidence to back th=
+e idea that 2025 lifted the curtain on a new industrial age.</p>
+<p style=3D"line-height:150%">&nbsp;</p></div></div>
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" class=3D"" style=3D""><tbody><tr><td style=3D"font-family:Helvetica,=
+ Arial, sans-serif; font-size:18px; color:#3b3b3b; word-break:break-word; p=
+adding:0px 0px 10px"><div id=3D"hs_cos_wrapper_module_17661668428141" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><table role=3D"none" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"vertical-align:top"=
+ width=3D"100%">
+  <tbody><tr>
+    <td align=3D"center" style=3D"font-family:Helvetica, Arial, sans-serif;=
+ color:#3b3b3b; font-size:0; word-break:break-word">
+      <p style=3D"font-size:1px;border-top:1px solid #000000;width:100%;mar=
+gin:0 auto;"></p>
+      <!--[if mso]>
+        <table role=3D"none" align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"font-size:1px;border-top:1px solid #000000;wid=
+th:600px;">
+          <tr>
+            <td style=3D"height:0;line-height:0">&nbsp;</td>
+          </tr>
+        </table>
+      <![endif]-->
+    </td>
+  </tr>
+</tbody></table></div></td></tr></tbody></table>
+<div id=3D"hs_cos_wrapper_module_17661668514032" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"pr=
+esentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"font-family:Helvetica, A=
+rial, sans-serif; color:#3b3b3b; word-break:break-word; text-align:center; =
+padding:5px 0px 10px; font-size:0px">
+        <img alt=3D"Mice on a laptop keyboard explore, with code on screen;=
+ background features festive lights, presents." src=3D"https://info.deeplea=
+rning.ai/hs-fs/hubfs/HolidayMouseMessage_1200px.jpg?width=3D1200&amp;upscal=
+e=3Dtrue&amp;name=3DHolidayMouseMessage_1200px.jpg" style=3D"outline:none; =
+text-decoration:none; max-width:100%; font-size:16px" width=3D"600" align=
+=3D"middle" class=3D"stretch-on-mobile">
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+<div id=3D"hs_cos_wrapper_module_17661668602443" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_module_176616686024=
+43_" class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich=
+_text" style=3D"color: inherit; font-size: inherit; line-height: inherit;" =
+data-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><h1 styl=
+e=3D"margin:0; font-family:Helvetica, Arial, sans-serif; line-height:125%; =
+font-size:32px; font-weight:bold">Agents Write Code Faster, Cheaper</h1>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%">Coding apps moved&nbsp;beyond&nbsp;autofill-s=
+tyle code completion to agentic systems that manage a wide range of softwar=
+e development tasks.</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">What happe=
+ned:</span> Coding emerged as the&nbsp;application of agentic workflows wit=
+h the most immediate business value. Claude Code, Google Gemini CLI,&nbsp;O=
+penAI Codex and other apps turned coding agents into one of Big AI=E2=80=99=
+s fiercest competitive battlegrounds. Smaller competitors developed their o=
+wn agentic models to remain in the game.</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Driving th=
+e story:</span> When Devin, the pioneering agentic code generator, arrived =
+in 2024, it raised the state of the art on the SWE-Bench benchmark of codin=
+g challenges from 1.96 percent to 13.86 percent. In 2025, coding agents tha=
+t use the latest large language models routinely completed more than 80 per=
+cent of the same tasks. Developers embraced increasingly sophisticated agen=
+tic frameworks that enable models to work with agentic planners and critics=
+, use tools like web search or terminal emulation, and manipulate entire co=
+de bases.</p>
+<ul style=3D"line-height:150%">
+<li aria-level=3D"1">When reasoning models arrived late in 2024, they immed=
+iately boosted coding power and cut costs, as reasoning enabled agents to m=
+ap out tasks to be completed by less expensive models. The addition of vari=
+able reasoning budgets made it easier for agents to use a single model, dev=
+oting more tokens to planning and fewer to making simple edits. By the end =
+of 2025, <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWb=
+Qxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0q5nR3bW69t95C6lZ3mMW1_Wtpn7X9WxcW2=
+6NsnC5nB75kW6yj8K08lB5_SN3SDzdG_ChjsW7P09Z21zZjT8W402k_T79lhXDN2K-tBzsXfDyW=
+941XN-7xNg9jN6g646Qxr4ZmW7S716W80mMfZN8sB4gKBJ9wGW4sHWJ43_b55ZW26p7pB607F-J=
+W2JDczn8M8HlBW5smWFP3v2bRbW7XN3gr6BrTmXN6DM29zkcClcW36Hmhg33Rkz9W1qVBJR1wt2=
+pLW7kdjMr8ph1yXW8qvgY55Swmf4W7R5CQx91p3QcW4-jV9F18zLmnW7fBq0c7yrqHJW7cNKck4=
+5b_dSW8cs6jq7fp_NVN2dk2BvqbRyyN1hJy0McPwDQW65gFQv8ZHlkVN8QBk3SzWSlgW20M4Ws8=
+Qbc45W7bDglJ67pcFHW7Nz8MY4ZgPG3W2W6C_F4g0n_1W5xqBgD3kFZJVW4B2fJ067qPB4f3mcW=
+Jv04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-h=
+s-link-id-v2=3D"noT70oyF" target=3D"_blank">Gemini 3 Pro</a>, <a href=3D"ht=
+tps://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lT=
+W6R-97G5Hy4BhN7zrx065nR3bW5BWr2F6lZ3kXW8NS4QS42ZBSSW8l89D57zzknWW7L-HhZ72DT=
+2JN125mbBkTnkFW79NWpM4nYfZ7N77lLg02FxdsW4wM5cL2yPPV0N8QVR1LBQMRxV2R-VK27SJX=
+JW4m3v9d87rttLW28CFf-4NJCn5W8Jq1sk5CnXdGVStJPy5270x6F6v6nlR38lRW84GGrp7w5L5=
+1W68D16G3bCPZmW4rZr2b8VlynKW3y413Q5CvgmlW6y_XGc3yB4qbW3ShbK726R1V9VLtCyl8y1=
+jWNW7H_zPk4t8vvmW2hYZxR1LP8KjW2y6fVs8hvm28W8QV2BS8yzBFzW65P0Tb7pLbmRW5YjZj-=
+6X-h1jW7MMm-c6tbNsYW4fybgt3sYB1pW8ChVrZ735Jx3W7_mrzk3WQ2lVW5DC6mv5_k42MW58h=
+k8-2ZmHtlVy_dsK6qGKFSf8fwX2s04" rel=3D"noopener" style=3D"color:#237b94" da=
+ta-hs-link-id=3D"0" data-hs-link-id-v2=3D"lME3ml/2" target=3D"_blank">Claud=
+e Opus 4.5</a>, and <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/=
+cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrw_R5nR3bW50kH_H6lZ3mNW4nh=
+fy48kxwlDW35c5Cg1p5Nx9W37zg1_71fhH8N7GXk8MKXsV0W17n56X1gwY9DW5tgKFB49kMDbW8=
+3KWC76mLrwPW77wT_S8jGxDkN2MG10nnDlJXW8QpmRq3NcXsgW1056Jm1BPw1xW5Lp8fT6FYNcl=
+W8K2vzs7XVL9FW6Bpdb86G4f5XW2v6D_v7lpT2kW2zWNqH5RNP7MW5gqVxw5Chw6sW2-KLNd5Yw=
+ZPtVNY5rd7DzpMnW6mbLfz28FQ4tVMCt5h8jQXHMW1XwN9v3lnV_bW2LKq8F5qtmKnW5D6wZ_5G=
+WbgbW2Mz0jT1xSf9jW4Q6Ykb4p5V1fW57n_YF78ggN3W4cqRfX31S38jN6tD7t9mRXQyV99S468=
+KdgBYN6HMsb19ZZlFN36zr4pRpHywd5406d04" rel=3D"noopener" style=3D"color:#237=
+b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"ZkS9Z5MI" target=3D"_blank=
+">GPT-5.2</a> emerged as top models for coding and agentic workflows.</li>
+<li aria-level=3D"1">Open-weights models quickly followed. <a href=3D"https=
+://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R=
+-97G5Hy4BhN7zrx0K5nR3bW6N1X8z6lZ3pRW6c3skB7v8D_2W5ScNZZ3G4SqGW2X0jyy2nXR8xW=
+8D939P8LJXgDW2WpKwK7C8ny9W6BNTMf6npYhxVs_H-Q947LQ5W7YKkfq53sQ9DW8P1rWR8h4Wj=
+YW1k_MC64LbqMNW8MJvZ53dQK0-W2FqfmT9fXz7jW1BN2Wb8m_F6SW2Fj79F4gX4HxW3Hnq4y7v=
+0D7bMlHlvqB5TBYW13DBGV8bXBVtW43_MNC4VpHgcW3M_vSH1yZ7m6W2R2jsk7V-Fk1W5Ry6LV6=
+djXRTN1b1SWrzMPB4W19vgb12rD-MrW4dMBnX4F_yhSW36GJDv7_RhRHW7TKscR7rZcjRN1hX_j=
+cFw43WVFs1HS66FxSnW1DcLRx8ZmnznM43FYySg_6WW7n4Vmd50c17SW49Z_HK41_tCZN8h6qQT=
+lRyyVV2mwSG5mN3vVW15bWp82bYPXdW533byM69Y6bCW72wp626kbXTMW7WYm3r7VjyKbdmPTPd=
+04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-=
+link-id-v2=3D"6rL1Mt/j" target=3D"_blank">Z.ai GLM-4.5</a> and <a href=3D"h=
+ttps://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2l=
+TW6R-97G5Hy4BhN7zrx065nR3bW5BWr2F6lZ3pQV4wWvT6bdsWBW5bmdRn5VvlmjN5gGH0nkV5J=
+kW6p4QJ72fZytpVKnbmC22nfQyW44fWrd1QT3tJW69gDjp2wv7dNV2TyD-5rx_ZpVzKqm35tdlw=
+-W5j6vNJ9h-w5qW3R00BX6P6FTwN3y5twFW0GKRW2HgtpG361s6fN4wd7rqGkfx1Vtmqr57g0ps=
+tN3LlTKgY1PdsW72t_091jtzgdW68pSb-2WHS-xW44M4LF2lGH4rW30KxrK1v1kwLW6yy7rf8jX=
+bZkW97r-261xBjKrN92Pm_LzPhDfW1Bk0GV5M2J8gW7CK3mZ6L1Q4YW52R_QZ5zDRx7W5q6PrN5=
+4H7_MW6BB9b86MTmQ8W8LSgGY6xScVzW60Fh212C1DkhW1GwCxM79vPxkM9n0VGNd2RKVtjyFs2=
+y4yVnW4GMKD27805KTf8Lgv9Y04" rel=3D"noopener" style=3D"color:#237b94" data-=
+hs-link-id=3D"0" data-hs-link-id-v2=3D"epPTcph3" target=3D"_blank">Moonshot=
+ Kimi K2</a>&nbsp;emerged as open-weights favorites, enabling automated-cod=
+ing startups to cut their costs dramatically. Released in July, <a href=3D"=
+https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2=
+lTW6R-97G5Hy4BhN7zrx065nR3bW5BWr2F6lZ3mXVl43w84Pc0GKW1nfclx1J1pBnN2l7Q_x83T=
+MbW5jLCZx1wtnJgW80BVPK7RcwwBN8cX5Kngy_jZW7kcfkB7vD06sW2Jw25P93BCN1W1t-G765H=
+yHc-W1-ZBhB8K6k4GW7t_dcj1QsPqTW5NCXcV5jZ9QjVGgB1B5S2jzKW98M5tQ8FtpJwVT8S9W8=
+pJvf0W1RpH3m1mXBrZW5G28P_4PHsCvW4v9vYl5qPJFjW77Jmv01rwwblW3MTYv23rY50sW8fCf=
+YG24G5gRW1HPgdy1znh2dN6RGmVMn0NqBVkRVRL3ctl1jW13v1G15bTmqkW4yxBNr4G6KWMN8T8=
+RyMz7SN9W99JTYq3yJlcYW6j1gcM7tghs7W3cYc-Q4KH8V4W4lgXGS520m8TW6TwbDs2hTZ44W8=
+Fg9-z3qtQ6XW2-1TKt6WvcS2f4hk6SF04" rel=3D"noopener" style=3D"color:#237b94"=
+ data-hs-link-id=3D"0" data-hs-link-id-v2=3D"R4+j1Qbj" target=3D"_blank">Qw=
+en3-Coder</a> provided a hefty 480 billion-parameter model trained on over =
+5 trillion tokens of code, nearly matching the performance of Claude Sonnet=
+ 4.</li>
+<li aria-level=3D"1">Anthropic wrapped an agentic framework around Claude t=
+o create an application: Claude Code. Introduced in February, Claude Code w=
+as an instant hit and set expectations for what agentic coding systems shou=
+ld do. OpenAI responded with its <a href=3D"https://info.deeplearning.ai/e3=
+t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx065nR3bW5BW=
+r2F6lZ3mkW68zWX17qkhkSW7Gr20L4wf36-N6VD_9GhXWdsW8lVPSs4dL27YW6bXw5V37HstXW2=
+wHZLS3QckD4W931ppK982rYrW7-K0LG7qmD4qW5KXVQG7rThnWW1PDMjc4lXbr6W48ysHF95vJT=
+PW60t3lr2HWFHFW5BSWHK2B1lrHN2NYWwjppsD1N5hJq_cjwfzhW2qSjM04fN6fgW8-yMQX8rmc=
+mqW8F1YjZ6KgM65W1XP9kY3HVlJnW8dhnhT6dL0K2VDKJ296F21jWW15FQ2j31KjsRW1qyZX321=
+V6f0W4Xvs_N2nbSt6W7KTvs42wyyslW8p327g7q33NwW7ntRbB2ddf6DW3Z6kKc6PKQDvVDbV9D=
+24yzwDW1JVSlm5ZstR8W1zM-zF9k62GGW3TzJxx8LC4qkW1wvzZ_9dGW3tW7cX3g9734NsNf8S1=
+Tb404" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-=
+hs-link-id-v2=3D"QbUoGodg" target=3D"_blank">Codex</a> application based on=
+ coding-specialized versions of its GPT-5 series. Where Claude Code initial=
+ly ran locally, the Codex app ran in a browser, helping to popularize codin=
+g agents that run in the cloud. By the end of the year, these agents were a=
+ble to manage longer-running problems using multiple sub-agents =E2=80=94 t=
+ypically an initializer to start tasks and track progress and various codin=
+g agents to complete different tasks =E2=80=94 each with its own context wi=
+ndow.</li>
+<li aria-level=3D"1">A tug-of-war between model makers and developers of in=
+tegrated development environments (IDEs) led popular IDE providers like Any=
+sphere (Cursor) and Cognition AI (Windsurf) to build their own models. Conv=
+ersely, Google built its own IDE, Antigravity, which debuted in November.</=
+li>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Behind the=
+ news:</span> Agentic systems steadily ratcheted up the state of the art on=
+ the popular SWE-Bench coding benchmark, and researchers looked for alterna=
+te ways to evaluate their performance.</p>
+<ul style=3D"line-height:150%">
+<li>These efforts led to SWE-Bench Verified, SWE-Bench Pro, LiveBench, Term=
+inal-Bench, =F0=9D=9C=8F-Bench, CodeClash, and others.</li>
+<li>Because different providers trust (or cherry-pick) different benchmarks=
+, it has become more difficult to evaluate agents=E2=80=99 performance. Cho=
+osing the right agent for a particular task remains a challenge.</li>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Yes, but: =
+</span>At the beginning of 2025, most observers agreed that agents were goo=
+d for generating run-of-the-mill code, documentation, and unit tests, but e=
+xperienced human engineers and product managers performed better on higher-=
+order strategic problems. By the end of the year, companies reported automa=
+ting senior-level tasks. Microsoft, Google, Amazon, and Anthropic said they=
+ were generating increasing quantities of their own code.</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Where thin=
+gs stand:</span> In a short time, agentic coding has propelled vibe-coding =
+from puzzling buzzword to burgeoning industry. Startups like Loveable, Repl=
+it, and Vercel enable users who have little or no coding experience to buil=
+d web applications from scratch. While some observers worried that AI would=
+ replace junior developers, it turns out that developers who are skilled at=
+ using AI can prototype applications better and faster. Soon, AI-assisted c=
+oding may be regarded as simply coding, just as spellcheck and auto-complet=
+e are part of writing.</p>
+<p style=3D"line-height:150%">&nbsp;</p></div></div>
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" class=3D"" style=3D""><tbody><tr><td style=3D"font-family:Helvetica,=
+ Arial, sans-serif; font-size:18px; color:#3b3b3b; word-break:break-word; p=
+adding:0px 0px 10px"><div id=3D"hs_cos_wrapper_hs_email_body_old25" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><table role=3D"none" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"vertical-align:top"=
+ width=3D"100%">
+  <tbody><tr>
+    <td align=3D"center" style=3D"font-family:Helvetica, Arial, sans-serif;=
+ color:#3b3b3b; font-size:0; word-break:break-word">
+      <p style=3D"font-size:1px;border-top:1px solid #000000;width:100%;mar=
+gin:0 auto;"></p>
+      <!--[if mso]>
+        <table role=3D"none" align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"font-size:1px;border-top:1px solid #000000;wid=
+th:600px;">
+          <tr>
+            <td style=3D"height:0;line-height:0">&nbsp;</td>
+          </tr>
+        </table>
+      <![endif]-->
+    </td>
+  </tr>
+</tbody></table></div></td></tr></tbody></table>
+<div id=3D"hs_cos_wrapper_module_17370394878062" class=3D"hs_cos_wrapper hs=
+_cos_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; fo=
+nt-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget=
+" data-hs-cos-type=3D"module"><table class=3D"hse-image-wrapper" role=3D"pr=
+esentation" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"font-family:Helvetica, A=
+rial, sans-serif; color:#3b3b3b; word-break:break-word; text-align:center; =
+padding:5px 0px 10px; font-size:0px">
+        <img alt=3D"Two snow-covered tree plantations divided by a large wa=
+ll under a clear blue sky." src=3D"https://info.deeplearning.ai/hs-fs/hubfs=
+/XmasTreeFarms_1200px_Firefly_287300.jpg?width=3D1200&amp;upscale=3Dtrue&am=
+p;name=3DXmasTreeFarms_1200px_Firefly_287300.jpg" style=3D"outline:none; te=
+xt-decoration:none; max-width:100%; font-size:16px" width=3D"600" align=3D"=
+middle" class=3D"stretch-on-mobile">
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+<div id=3D"hs_cos_wrapper_hs_email_body_old21" class=3D"hs_cos_wrapper hs_c=
+os_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font=
+-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" =
+data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_hs_email_body_old21_"=
+ class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_tex=
+t" style=3D"color: inherit; font-size: inherit; line-height: inherit;" data=
+-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><h1 style=3D=
+"margin:0; font-family:Helvetica, Arial, sans-serif; line-height:125%; font=
+-size:32px; font-weight:bold">China=E2=80=99s AI Chip Industry Takes Root</=
+h1>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%">The United States government=E2=80=99s effort=
+ to deprive China of AI computing power backfired as China turned the table=
+s and banned U.S.-designed chips.</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">What happe=
+ned:</span> China=E2=80=99s government issued a directive that all new stat=
+e-funded data centers must be built using chips made by domestic suppliers,=
+ <span style=3D"font-style: italic;">Reuters</span> <a  href=3D"https://inf=
+o.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5H=
+y4BhN7zrw_R5nR3bW50kH_H6lZ3pcN6Bkg-72_JFNW3NDWsP8z6sqfW3tLfSc1t1L5sW6kzRKy3=
+5bcWYN2ddV4Wt_QQcW5D1G0r2jf-gTN7dFVDbhsvMzW4XZGk_92qFMPN3Tk8R5MCrdzW82Lnfz7=
+WbZmjVLqwJq3-9p4NMHf6fKYwvnMW7DwSTd3GnJ3rV1wpZk7sPnhGW2YnHg61_wVc7N7rJk3h7Y=
+1_hW1fGG6V31L7PCW1f_rDj2KjdCyW1qc1-m5Zk6Z1N2TzQzKHL2CGW3d7xjv8TsS17W2bX1MT4=
+_HH5lW8Y9PLW90-GrCN8nMrYjM19BpW55wfG84G2_z4W12s_p82ynDKyW7_PlkM43ZV17W2MjsB=
+Q2rHbV_W7w8PGy8S4Hk3VtCW5l5d9QcnN5RDNv5gd34hW7BLmK68-n65mf4PZ_zj04" rel=3D"=
+noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=
+=3D"DkdmXuBf" target=3D"_blank">reported</a> in November. The policy emerge=
+d shortly after the U.S. <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX=
++113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx065nR3bW5BWr2F6lZ3p=
+kW7cbZqm3HKYgYW66W_PM4FlmJhW2vf_Jl6lTZdzW7flpxb3nPCNZW1pDQhR76QGdSW5x-jrk77=
+rwV3W1Zp4zM6HgT1nW91dYPZ1v7QVQW4zSLjf4QDXqbW6H87wb4P7pH5VYB15R9fb_jdW827kvj=
+7mMrC6N5KCMMmcrwydW3r6y3F8q0BbfW1FL-WX2sD4fwW2wP8z68KZX4WN23K_9Y-z1FXW6kfbJ=
+X8TkPk6W8CqmSP7g2HnMW5Hnz041SDfyDW1HJDyH6x7JjlW2MYcmD4t0LMNW176j7F1MMwxpW3r=
+s75H95FtWmW3Qlrm94Y81btW2Fjq7p7GbL19W5-LsYw1mHzbwW5T7hjF3n7rWxVjbngN1HPxW7W=
+8nJRsB5pGjS9VnVdNW7DQcVMVBSmvR2NcR3fW6nr1tv2RR2V_W3hPT1L8DS_ryf5R4bs804" re=
+l=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-i=
+d-v2=3D"DDIl1d4j" target=3D"_blank">reversed</a> its years-long ban on sale=
+s to China of advanced chips manufactured using U.S. technology, including =
+products of AI-chip leader Nvidia and its rival AMD. Rather than constrain =
+China, U.S. policies spurred investment and innovation in China=E2=80=99s s=
+emiconductor industry.</p>
+<p style=3D"line-height:150%">&nbsp;</p>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Driving th=
+e story:</span> The U.S. government aimed to block China=E2=80=99s access t=
+o AI on the belief that the technology would have as much geopolitical impo=
+rtance as oil. President Trump took a hard line in his first term from 2017=
+ to 2020, limiting China=E2=80=99s access to cutting-edge technology, and h=
+e doubled down on this policy throughout 2025. However, the U.S. approach l=
+ooked increasingly untenable as China=E2=80=99s semiconductor industry made=
+ surprising progress, the immense economic value of the AI chip market beca=
+me clear, and trade restrictions locked Nvidia, now one of the world=E2=80=
+=99s most valuable companies, out of its largest potential market.</p>
+<ul style=3D"line-height:150%">
+<li aria-level=3D"1">In April, Trump <a href=3D"https://info.deeplearning.a=
+i/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx065nR3b=
+W5BWr2F6lZ3m0W33XKLf6j-9x1N4Xd5kS5hfvbW8pNnvw7K3cqhVCy6Xx3BsW0bN5SX0nQT9RGx=
+W62V06l8DK_NwN1pfrgFWhZqjN7Z_R5k_v0MFM-MtyvQLQ_DN4Y-TDDb8_s6W6gHjjw75tKRhW4=
+fFf2d87zBhRW2SVZnF4nszGwW51j1tS26cW-8W8ZKGZ13D9VmdW5r0hkS3-6XNdW7pdVgR36Dx9=
+RW77Pj1y18mm_hW1DDT_61-y5RlW49qNQG5-SKd2W8c2wm14bLpKmW93JgKz2BpLPGW5HgkJt24=
+q_QJW2tlBg36m4ZKKW1jXLV45ZG2ZvW3BsMYS8DgWH6W1GvG0s2-lYXQW4kPlMh5V1MDRW1xJdQ=
+77n_j_nW4DCNWM6Zp2DxVRGPnw7zgp34W1xZ1fj8HyLSZW5hw8j71vsCbMW1NfH2H6TFcFHf1Xn=
+Q8-04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0" data-=
+hs-link-id-v2=3D"PhhqaKTQ" target=3D"_blank">blocked</a>&nbsp;sales to Chin=
+a of Nvidia and AMD=E2=80=99s lower-performing chips, which had been design=
+ed to satisfy earlier export controls. Nvidia said the tighter restrictions=
+ cost the company $5.5 billion.</li>
+<li aria-level=3D"1">China=E2=80=99s Huawei CloudMatrix 384 system proved c=
+apable of delivering performance that rivals competing Nvidia systems. A cl=
+uster of 384 Huawei Ascend 910C chips, the system consumes significantly mo=
+re energy to power 5 times as many chips as Nvidia=E2=80=99s systems.</li>
+<li aria-level=3D"1">In August, after Nvidia and AMD met with President Tru=
+mp, who subsequently met with China=E2=80=99s President Xi Jinping, the Whi=
+te House reversed course. The U.S. reauthorized sales to China of made-for-=
+export chips under an unprecedented deal that required U.S. chip vendors to=
+ give the government 15 percent of any resulting revenue.&nbsp;</li>
+<li aria-level=3D"1">In October, exploding demand for AI hardware temporari=
+ly drove Nvidia=E2=80=99s market capitalization beyond a staggering $5 tril=
+lion, up from $3 trillion in mid-2024. Consequently, shutting the company o=
+ut of China potentially limited the company=E2=80=99s value by tens of bill=
+ions of dollars.</li>
+<li aria-level=3D"1">China responded to the energy-inefficiency of its dome=
+stic chips by offering energy subsidies of up to 50 percent to companies th=
+at purchased chips made by Huawei and other domestic suppliers. Over the pa=
+st 15 years, China=E2=80=99s ability to generate electrical power&nbsp;has =
+surged while U.S. power generation has remained relatively flat, according =
+to <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r3=
+5BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1C3qgz0W8wLKSR6lZ3pCN14bCy9FWYhVW8Vt97q6Q=
+QFnnN6T-7d0s5qZhW3rHjR47l54GgN2bF8Hv-S2_qW22jj9t7tK5H4W4hh7DY3rcz1nW1L9-x53=
+2N1T9W5VfF1r4ZzRf6W4Rx9qL3rfx0_W2zn9-45X0jt1W7NSd794Mc8zwW1KRVt761wpVBW6Gbj=
+gk2X5YzGW7zQtNY5PrVlsW8skKjZ3P5b5zW7TjzPN3Hv-b9W3JmrP291K3KrW20ZrVT7qp_YXVf=
+l-Tg5l_KFKW5vcpJ45nXQdTW4jz5Z414QF2kW67JNgm3CnwK4W63NltJ4rxqh_W8GzxrT34slcJ=
+W3pklhH2r623KW53m2WN1VX_rrW4s0W5n6BN9H0f4Hm-mK04" rel=3D"noopener" style=3D=
+"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"qe1J008q" targe=
+t=3D"_blank">data</a> from the International Energy Association. In 2025, P=
+resident Trump signed executive orders to make more federal land available =
+for lease and development by the energy industry and to fast track permitti=
+ng for&nbsp;nuclear reactors.&nbsp;</li>
+<li aria-level=3D"1">In November, after China banned U.S. chips, President =
+Trump further <a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/cJhC40=
+4/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx1C3qgz0W8wLKSR6lZ3lgW9l2nBF4Kr=
+YBcW345f5y6V_GV3W8fn-tk46Fk_7W1N5dl4565RGTW5fptkj4bSxDpW89cWhk5t0PtxW23t7mX=
+3GK5jbVKg-tJ96lTHjW8vBXdy3cP8-kW5L9P_y5YTpGSW8VBgv69cwcdvW415r202jKmZqW2XC7=
+Ks2rwfCBW7kVzr53X7WgCW1fqM2v60R2C7W6FmhV01MlXhRW7CFV2z6B8MLNW8VGjcY6Qq2nNW8=
+n74xr3KXh2rW5Kzk0t7fg4fQW8ZgG247_MXTXV7ZKTn5xCRwYW5JB8mH3qR6WdW28F2JL8sVM-_=
+VXy2m66dkdD8VhKjqc3HtgK8W69x0Y14RC8LJW6vlKhN5cyyLXf7RtgTx04" rel=3D"noopene=
+r" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"ze5H=
+kb8v" target=3D"_blank">softened</a>&nbsp;U.S. restrictions, allowing Nvidi=
+a and AMD to sell their made-for-export chips.</li>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Behind the=
+ news:</span> U.S. efforts met with some success denying China access to th=
+e latest chip-manufacturing equipment. However, with respect to the chips t=
+hemselves, the U.S. barriers proved to be porous.&nbsp;</p>
+<ul style=3D"line-height:150%">
+<li aria-level=3D"1">A thriving market for high-end Nvidia chips sprang up =
+in China=E2=80=99s tech hub of Shanzhen.</li>
+<li aria-level=3D"1">Chinese tech giants including Alibaba and ByteDance re=
+portedly gained access to advanced AI computing power through cloud vendors=
+ who operate legally in other countries.</li>
+<li aria-level=3D"1">DeepSeek reportedly stockpiled earlier Nvidia chips in=
+ advance of U.S. restrictions and optimized its DeepSeek-R1 and DeepSeek-V3=
+ models to run well on outdated hardware.&nbsp;</li>
+</ul>
+<p style=3D"line-height:150%"><span style=3D"font-weight: bold;">Where thin=
+gs stand:</span> China is signaling that it=E2=80=99s willing to do without=
+ American hardware. That may be a sign of confidence, given Huawei=E2=80=99=
+s progress. It may also be a bluff, as some authorities evaluate China=E2=
+=80=99s semiconductor industry still to be years behind the frontier of hig=
+h-volume chip fabrication. Either way, the hard-line U.S. strategy backfire=
+d, and its relaxation of trade restrictions is a concession to economic and=
+ diplomatic realities.</p>
+<p style=3D"line-height:150%">&nbsp;</p></div></div>
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" class=3D"" style=3D""><tbody><tr><td style=3D"font-family:Helvetica,=
+ Arial, sans-serif; font-size:18px; color:#3b3b3b; word-break:break-word; p=
+adding:0px 0px 10px"><div id=3D"hs_cos_wrapper_module_17370394853571" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><table role=3D"none" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"vertical-align:top"=
+ width=3D"100%">
+  <tbody><tr>
+    <td align=3D"center" style=3D"font-family:Helvetica, Arial, sans-serif;=
+ color:#3b3b3b; font-size:0; word-break:break-word">
+      <p style=3D"font-size:1px;border-top:1px solid #000000;width:100%;mar=
+gin:0 auto;"></p>
+      <!--[if mso]>
+        <table role=3D"none" align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"font-size:1px;border-top:1px solid #000000;wid=
+th:600px;">
+          <tr>
+            <td style=3D"height:0;line-height:0">&nbsp;</td>
+          </tr>
+        </table>
+      <![endif]-->
+    </td>
+  </tr>
+</tbody></table></div></td></tr></tbody></table>
+<div id=3D"hs_cos_wrapper_hs_email_body_old29" class=3D"hs_cos_wrapper hs_c=
+os_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font=
+-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" =
+data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_hs_email_body_old29_"=
+ class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_tex=
+t" style=3D"color: inherit; font-size: inherit; line-height: inherit;" data=
+-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><h1 style=3D=
+"margin:0; font-family:Helvetica, Arial, sans-serif; line-height:125%; font=
+-size:32px">Work With Andrew Ng</h1>
+<p style=3D"line-height:125%">&nbsp;</p>
+<p style=3D"line-height:150%">Join the teams that are bringing AI to the wo=
+rld! Check out job openings at&nbsp;<a href=3D"https://info.deeplearning.ai=
+/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx103qgz0W=
+7lCdLW6lZ3m8W2SScwH7THZTwW6fX-2p2pQm_nW5W_5gF6bWxTkW7JN8M46YX_ggW3GNvNR2T9L=
+4mW6Zhvnz31d8-GW4dqz1c2yYBhNW7fd4zn28Mt8wN4vLRqXTwyVjN1Tlv9kgVWY6W4300jj70L=
+9bXW7xxGxK92kN2mW6JWHxC65Rr0NW63pVwB8VqnGDW2ZMm9V4drDG4W5CT1dg3hzpR4W7c_6vK=
+54HPgPN8M1nzHB8kv7W8rLWM_7_QtjYW8CS1473RG_bqF2T-tyq7l4zW7kMJt168QGc3W1DR2CD=
+2p23V_W5GSDRv7h6xwgf7DB3L204" rel=3D"noopener" style=3D"color:#237b94" data=
+-hs-link-id=3D"0" data-hs-link-id-v2=3D"cXHQINQr" target=3D"_blank">DeepLea=
+rning.AI</a>,&nbsp;<a href=3D"https://info.deeplearning.ai/e3t/Ctc/LX+113/c=
+JhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3qgz0W6N1vHY6lZ3nCW55wr=
+Dg3Y1TcPVxV4wx5s86cNN88VXGK490LQW3Ysr6t68jYlCW4nNXXT6CRfdWW42Wwr676mxBMW1K7=
+wR17dkHy5N1JRzdxrQs-NW38hG-p438166MXhKMtkTqWSW2VMrsS4hBqH2W41WSGg1m2Jl6W3S3=
+3-z15-SqrW1HRC2g8TChH1W9kKQBY7kZrjwW6jtTMD16rmrPN5TlSXmzX8QJW3-MvHc2333VlV9=
+kqb-5p-nPRW55zybS7Yt49LW2xFPBF7yy4nhW159yM66NX71Df7G9x6H04" rel=3D"noopener=
+" style=3D"color:#237b94" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"Adxhx=
+V6z" target=3D"_blank">AI Fund</a>, and&nbsp;<a href=3D"https://info.deeple=
+arning.ai/e3t/Ctc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zr=
+x0K3qgz0W6N1vHY6lZ3pYW2JNYgl1b0rKMW4Fgnhr5wnsbZTmDS35zRKhcW3FVZZL2njZ4wW6jY=
+yW92Ds-_cW73kvym7lHh7GW5GQPHK3jY7tGW4kQTY83yPZGSW4dH02q5Wy_KdW68h9NZ1wS5x5V=
+WW0PQ7vRVQYW21x2-t7mtrRpW96nKhh7C2sd2W16yCmD8hyF46W5VSdm46p8dbyW5hbwBc26tVH=
+HW7Z0mgK2c35hYVBD8pM3qTG7jW64shSx8xMLY5N1x6zv4DtNg3W7Wr5Kd6-TzLmW3fjdVm751W=
+gdf6zkRVT04" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D"0"=
+ data-hs-link-id-v2=3D"FaIZABW0" target=3D"_blank">Landing AI</a>.</p>
+<p style=3D"line-height:150%">&nbsp;</p></div></div>
+  <table role=3D"presentation" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%" class=3D"" style=3D""><tbody><tr><td style=3D"font-family:Helvetica,=
+ Arial, sans-serif; font-size:18px; color:#3b3b3b; word-break:break-word; p=
+adding:0px 0px 10px"><div id=3D"hs_cos_wrapper_hs_email_body_old30" class=
+=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style=
+=3D"color: inherit; font-size: inherit; line-height: inherit;" data-hs-cos-=
+general-type=3D"widget" data-hs-cos-type=3D"module"><table role=3D"none" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"vertical-align:top"=
+ width=3D"100%">
+  <tbody><tr>
+    <td align=3D"center" style=3D"font-family:Helvetica, Arial, sans-serif;=
+ color:#3b3b3b; font-size:0; word-break:break-word">
+      <p style=3D"font-size:1px;border-top:1px solid #000000;width:100%;mar=
+gin:0 auto;"></p>
+      <!--[if mso]>
+        <table role=3D"none" align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"font-size:1px;border-top:1px solid #000000;wid=
+th:600px;">
+          <tr>
+            <td style=3D"height:0;line-height:0">&nbsp;</td>
+          </tr>
+        </table>
+      <![endif]-->
+    </td>
+  </tr>
+</tbody></table></div></td></tr></tbody></table>
+<div id=3D"hs_cos_wrapper_hs_email_body_old31" class=3D"hs_cos_wrapper hs_c=
+os_wrapper_widget hs_cos_wrapper_type_module" style=3D"color: inherit; font=
+-size: inherit; line-height: inherit;" data-hs-cos-general-type=3D"widget" =
+data-hs-cos-type=3D"module"><div id=3D"hs_cos_wrapper_hs_email_body_old31_"=
+ class=3D"hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_tex=
+t" style=3D"color: inherit; font-size: inherit; line-height: inherit;" data=
+-hs-cos-general-type=3D"widget" data-hs-cos-type=3D"rich_text"><p style=3D"=
+line-height:125%; font-size:14px; text-align:center" align=3D"center">Subsc=
+ribe and view previous issues <a href=3D"https://info.deeplearning.ai/e3t/C=
+tc/LX+113/cJhC404/VWbQxg5r35BVW62-nW61GJ2lTW6R-97G5Hy4BhN7zrx0K3lYM-W6N1vHY=
+6lZ3mMW1npkps1FcLp8W47cGG64SZN-QM1ds64WLVPlW4GW0S68zDBShW4zqTKq823_FXW6rVSb=
+N29WrnbW8M9X-W4YTHc7W3d11XT2pZM5NW68yDvv7_CVGXW2RdsC264Rtq_W5d0zfx3tcKszW7Y=
+vccD348cmDW7SKQm37RgRrmW1qSC3H7bybcfVC0YHN1Rsc8-W1nwMVN5s_j_5W585qbx2Z-cbJW=
+85Nh7R3HBkVTV9K0fm1n_HtTW21ytfY9lfBZ7W8BQNDB6bLPqHN1S5b1hwSXDsf6fvfRH04" ta=
+rget=3D"_blank" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=3D=
+"1" data-hs-link-id-v2=3D"E8V530aN">here</a>.</p>
+<p style=3D"line-height:125%; font-size:14px; text-align:center" align=3D"c=
+enter">&nbsp;</p>
+<p style=3D"line-height:125%; font-size:14px; text-align:center" align=3D"c=
+enter">Thoughts, suggestions, feedback? Please send to <a href=3D"mailto:th=
+ebatch@deeplearning.ai?subject=3DRE:%20Thoughts,%20Suggestions,%20feedback"=
+ target=3D"_blank" rel=3D"noopener" style=3D"color:#237b94" data-hs-link-id=
+=3D"0" data-hs-link-id-v2=3D"VCcUpJPM">thebatch@deeplearning.ai</a>. Avoid =
+our newsletter ending up in your spam folder by adding our email address to=
+ your contacts list.</p>
+<p style=3D"line-height:125%; font-size:14px; text-align:center" align=3D"c=
+enter">&nbsp;</p></div></div>
+<div id=3D"hs_cos_wrapper_footer" class=3D"hs_cos_wrapper hs_cos_wrapper_wi=
+dget hs_cos_wrapper_type_module" style=3D"color: inherit; font-size: inheri=
+t; line-height: inherit;" data-hs-cos-general-type=3D"widget" data-hs-cos-t=
+ype=3D"module"><table role=3D"presentation" class=3D"hse-footer hse-seconda=
+ry" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" style=3D"font-family=
+:Arial, sans-serif; font-size:12px; line-height:135%; color:#23496d; margin=
+-bottom:0; padding:0">
+  <tbody>
+    <tr>
+      <td align=3D"center" valign=3D"top" style=3D"font-family:Helvetica, A=
+rial, sans-serif; font-size:18px; color:#3b3b3b; word-break:break-word; tex=
+t-align:center; margin-bottom:0; line-height:135%; padding:10px 20px">
+        <p style=3D"font-family:Helvetica,Arial,sans-serif;font-size:14px;f=
+ont-weight:normal;text-decoration:none;font-style:normal;color:#3b3b3b">
+          DeepLearning.AI, 400 Castro St., Suite 600, Mountain View, CA 940=
+41, United States
+        </p>
+        <p>
+          <a data-unsubscribe=3D"true" href=3D"https://info.deeplearning.ai=
+/hs/preferences-center/en/direct?data=3DW2nXS-N30h-zfW36kV9B2KY4VBW3JTW3N4f=
+hDqDW1XpPzP2RMjHWW2xNZbm2FsjxxW2CF0QW2-st0VW3Kb3dT3_BxK6W3Ffmp4250VZsW2xtM4=
+k3SNZH8W386SY92Rj-9sW4mzpGW3Cg17CW1VrLGt3ZTjp6W2r8zwC2PyKv2W2FG8Ds23nybRW3B=
+V7gM2B0CFzW2WpZNN2Kx4y4W3_XXL42RtklhW2Htk_F3GKNGZW2MPTWS3J-lrYW2TRFnJ32Bdjq=
+W3dx6LB4tzBnXW2Wy-jH2KHQrFW1W-4Yv2WL1YrW2WPszb47Pt3TW3XNzvh3LHMB-W4rDcVl3JL=
+14pW3NDGJ33NDDYgW2Hy37w2MDJMkW24-mV-218ksWW4mrh833jsh9YW38fxt_3_T-hdW2RHxtG=
+32b0yJW3jvShp4kcVWBW3GKTRR4tG55cW3K5RP-4fw_CyW2z-zgK2WPQZwW2qFhW41VdTVLW1BG=
+jcR217VBqW2p9yCZ1ScRxDW2MGQ542-CPDkW2HsTVD45nb8xW2HH-w532B_RfW1Bpc8k2RQhZkW=
+2qCdGK3GYtvLW36zLwt36m3JgW3ZM43L3C9MdKW4kG6sG4fDXx0W1Sf4LV1SbBbrW22VWW81Z97=
+KcW2xzkXx2CFsmhW4hxf6d43pccyW4rBFQq3DKH73W1Xrw1p2Fvn9WW1Lzl7Y2-pyCQW3VLKkH3=
+4vQNgf3XvxdJ04&amp;utm_campaign=3DThe%20Batch&amp;utm_source=3Dhs_email&amp=
+;utm_medium=3Demail&amp;utm_content=3D395926826&amp;_hsenc=3Dp2ANqtz-9FiROk=
+v8-eGfzG4NP8zrs6jfgg5GKNo6R3waeMC_HfGWeSVwa-k4OmVWXyL0jpgGyzeAz689sbDLFDIOQ=
+4VVefcWKxjw&amp;_hsmi=3D395926826" style=3D"font-family:Helvetica,Arial,san=
+s-serif; font-size:10px; color:#3b3b3b; font-weight:normal; text-decoration=
+:underline; font-style:normal" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"=
+SFRZzEXk" target=3D"_blank">Unsubscribe</a>
+          <a data-unsubscribe=3D"true" href=3D"https://info.deeplearning.ai=
+/hs/preferences-center/en/page?data=3DW2nXS-N30h-zfW36kV9B2KY4VBW3JTW3N4fhD=
+qDW1XpPzP2RMjHWW2xNZbm2FsjxxW2CF0QW2-st0VW3Kb3dT3_BxK6W3Ffmp4250VZsW2xtM4k3=
+SNZH8W386SY92Rj-9sW4mzpGW3Cg17CW1VrLGt3ZTjp6W2r8zwC2PyKv2W2FG8Ds23nybRW3BV7=
+gM2B0CFzW2WpZNN2Kx4y4W3_XXL42RtklhW2Htk_F3GKNGZW2MPTWS3J-lrYW2TRFnJ32BdjqW3=
+dx6LB4tzBnXW2Wy-jH2KHQrFW1W-4Yv2WL1YrW2WPszb47Pt3TW3XNzvh3LHMB-W4rDcVl3JL14=
+pW3NDGJ33NDDYgW2Hy37w2MDJMkW24-mV-218ksWW4mrh833jsh9YW38fxt_3_T-hdW2RHxtG32=
+b0yJW3jvShp4kcVWBW3GKTRR4tG55cW3K5RP-4fw_CyW2z-zgK2WPQZwW2qFhW41VdTVLW1BGjc=
+R217VBqW2p9yCZ1ScRxDW2MGQ542-CPDkW2HsTVD45nb8xW2HH-w532B_RfW1Bpc8k2RQhZkW2q=
+CdGK3GYtvLW36zLwt36m3JgW3ZM43L3C9MdKW4kG6sG4fDXx0W1Sf4LV1SbBbrW22VWW81Z97Kc=
+W2xzkXx2CFsmhW4hxf6d43pccyW4rBFQq3DKH73W1Xrw1p2Fvn9WW1Lzl7Y2-pyCQW3VLKkH34v=
+QNgf3XvxdJ04&amp;utm_campaign=3DThe%20Batch&amp;utm_source=3Dhs_email&amp;u=
+tm_medium=3Demail&amp;utm_content=3D395926826&amp;_hsenc=3Dp2ANqtz-9FiROkv8=
+-eGfzG4NP8zrs6jfgg5GKNo6R3waeMC_HfGWeSVwa-k4OmVWXyL0jpgGyzeAz689sbDLFDIOQ4V=
+VefcWKxjw&amp;_hsmi=3D395926826" style=3D"font-family:Helvetica,Arial,sans-=
+serif; font-size:10px; color:#3b3b3b; font-weight:normal; text-decoration:u=
+nderline; font-style:normal" data-hs-link-id=3D"0" data-hs-link-id-v2=3D"qj=
+PJqCop" target=3D"_blank">Manage preferences</a>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+</div>
+<!--[if gte mso 9]></table><![endif]-->
+<!--[if (mso)|(IE)]></td><![endif]-->
+    <!--[if (mso)|(IE)]></tr></table><![endif]-->
+    </div>
+  =20
+      <!--[if gte mso 9]></td></tr></table><![endif]-->
+  =20
+  </div></div>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+ =20
+<img src=3D"https://info.deeplearning.ai/e3t/Cto/LX+113/cJhC404/VWbQxg5r35B=
+VW62-nW61GJ2lTW6R-97G5Hy4BhW7zrwNQ3Cy50v122" alt=3D"" width=3D"1" height=3D=
+"1" border=3D"0" style=3D"display:none!important;min-height:1px!important;w=
+idth:1px!important;border-width:0!important;margin-top:0!important;margin-b=
+ottom:0!important;margin-right:0!important;margin-left:0!important;padding-=
+top:0!important;padding-bottom:0!important;padding-right:0!important;paddin=
+g-left:0!important"></body></html>
+------=_Part_478179_488210762.1766779532686--
+

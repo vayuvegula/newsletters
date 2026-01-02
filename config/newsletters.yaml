@@ -1,0 +1,16 @@
+# Newsletter Whitelist
+# Add newsletters you want to process here
+
+newsletters:
+  - name: "The Batch"
+    email: "thebatch@deeplearning.ai"
+    type: "analysis"
+    priority: "high"
+    method: "structured"  # or "deep" for important issues
+    
+  # Add more newsletters here:
+  # - name: "TLDR"
+  #   email: "dan@tldrnewsletter.com"
+  #   type: "aggregator"
+  #   priority: "medium"
+  #   method: "deep"  # Link aggregators need deep extraction

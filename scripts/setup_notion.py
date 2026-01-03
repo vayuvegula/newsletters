@@ -57,21 +57,37 @@ def main():
 
     print("✅ Connection successful!")
 
-    # Create databases
-    print("\n📊 Creating databases...")
-    print("   (These will be created in your Notion workspace)")
+    # Get parent page
+    print("\n📄 Notion requires databases to be created inside a page.")
+    print("\nPlease follow these steps:")
+    print("  1. Go to https://notion.so")
+    print("  2. Create a new page (e.g., 'Newsletter Analysis')")
+    print("  3. Share it with your integration:")
+    print("     - Click '...' → 'Add connections' → Select your integration")
+    print("  4. Copy the page ID from the URL")
+    print("     URL format: https://www.notion.so/Page-Name-XXXXX")
+    print("     The page ID is the XXXXX part (32 characters)")
 
-    input("\nPress Enter to create databases...")
+    page_id = input("\nPaste the page ID here: ").strip()
+
+    # Remove any dashes if user copied with them
+    page_id = page_id.replace('-', '')
+
+    if len(page_id) != 32:
+        print(f"❌ Invalid page ID length: {len(page_id)} (expected 32)")
+        sys.exit(1)
+
+    print(f"\n📊 Creating databases in page {page_id[:8]}...")
 
     try:
         # Create Newsletter database
         print("\n1️⃣  Creating 'AI Newsletter Insights' database...")
-        newsletter_db_id = connector.create_newsletter_database()
+        newsletter_db_id = connector.create_newsletter_database(parent_page_id=page_id)
         print(f"   ✓ Database ID: {newsletter_db_id}")
 
         # Create Stories database
         print("\n2️⃣  Creating 'Newsletter Stories' database...")
-        stories_db_id = connector.create_stories_database()
+        stories_db_id = connector.create_stories_database(parent_page_id=page_id)
         print(f"   ✓ Database ID: {stories_db_id}")
 
         # Update config file
@@ -89,11 +105,10 @@ def main():
         print("=" * 60)
         print(f"\n📋 Newsletter Database: {newsletter_db_id}")
         print(f"📰 Stories Database: {stories_db_id}")
-        print("\n🔗 Find them in your Notion workspace:")
+        print("\n🔗 Find them in your Notion page:")
         print("   - AI Newsletter Insights")
         print("   - Newsletter Stories")
-        print("\n💡 Next step: Share these databases with your integration")
-        print("   (Click '...' → 'Add connections' → Select your integration)")
+        print("\n✅ Databases are ready to use!")
 
     except Exception as e:
         print(f"\n❌ Setup failed: {e}")

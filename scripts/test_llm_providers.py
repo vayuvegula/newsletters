@@ -3,9 +3,12 @@
 Test script to verify access to different LLM providers.
 
 This script tests:
-- Anthropic Claude API
-- OpenAI GPT API
-- Google Gemini API
+- Anthropic Claude API (anthropic)
+- OpenAI GPT API (openai)
+- Google Gemini API (google-genai - new SDK as of 2025)
+
+Note: google-generativeai is deprecated as of Nov 2025.
+Use google-genai instead.
 
 Run with API keys from environment or provide them when prompted.
 """
@@ -134,37 +137,37 @@ def test_openai():
 
 
 def test_gemini():
-    """Test Google Gemini API."""
+    """Test Google Gemini API using new google-genai SDK."""
     print("\n" + "=" * 60)
-    print("Testing Google Gemini API")
+    print("Testing Google Gemini API (Google Gen AI SDK)")
     print("=" * 60)
 
-    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
     if not api_key:
-        api_key = input("Enter Google/Gemini API key (or press Enter to skip): ").strip()
+        api_key = input("Enter Gemini API key (or press Enter to skip): ").strip()
         if not api_key:
             print("⏭️  Skipping Gemini test")
             return None
 
     try:
-        import google.generativeai as genai
-        print("✓ google-generativeai library imported")
+        from google import genai
+        print("✓ google-genai library imported (new SDK)")
     except ImportError:
-        print("❌ google-generativeai library not installed")
-        print("   Install with: pip install google-generativeai")
+        print("❌ google-genai library not installed")
+        print("   Install with: pip install google-genai")
+        print("   Note: google-generativeai is deprecated as of Nov 2025")
         return None
 
     try:
-        genai.configure(api_key=api_key)
-        print("✓ API key configured")
+        # Create client
+        client = genai.Client(api_key=api_key)
+        print("✓ Client initialized")
 
         # Test simple completion
-        model = genai.GenerativeModel('gemini-2.0-flash-exp')
-        print("✓ Model initialized")
-
-        response = model.generate_content(
-            "Say 'Hello from Gemini!' and nothing else.",
-            generation_config=genai.GenerationConfig(
+        response = client.models.generate_content(
+            model='gemini-2.0-flash-exp',
+            contents="Say 'Hello from Gemini!' and nothing else.",
+            config=genai.GenerateContentConfig(
                 max_output_tokens=100,
             )
         )
@@ -173,8 +176,11 @@ def test_gemini():
         print(f"✓ API call successful")
         print(f"  Response: {content[:100]}")
         print(f"  Model: gemini-2.0-flash-exp")
-        print(f"  Input tokens: {response.usage_metadata.prompt_token_count}")
-        print(f"  Output tokens: {response.usage_metadata.candidates_token_count}")
+
+        # Token usage in new SDK
+        if hasattr(response, 'usage_metadata'):
+            print(f"  Input tokens: {response.usage_metadata.prompt_token_count}")
+            print(f"  Output tokens: {response.usage_metadata.candidates_token_count}")
 
         return {
             "provider": "gemini",
@@ -185,6 +191,8 @@ def test_gemini():
 
     except Exception as e:
         print(f"❌ Error: {e}")
+        import traceback
+        traceback.print_exc()
         return {
             "provider": "gemini",
             "success": False,
@@ -271,15 +279,17 @@ Respond with ONLY valid JSON. No markdown, no code blocks, no commentary."""
             print(f"❌ OpenAI JSON test failed: {e}")
             results["openai"] = {"success": False, "error": str(e)}
 
-    # Test Gemini
-    api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+    # Test Gemini (new SDK)
+    api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
     if api_key:
         try:
-            import google.generativeai as genai
+            from google import genai
             import json
-            genai.configure(api_key=api_key)
-            model = genai.GenerativeModel('gemini-2.0-flash-exp')
-            response = model.generate_content(test_prompt)
+            client = genai.Client(api_key=api_key)
+            response = client.models.generate_content(
+                model='gemini-2.0-flash-exp',
+                contents=test_prompt
+            )
             content = response.text
 
             # Try to parse as JSON
@@ -357,7 +367,7 @@ def main():
         if not any(r['provider'] == 'openai' for r in successful):
             print("   pip install openai")
         if not any(r['provider'] == 'gemini' for r in successful):
-            print("   pip install google-generativeai")
+            print("   pip install google-genai")
     else:
         print("\n✅ All providers working! Ready to implement multi-provider support.")
 

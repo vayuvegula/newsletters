@@ -421,10 +421,13 @@ def run(max_emails, dry_run, force):
                 try:
                     # Download email
                     click.echo(f"    ⬇️  Downloading...")
-                    eml_path, metadata = gmail.download_message(
-                        message_id,
-                        output_dir="data/newsletters"
-                    )
+                    # Create output directory and file path
+                    output_dir = Path("data/newsletters")
+                    output_dir.mkdir(parents=True, exist_ok=True)
+                    output_path = output_dir / f"{message_id}.eml"
+
+                    metadata = gmail.download_message(message_id, str(output_path))
+                    eml_path = Path(metadata['file_path'])
 
                     # Add to database
                     db.add_newsletter(

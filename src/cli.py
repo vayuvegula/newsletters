@@ -5,12 +5,17 @@ import json
 import logging
 import os
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import click
+import yaml
 from dotenv import load_dotenv
 
 from .extractors import AgenticExtractor
+from .connectors.gmail import GmailConnector
+from .connectors.notion import NotionConnector
+from .storage import Database
 
 
 # Load environment variables
@@ -226,13 +231,249 @@ def test():
 
 
 @cli.command()
-def run():
-    """Run the full pipeline: fetch → extract → upload (Phase 4)."""
-    click.echo("Full pipeline integration coming in Phase 4!")
-    click.echo("This will:")
-    click.echo("  1. Fetch new newsletters from Gmail")
-    click.echo("  2. Extract insights using agentic analysis")
-    click.echo("  3. Upload results to Notion")
+@click.option('--max-emails', '-n', default=10, help='Maximum emails to process per newsletter')
+@click.option('--dry-run', is_flag=True, help='Preview what would be processed without making changes')
+@click.option('--force', is_flag=True, help='Reprocess emails even if already in database')
+def run(max_emails, dry_run, force):
+    """Run the full pipeline: fetch → extract → upload.
+
+    This command orchestrates the complete newsletter processing workflow:
+    1. Connects to Gmail and fetches new newsletters
+    2. Extracts insights using agentic analysis
+    3. Uploads results to Notion databases
+    4. Tracks processing state to avoid duplicates
+
+    Examples:
+        newsletter run                    # Process up to 10 new emails
+        newsletter run -n 5               # Process up to 5 new emails
+        newsletter run --dry-run          # Preview without processing
+        newsletter run --force            # Reprocess all emails
+    """
+    click.echo("=" * 60)
+    click.echo("NEWSLETTER PIPELINE")
+    click.echo("=" * 60)
+
+    if dry_run:
+        click.echo("\n⚠️  DRY RUN MODE - No changes will be made\n")
+
+    # Load configuration
+    config_path = Path("config/credentials.yaml")
+    newsletters_path = Path("config/newsletters.yaml")
+
+    if not config_path.exists():
+        click.echo("❌ Config file not found: config/credentials.yaml", err=True)
+        click.echo("Run setup scripts first (setup_gmail.py, setup_notion.py)")
+        sys.exit(1)
+
+    if not newsletters_path.exists():
+        click.echo("❌ Newsletter config not found: config/newsletters.yaml", err=True)
+        sys.exit(1)
+
+    with open(config_path) as f:
+        config = yaml.safe_load(f)
+
+    with open(newsletters_path) as f:
+        newsletters_config = yaml.safe_load(f)
+
+    # Initialize components
+    click.echo("\n🔧 Initializing components...")
+
+    try:
+        # Database for tracking state
+        db = Database(db_path=config.get('database', {}).get('path', 'data/newsletter.db'))
+        click.echo("  ✓ Database connected")
+
+        # Gmail connector
+        gmail_config = config.get('gmail', {})
+        gmail = GmailConnector(
+            credentials_path=gmail_config.get('credentials_file', 'config/gmail_credentials.json'),
+            token_path=gmail_config.get('token_file', 'config/gmail_token.json')
+        )
+        click.echo("  ✓ Gmail connected")
+
+        # Notion connector
+        notion_config = config.get('notion', {})
+        notion = NotionConnector(api_key=notion_config.get('api_key'))
+
+        newsletter_db_id = notion_config.get('databases', {}).get('newsletters')
+        stories_db_id = notion_config.get('databases', {}).get('stories')
+
+        if not newsletter_db_id or not stories_db_id:
+            click.echo("❌ Notion database IDs not configured", err=True)
+            click.echo("Run scripts/setup_notion.py first")
+            sys.exit(1)
+
+        click.echo("  ✓ Notion connected")
+
+        # Extractor
+        anthropic_config = config.get('anthropic', {})
+        extractor = AgenticExtractor(
+            api_key=anthropic_config.get('api_key'),
+            progress_callback=lambda msg: click.echo(f"    {msg}"),
+            verbose=False
+        )
+        click.echo("  ✓ Extractor initialized")
+
+    except Exception as e:
+        click.echo(f"\n❌ Initialization failed: {e}", err=True)
+        logger.exception("Failed to initialize components")
+        sys.exit(1)
+
+    # Process each newsletter in whitelist
+    newsletters = newsletters_config.get('newsletters', [])
+    if not newsletters:
+        click.echo("\n⚠️  No newsletters configured in config/newsletters.yaml")
+        sys.exit(0)
+
+    click.echo(f"\n📬 Processing {len(newsletters)} newsletter(s)...")
+
+    total_processed = 0
+    total_skipped = 0
+    total_failed = 0
+
+    for newsletter in newsletters:
+        name = newsletter.get('name', 'Unknown')
+        email = newsletter.get('email')
+
+        if not email:
+            click.echo(f"\n⚠️  Skipping {name}: No email configured")
+            continue
+
+        click.echo(f"\n{'─' * 60}")
+        click.echo(f"📰 {name} ({email})")
+        click.echo(f"{'─' * 60}")
+
+        try:
+            # Get last processed date for smart querying
+            since_date = None
+            if not force:
+                since_date = db.get_last_processed_date(email)
+                if since_date:
+                    click.echo(f"  📅 Last processed: {since_date}")
+
+            # Search for new newsletters
+            click.echo(f"  🔍 Searching for new emails...")
+            message_ids = gmail.search_newsletters(
+                sender_email=email,
+                since_date=since_date,
+                max_results=max_emails,
+                unread_only=False
+            )
+
+            if not message_ids:
+                click.echo(f"  ✓ No new emails found")
+                continue
+
+            click.echo(f"  📨 Found {len(message_ids)} email(s)")
+
+            # Process each message
+            for i, message_id in enumerate(message_ids, 1):
+                click.echo(f"\n  [{i}/{len(message_ids)}] Processing {message_id[:12]}...")
+
+                # Check if already processed (deduplication)
+                if not force and db.is_processed(message_id):
+                    click.echo(f"    ⏭️  Already processed, skipping")
+                    total_skipped += 1
+                    continue
+
+                if dry_run:
+                    click.echo(f"    🔍 Would process this email")
+                    continue
+
+                try:
+                    # Download email
+                    click.echo(f"    ⬇️  Downloading...")
+                    eml_path, metadata = gmail.download_message(
+                        message_id,
+                        output_dir="data/newsletters"
+                    )
+
+                    # Add to database
+                    db.add_newsletter(
+                        message_id=message_id,
+                        sender_email=email,
+                        subject=metadata.get('subject'),
+                        received_date=metadata.get('date')
+                    )
+                    db.mark_downloaded(message_id, str(eml_path))
+
+                    # Extract insights
+                    click.echo(f"    🧠 Extracting insights...")
+                    extraction_result = extractor.extract(eml_path)
+
+                    # Save extraction to file
+                    extraction_dir = Path("data/extractions")
+                    extraction_dir.mkdir(parents=True, exist_ok=True)
+                    extraction_path = extraction_dir / f"{message_id}_extraction.json"
+
+                    with open(extraction_path, 'w') as f:
+                        json.dump(extraction_result, f, indent=2)
+
+                    tokens_used = extraction_result.get('_metadata', {}).get('total_tokens', 0)
+                    db.mark_extracted(message_id, str(extraction_path), tokens_used)
+
+                    click.echo(f"    💾 Extracted ({tokens_used:,} tokens)")
+
+                    # Upload to Notion
+                    click.echo(f"    ⬆️  Uploading to Notion...")
+                    page_id = notion.create_newsletter_page(
+                        extraction_result,
+                        database_id=newsletter_db_id
+                    )
+
+                    # Upload stories
+                    stories = extraction_result.get('stories', [])
+                    if stories and stories_db_id:
+                        for story in stories:
+                            notion.create_story_page(
+                                story,
+                                database_id=stories_db_id,
+                                newsletter_page_id=page_id
+                            )
+
+                    db.mark_uploaded(message_id, page_id)
+
+                    click.echo(f"    ✅ Completed successfully")
+                    total_processed += 1
+
+                except Exception as e:
+                    click.echo(f"    ❌ Failed: {e}", err=True)
+                    logger.exception(f"Failed to process message {message_id}")
+
+                    # Mark as failed in database
+                    try:
+                        db.mark_failed(message_id, str(e))
+                    except:
+                        pass
+
+                    total_failed += 1
+                    continue
+
+        except Exception as e:
+            click.echo(f"\n❌ Error processing {name}: {e}", err=True)
+            logger.exception(f"Failed to process newsletter {name}")
+            continue
+
+    # Final summary
+    click.echo(f"\n{'=' * 60}")
+    click.echo(f"SUMMARY")
+    click.echo(f"{'=' * 60}")
+    click.echo(f"  ✅ Processed: {total_processed}")
+    click.echo(f"  ⏭️  Skipped:   {total_skipped}")
+    click.echo(f"  ❌ Failed:    {total_failed}")
+
+    if not dry_run:
+        # Show database stats
+        stats = db.get_stats()
+        click.echo(f"\n📊 Database Stats:")
+        click.echo(f"  Total newsletters: {stats['total']}")
+        click.echo(f"  By status: {stats.get('by_status', {})}")
+        click.echo(f"  Total tokens used: {stats['total_tokens']:,}")
+
+    # Close database
+    db.close()
+
+    click.echo(f"\n✨ Pipeline complete!\n")
 
 
 def main():

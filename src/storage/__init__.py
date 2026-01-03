@@ -1,5 +1,5 @@
 """Storage layer for tracking newsletter processing state."""
 
-# Database implementation will be added in Phase 4
+from .database import Database
 
-__all__ = []
+__all__ = ['Database']

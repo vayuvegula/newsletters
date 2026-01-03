@@ -1,0 +1,116 @@
+# Extraction Configuration
+# This file defines what insights to extract from newsletters
+# Modify this to iterate on extraction without changing code
+
+extraction:
+  # Executive summary configuration
+  executive_summary:
+    enabled: true
+    max_length: 500  # characters
+    focus_areas:
+      - "Overall theme and key developments"
+      - "Major announcements and launches"
+      - "Industry trends and shifts"
+
+  # Story extraction configuration
+  stories:
+    enabled: true
+    min_stories: 1
+    max_stories: 10
+    required_fields:
+      - title
+      - category
+      - summary
+      - key_facts
+      - companies_mentioned
+      - technologies_mentioned
+    optional_fields:
+      - google_implications
+      - strategic_importance
+      - confidence
+      - source_links
+
+    # Categories to classify stories into
+    categories:
+      - "Product Launch"
+      - "Research Breakthrough"
+      - "Industry News"
+      - "Regulation & Policy"
+      - "Company Update"
+      - "Market Analysis"
+      - "Tutorial/Education"
+      - "Other"
+
+  # Trend analysis configuration
+  trends:
+    enabled: true
+    max_trends: 5
+    required_fields:
+      - trend
+      - trajectory  # growing, declining, stable, emerging
+      - evidence
+      - time_horizon  # short-term, medium-term, long-term
+
+    trajectories:
+      - "Emerging"
+      - "Growing"
+      - "Stable"
+      - "Declining"
+      - "Uncertain"
+
+  # Entity extraction
+  entities:
+    companies:
+      enabled: true
+      track_mentions: true
+
+    technologies:
+      enabled: true
+      track_mentions: true
+
+    people:
+      enabled: false  # Can enable later if needed
+      track_mentions: false
+
+  # Google-specific analysis (custom for our use case)
+  google_analysis:
+    enabled: true
+    focus_areas:
+      - "Competitive implications"
+      - "Strategic opportunities"
+      - "Threat assessment"
+      - "Partnership potential"
+      - "Technology gaps"
+
+# Prompt templates for flexibility
+prompts:
+  analysis_system_prompt: |
+    You are an AI research analyst specializing in technology and AI developments.
+    Analyze newsletters to extract actionable insights and strategic intelligence.
+
+  analysis_task_prompt: |
+    Analyze this newsletter and extract:
+    1. Executive summary of the main themes
+    2. Detailed breakdown of each story/article
+    3. Trend signals and emerging patterns
+    4. Competitive and strategic implications (especially for Google)
+
+    Focus on actionable insights and strategic intelligence.
+
+  structure_system_prompt: |
+    You are a data structuring expert. Format analysis results into clean JSON.
+
+  structure_task_prompt: |
+    Convert the analysis into structured JSON matching the schema.
+    Ensure all required fields are present and properly formatted.
+
+# Model configuration
+model:
+  name: "claude-sonnet-4-20250514"
+  max_tokens: 16000
+  temperature: 0.0  # Consistent extractions
+
+  # Fallback models if primary fails
+  fallbacks:
+    - "claude-3-5-sonnet-20241022"
+    - "claude-3-opus-20240229"

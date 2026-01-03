@@ -1,0 +1,242 @@
+# VP-Grade Insights Extraction Configuration
+# Purpose: Extract decision-relevant signals for senior technical/business leaders
+# Focus: Strategic implications, not summaries
+# Author: Designed for VP-level consumption
+
+extraction:
+  # Executive summary - decision-focused
+  executive_summary:
+    enabled: true
+    max_length: 400
+    focus_areas:
+      - "Key strategic implications requiring leadership attention"
+      - "Major belief updates or contrarian signals"
+      - "Critical execution risks often overlooked"
+      - "Time-sensitive opportunities or threats"
+
+  # Stories - VP-grade insights (typed framework)
+  stories:
+    enabled: true
+    min_stories: 2
+    max_stories: 6  # Quality over quantity
+
+    required_fields:
+      # Core identification
+      - title
+      - source_context  # "Andrew Ng emphasizes..."
+
+      # Typed insight framework
+      - insight_type  # Strategic/Belief Update/Risk/Timing/Second-Order
+      - core_claim  # ONE sharp sentence
+      - why_it_matters  # 2-3 sentences on org/product impact
+      - affected_functions  # [Engineering, Product, Data, GTM]
+      - time_horizon  # Now/6-12mo/12-24mo
+      - confidence_level  # High/Medium/Speculative
+
+      # Decision context
+      - contrarian_angle  # What assumption does this challenge?
+      - execution_constraint  # Why is this hard in practice?
+      - second_order_effect  # If everyone does this, then...
+
+      # Action-oriented
+      - follow_up_questions  # What should we investigate?
+      - strategic_implication  # For organizations like ours...
+
+    optional_fields:
+      - capability_gap  # What org capability does this expose?
+      - analogous_situations  # Similar patterns in other domains
+      - google_specific_angle  # Specific to your context
+
+    # Insight type taxonomy
+    insight_types:
+      - "Strategic Implication"  # If this is true, orgs should...
+      - "Belief Update"  # Challenges conventional wisdom
+      - "Execution Risk"  # Will fail in practice unless...
+      - "Time Horizon Signal"  # Matters now vs later
+      - "Second-Order Effect"  # If everyone does this...
+      - "Capability Gap"  # Exposes org weakness
+
+    # Time horizons
+    time_horizons:
+      - "Immediate (0-3mo)"
+      - "Short-term (3-12mo)"
+      - "Medium-term (12-24mo)"
+      - "Long-term (24mo+)"
+
+  # Trends - strategic patterns only
+  trends:
+    enabled: true
+    max_trends: 3  # Only high-confidence patterns
+    required_fields:
+      - trend
+      - strategic_implication  # What should change?
+      - evidence_strength  # High/Medium/Emerging
+      - time_to_impact  # When will this matter?
+      - recommended_response  # What to do about it
+
+  # Entity extraction - decision-relevant only
+  entities:
+    companies:
+      enabled: true
+      track_mentions: true
+      include_strategic_posture: true  # Are they leading or following?
+
+    technologies:
+      enabled: true
+      track_mentions: true
+      include_adoption_stage: true  # Hype/Early/Mainstream/Declining
+
+    people:
+      enabled: true
+      track_mentions: true
+      include_credibility_context: true  # Why should we listen?
+
+# Prompts - VP-focused extraction
+prompts:
+  analysis_system_prompt: |
+    You are a strategic analyst preparing insights for a VP-level technical/business leader.
+
+    Your job is NOT to summarize—it's to extract DECISION-RELEVANT SIGNALS.
+
+    For every piece of content, ask:
+    1. What belief should we update?
+    2. What strategy should we reconsider?
+    3. What risk is understated or overstated?
+    4. What capability gap does this expose?
+    5. What second-order effect will matter in 12-24 months?
+
+    If an "insight" doesn't help someone make a decision, it's noise.
+
+    Think like a VP preparing for a strategy session, not a researcher writing a literature review.
+
+    Focus on:
+    - Strategic implications (if this is true, then...)
+    - Contrarian signals (this challenges the assumption that...)
+    - Execution realism (in practice, this fails because...)
+    - Time-boxing (this matters now/later because...)
+    - Second-order effects (if everyone does this, advantage shifts to...)
+
+  analysis_task_prompt: |
+    Analyze this Andrew Ng newsletter for VP-grade strategic insights.
+
+    CONTEXT:
+    - Source: Andrew Ng (DeepLearning.AI)
+    - Known for: Pragmatic ML adoption, data-centric AI, realistic execution advice
+    - Audience: Technical/business leaders making AI investment decisions
+
+    For each major topic/story, extract a TYPED INSIGHT:
+
+    1. INSIGHT TYPE:
+       Choose ONE primary type:
+       - Strategic Implication: "As [trend], organizations [should/will need to] [action]"
+       - Belief Update: "This contradicts/nuances the assumption that..."
+       - Execution Risk: "This will fail in practice unless..."
+       - Time Horizon Signal: "This matters [now/later] because..."
+       - Second-Order Effect: "If many teams do this, then..."
+
+    2. CORE CLAIM (ONE sharp sentence):
+       BAD: "The article discusses the importance of data quality"
+       GOOD: "Data quality now outweighs model sophistication as the primary driver of AI competitive advantage"
+
+       Make it:
+       - Specific (not vague)
+       - Falsifiable (could be wrong)
+       - Decision-relevant (implies action)
+
+    3. WHY IT MATTERS (2-3 sentences):
+       Focus on ORGANIZATIONAL IMPACT:
+       - What capability gap does this expose?
+       - What investment/strategy should change?
+       - What risk are we underestimating?
+
+       Example: "Most orgs invest heavily in model training but lack data pipeline
+       maturity. This creates a capability inversion where frontier model access
+       becomes table stakes but data operations become the differentiator."
+
+    4. AFFECTED FUNCTIONS:
+       Which teams need to care? [Engineering, Product, Data, GTM, Leadership]
+
+    5. TIME HORIZON:
+       When does this matter?
+       - Immediate (0-3mo): Act now
+       - Short-term (3-12mo): Plan for
+       - Medium-term (12-24mo): Monitor and position
+       - Long-term (24mo+): Strategic awareness
+
+    6. CONFIDENCE LEVEL:
+       - High: Clear evidence, widely validated
+       - Medium: Strong indicators, some uncertainty
+       - Speculative: Early signal, needs validation
+
+    7. CONTRARIAN ANGLE:
+       What conventional wisdom does this challenge?
+
+       Example: "Contradicts the prevailing belief that more model training
+       equals better results; suggests data curation now has higher ROI"
+
+    8. EXECUTION CONSTRAINT:
+       Why is this hard in practice? What makes most teams fail?
+
+       Example: "Requires strong data ops maturity (labeling infrastructure,
+       quality monitoring, drift detection) which most organizations lack,
+       creating a 6-12 month capability buildout before value realization"
+
+    9. SECOND-ORDER EFFECT:
+       If many teams follow this advice, what changes?
+
+       Example: "As more companies adopt foundation models, competitive
+       differentiation shifts from model selection to proprietary workflow
+       integration and data quality, favoring orgs with strong execution culture"
+
+    10. FOLLOW-UP QUESTIONS:
+        What should leadership investigate?
+
+        Example: "Do we have the data pipeline maturity to compete on data
+        quality? What's our labeling/monitoring infrastructure gap? Should
+        we shift ML eng investment toward data ops?"
+
+    11. STRATEGIC IMPLICATION:
+        Complete this sentence: "For organizations like ours, this means we should..."
+
+        Example: "For organizations like ours, this means we should prioritize
+        data operations investment over additional model training, potentially
+        reallocating ML engineering headcount toward data quality tooling"
+
+    QUALITY GUIDELINES:
+    - Extract 2-6 VP-grade insights (quality >> quantity)
+    - Each insight should be actionable (implies a decision)
+    - Avoid generic observations ("AI is important")
+    - Avoid restating the obvious ("Companies should invest in AI")
+    - Focus on Andrew Ng's contrarian/pragmatic angles
+    - Identify where he subtly contradicts hype-driven narratives
+    - Call out execution constraints that practitioners underestimate
+
+    Remember: A VP doesn't ask "What did Andrew Ng say?"
+    They ask: "What should I do or reconsider because Andrew Ng said this?"
+
+  structure_system_prompt: |
+    You are a data structuring expert formatting strategic insights for executive consumption.
+    Maintain the decision-focused framing. Keep language sharp and specific.
+
+  structure_task_prompt: |
+    Convert the VP-grade analysis into structured JSON.
+
+    Ensure:
+    - Core claims are single, sharp sentences
+    - Why it matters focuses on organizational impact
+    - Contrarian angles are clearly stated
+    - Execution constraints are realistic
+    - Follow-up questions are specific and actionable
+    - Strategic implications complete the sentence "For organizations like ours, this means..."
+
+    Maintain the VP-level framing throughout.
+
+# Model configuration
+model:
+  name: "claude-sonnet-4-20250514"
+  max_tokens: 16000  # VP insights can be detailed
+  temperature: 0.0  # Consistency over creativity
+
+  fallbacks:
+    - "claude-3-5-sonnet-20241022"
+    - "claude-3-opus-20240229"

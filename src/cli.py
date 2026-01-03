@@ -345,7 +345,7 @@ def run(max_emails, dry_run, force):
         extraction_config_name = newsletter.get('extraction_config', 'default')
         if extraction_config_name == 'default':
             extraction_config_path = Path("config/extraction_config.yaml")
-        elif extraction_config_name in ['executive', 'technical']:
+        elif extraction_config_name in ['executive', 'technical', 'vp_insights']:
             extraction_config_path = Path(f"config/extraction_{extraction_config_name}.yaml")
         else:
             extraction_config_path = Path(extraction_config_name)

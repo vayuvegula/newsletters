@@ -17,6 +17,26 @@ Fully automated pipeline with deduplication, state tracking, and modular extract
 - 🔀 **Multi-Newsletter Support**: Process multiple newsletters with different configs
 - 🎯 **Flexible Deployment**: Deploy to different databases based on analysis type
 
+## 🚀 Want to Try It Out?
+
+**Jump straight to the [Testing Guide](docs/TESTING.md)** for step-by-step instructions!
+
+Quick test:
+```bash
+# 1. Verify setup
+python3 scripts/check_notion_setup.py
+
+# 2. Safe preview (no changes)
+newsletter run --dry-run -n 1
+
+# 3. Process one newsletter
+newsletter run -n 1
+```
+
+See [docs/TESTING.md](docs/TESTING.md) for complete testing scenarios and troubleshooting.
+
+---
+
 ## Quick Start
 
 ### 1. Installation
@@ -163,9 +183,13 @@ See [Phase 4 Documentation](docs/PHASE4_IMPLEMENTATION.md) for details.
 
 ## Documentation
 
-- [Implementation Plan](IMPLEMENTATION_PLAN.md) - Overall project plan
-- [Phase 4 Guide](docs/PHASE4_IMPLEMENTATION.md) - Pipeline automation details
-- [Multi-Newsletter Guide](docs/MULTI_NEWSLETTER_GUIDE.md) - Managing multiple newsletters and configs
+📚 **[Documentation Index](docs/README.md)** - Complete guide navigation
+
+**Essential Guides:**
+- 🧪 **[Testing Guide](docs/TESTING.md)** - **How to try it out!** Step-by-step testing instructions
+- 📋 [Implementation Plan](IMPLEMENTATION_PLAN.md) - Overall project plan and roadmap
+- 🔧 [Phase 4 Guide](docs/PHASE4_IMPLEMENTATION.md) - Pipeline automation and deduplication
+- 📬 [Multi-Newsletter Guide](docs/MULTI_NEWSLETTER_GUIDE.md) - Managing multiple newsletters and configs
 
 ## Development
 

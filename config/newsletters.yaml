@@ -10,7 +10,7 @@ newsletters:
     enabled: true
 
     # Extraction configuration
-    # Options: "default", "executive", "technical", or path to custom config
+    # Options: "default", "executive", "technical", "vp_insights", or path to custom config
     extraction_config: "default"  # Uses config/extraction_config.yaml
 
     # Database set to use (defined in credentials.yaml)
@@ -42,11 +42,21 @@ newsletters:
   #   priority: "medium"
   #   tags: ["research", "papers"]
 
+  # Example: VP-Grade Insights (Decision-focused)
+  # - name: "The Batch (VP Insights)"
+  #   email: "thebatch@deeplearning.ai"
+  #   enabled: true
+  #   extraction_config: "vp_insights"  # Uses config/extraction_vp_insights.yaml
+  #   database_set: "default"
+  #   type: "strategic"
+  #   priority: "high"
+  #   tags: ["VP", "decision-signals", "strategic"]
+
   # Add more newsletters here - just copy the template and modify:
   # - name: "Your Newsletter Name"
   #   email: "newsletter@example.com"
   #   enabled: true
-  #   extraction_config: "default"    # or "executive", "technical", or custom path
+  #   extraction_config: "default"    # or "executive", "technical", "vp_insights", or custom path
   #   database_set: "default"         # or your custom database set
   #   type: "analysis"
   #   priority: "medium"

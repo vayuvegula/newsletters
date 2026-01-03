@@ -465,12 +465,11 @@ def run(max_emails, dry_run, force):
                     # Upload stories
                     stories = extraction_result.get('stories', [])
                     if stories and stories_db_id:
-                        for story in stories:
-                            notion.create_story_page(
-                                story,
-                                database_id=stories_db_id,
-                                newsletter_page_id=page_id
-                            )
+                        notion.create_story_pages(
+                            newsletter_page_id=page_id,
+                            stories=stories,
+                            database_id=stories_db_id
+                        )
 
                     db.mark_uploaded(message_id, page_id)
 

@@ -92,13 +92,27 @@ def main():
 
         # Update config file
         print("\n📝 Updating config/credentials.yaml with database IDs...")
-        config['notion']['databases']['newsletters'] = newsletter_db_id
-        config['notion']['databases']['stories'] = stories_db_id
+
+        # Check if using new database_sets structure or old databases structure
+        if 'database_sets' in config['notion']:
+            # New structure - update default database set
+            if 'default' not in config['notion']['database_sets']:
+                config['notion']['database_sets']['default'] = {}
+            config['notion']['database_sets']['default']['newsletters'] = newsletter_db_id
+            config['notion']['database_sets']['default']['stories'] = stories_db_id
+            print("   ✓ Updated database_sets.default")
+        else:
+            # Old structure - create databases key if needed
+            if 'databases' not in config['notion']:
+                config['notion']['databases'] = {}
+            config['notion']['databases']['newsletters'] = newsletter_db_id
+            config['notion']['databases']['stories'] = stories_db_id
+            print("   ✓ Updated databases")
 
         with open(config_path, 'w') as f:
             yaml.dump(config, f, default_flow_style=False, sort_keys=False)
 
-        print("   ✓ Config updated")
+        print("   ✓ Config file saved")
 
         print("\n" + "=" * 60)
         print("✨ Setup Complete!")

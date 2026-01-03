@@ -1,4 +1,4 @@
-"""Agentic extractor using two-pass Claude analysis."""
+"""Agentic extractor using two-pass LLM analysis."""
 
 import json
 import logging
@@ -7,31 +7,29 @@ import re
 from pathlib import Path
 from typing import Optional, Callable
 
-import anthropic
 import yaml
 
 from .base import BaseExtractor
+from ..llm import BaseLLMProvider
 
 logger = logging.getLogger(__name__)
 
 
 class AgenticExtractor(BaseExtractor):
     """
-    Two-pass agentic extraction using Claude API.
+    Two-pass agentic extraction using any LLM provider.
 
     Pass 1: Analyze newsletter and reason through content
     Pass 2: Structure findings into JSON format
 
-    This is the production version of test2_agentic.py from experiments.
+    Supports multiple LLM providers via abstraction layer.
     """
 
-    DEFAULT_MODEL = "claude-sonnet-4-20250514"
     MAX_EML_CHARS = 50000  # Truncate very long emails
 
     def __init__(
         self,
-        api_key: Optional[str] = None,
-        model: str = DEFAULT_MODEL,
+        llm_provider: BaseLLMProvider,
         progress_callback: Optional[Callable] = None,
         verbose: bool = False
     ):
@@ -39,19 +37,15 @@ class AgenticExtractor(BaseExtractor):
         Initialize the agentic extractor.
 
         Args:
-            api_key: Anthropic API key (falls back to ANTHROPIC_API_KEY env var)
-            model: Claude model to use
+            llm_provider: LLM provider instance (Claude, OpenAI, Gemini, etc.)
             progress_callback: Optional callback for progress updates
             verbose: If True, print detailed analysis to stdout
         """
-        super().__init__(api_key, progress_callback)
-        self.api_key = api_key or os.getenv("ANTHROPIC_API_KEY")
-        if not self.api_key:
-            raise ValueError("ANTHROPIC_API_KEY not found in environment or arguments")
-
-        self.model = model
+        super().__init__(None, progress_callback)  # No longer uses api_key directly
+        self.llm = llm_provider
+        self.model = llm_provider.model
+        self.provider_name = llm_provider.provider_name
         self.verbose = verbose
-        self.client = anthropic.Anthropic(api_key=self.api_key)
 
     def extract(self, eml_path: str | Path, config_path: Optional[str | Path] = None) -> dict:
         """
@@ -86,6 +80,7 @@ class AgenticExtractor(BaseExtractor):
         # Add metadata
         result['_metadata'] = {
             'extractor': 'agentic',
+            'provider': self.provider_name,
             'model': self.model,
             'pass1_input_tokens': pass1_usage.input_tokens,
             'pass1_output_tokens': pass1_usage.output_tokens,
@@ -132,16 +127,16 @@ class AgenticExtractor(BaseExtractor):
 
         return content
 
-    def _analyze(self, eml_content: str, config: Optional[dict] = None) -> tuple[str, anthropic.types.Usage]:
+    def _analyze(self, eml_content: str, config: Optional[dict] = None) -> tuple[str, 'LLMResponse']:
         """
-        Pass 1: Let Claude analyze the newsletter and reason through it.
+        Pass 1: Let LLM analyze the newsletter and reason through it.
 
         Args:
             eml_content: Email content
             config: Optional extraction config dict
 
         Returns:
-            (analysis_text, usage_stats)
+            (analysis_text, LLMResponse)
         """
         # Use config prompts if available, otherwise fall back to defaults
         if config and 'extraction' in config and 'prompts' in config['extraction']:
@@ -153,34 +148,33 @@ class AgenticExtractor(BaseExtractor):
             system_prompt = self._default_system_prompt()
             user_prompt = self._default_user_prompt().replace('{eml_content}', eml_content)
 
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=8192,
-            system=system_prompt,
-            messages=[{"role": "user", "content": user_prompt}]
+        response = self.llm.complete(
+            system_prompt=system_prompt,
+            user_prompt=user_prompt,
+            max_tokens=8192
         )
 
-        analysis_text = response.content[0].text
+        analysis_text = response.content
 
         if self.verbose:
             print("\n" + "=" * 60)
-            print("CLAUDE'S ANALYSIS (Pass 1):")
+            print(f"{self.provider_name.upper()} ANALYSIS (Pass 1):")
             print("-" * 60)
             print(analysis_text[:3000])
             if len(analysis_text) > 3000:
                 print("...")
             print("=" * 60)
 
-        return analysis_text, response.usage
+        return analysis_text, response
 
     def _structure(
         self,
         eml_content: str,
         analysis_text: str,
         config: Optional[dict] = None
-    ) -> tuple[dict, anthropic.types.Usage]:
+    ) -> tuple[dict, 'LLMResponse']:
         """
-        Pass 2: Ask Claude to structure the analysis into JSON.
+        Pass 2: Ask LLM to structure the analysis into JSON.
 
         Args:
             eml_content: Email content
@@ -188,7 +182,7 @@ class AgenticExtractor(BaseExtractor):
             config: Optional extraction config dict
 
         Returns:
-            (structured_result_dict, usage_stats)
+            (structured_result_dict, LLMResponse)
         """
         # Build JSON schema from config if available
         if config and 'extraction' in config:
@@ -215,17 +209,16 @@ Here is the raw EML file content:
 {eml_content}
 ```"""
 
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=4096,
+        response = self.llm.complete_with_history(
             messages=[
                 {"role": "user", "content": user_prompt},
                 {"role": "assistant", "content": analysis_text},
                 {"role": "user", "content": structuring_prompt}
-            ]
+            ],
+            max_tokens=4096
         )
 
-        structured_text = response.content[0].text
+        structured_text = response.content
 
         # Parse JSON
         try:
@@ -254,7 +247,7 @@ Here is the raw EML file content:
                     "error": "No JSON found"
                 }
 
-        return result, response.usage
+        return result, response
 
     def _build_json_schema(self, extraction_config: dict) -> str:
         """Build JSON schema from extraction config."""

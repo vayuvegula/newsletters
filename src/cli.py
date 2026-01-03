@@ -294,15 +294,6 @@ def run(max_emails, dry_run, force):
         # Notion connector
         notion_config = config.get('notion', {})
         notion = NotionConnector(api_key=notion_config.get('api_key'))
-
-        newsletter_db_id = notion_config.get('databases', {}).get('newsletters')
-        stories_db_id = notion_config.get('databases', {}).get('stories')
-
-        if not newsletter_db_id or not stories_db_id:
-            click.echo("❌ Notion database IDs not configured", err=True)
-            click.echo("Run scripts/setup_notion.py first")
-            sys.exit(1)
-
         click.echo("  ✓ Notion connected")
 
         # Extractor
@@ -325,13 +316,19 @@ def run(max_emails, dry_run, force):
         click.echo("\n⚠️  No newsletters configured in config/newsletters.yaml")
         sys.exit(0)
 
-    click.echo(f"\n📬 Processing {len(newsletters)} newsletter(s)...")
+    # Filter enabled newsletters
+    enabled_newsletters = [n for n in newsletters if n.get('enabled', True)]
+    if not enabled_newsletters:
+        click.echo("\n⚠️  No enabled newsletters found in config/newsletters.yaml")
+        sys.exit(0)
+
+    click.echo(f"\n📬 Processing {len(enabled_newsletters)} enabled newsletter(s)...")
 
     total_processed = 0
     total_skipped = 0
     total_failed = 0
 
-    for newsletter in newsletters:
+    for newsletter in enabled_newsletters:
         name = newsletter.get('name', 'Unknown')
         email = newsletter.get('email')
 
@@ -342,6 +339,46 @@ def run(max_emails, dry_run, force):
         click.echo(f"\n{'─' * 60}")
         click.echo(f"📰 {name} ({email})")
         click.echo(f"{'─' * 60}")
+
+        # Load newsletter-specific extraction config
+        extraction_config_name = newsletter.get('extraction_config', 'default')
+        if extraction_config_name == 'default':
+            extraction_config_path = Path("config/extraction_config.yaml")
+        elif extraction_config_name in ['executive', 'technical']:
+            extraction_config_path = Path(f"config/extraction_{extraction_config_name}.yaml")
+        else:
+            extraction_config_path = Path(extraction_config_name)
+
+        if extraction_config_path.exists():
+            click.echo(f"  📋 Using extraction config: {extraction_config_path.name}")
+        else:
+            click.echo(f"  ⚠️  Extraction config not found: {extraction_config_path}, using default extractor")
+
+        # Get newsletter-specific database set
+        database_set_name = newsletter.get('database_set', 'default')
+        database_sets = notion_config.get('database_sets', {})
+
+        # Support legacy format (databases directly under notion)
+        if not database_sets and 'databases' in notion_config:
+            click.echo(f"  ⚠️  Using legacy database format - consider updating credentials.yaml")
+            newsletter_db_id = notion_config['databases'].get('newsletters')
+            stories_db_id = notion_config['databases'].get('stories')
+        else:
+            db_set = database_sets.get(database_set_name, {})
+            if not db_set:
+                click.echo(f"  ❌ Database set '{database_set_name}' not found in credentials.yaml", err=True)
+                click.echo(f"  Available sets: {', '.join(database_sets.keys())}")
+                continue
+
+            newsletter_db_id = db_set.get('newsletters')
+            stories_db_id = db_set.get('stories')
+
+            if not newsletter_db_id or not stories_db_id:
+                click.echo(f"  ❌ Database IDs not configured for set '{database_set_name}'", err=True)
+                click.echo(f"  Run scripts/setup_notion.py or configure manually in credentials.yaml")
+                continue
+
+            click.echo(f"  💾 Using database set: {database_set_name}")
 
         try:
             # Get last processed date for smart querying

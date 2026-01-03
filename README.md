@@ -14,6 +14,8 @@ Fully automated pipeline with deduplication, state tracking, and modular extract
 - 💾 **SQLite Tracking**: Prevent duplicate processing with state management
 - 🔧 **Modular Config**: Easy iteration on extraction insights without code changes
 - 📈 **Progress Tracking**: Full visibility into processing status
+- 🔀 **Multi-Newsletter Support**: Process multiple newsletters with different configs
+- 🎯 **Flexible Deployment**: Deploy to different databases based on analysis type
 
 ## Quick Start
 
@@ -97,6 +99,32 @@ Gmail → Download → Extract → Notion
 Track in SQLite Database (deduplication)
 ```
 
+## Adding More Newsletters
+
+Simply add to `config/newsletters.yaml`:
+
+```yaml
+newsletters:
+  - name: "The Batch"
+    email: "thebatch@deeplearning.ai"
+    enabled: true
+    extraction_config: "default"
+    database_set: "default"
+
+  - name: "TLDR AI"  # NEW NEWSLETTER!
+    email: "dan@tldrnewsletter.com"
+    enabled: true
+    extraction_config: "default"
+    database_set: "default"
+```
+
+**Different analysis types? Different databases?**
+- Use `extraction_config: "executive"` for strategic summaries
+- Use `extraction_config: "technical"` for deep research analysis
+- Use `database_set: "executive"` to deploy to different Notion databases
+
+See [Multi-Newsletter Guide](docs/MULTI_NEWSLETTER_GUIDE.md) for complete examples.
+
 ## Iterating on Extraction Insights
 
 Want to change what insights are extracted? No code changes needed!
@@ -116,6 +144,11 @@ stories:
     - author_sentiment  # NEW!
 ```
 
+**Built-in configs:**
+- `default` - Comprehensive analysis (all newsletters)
+- `executive` - Strategic summaries (leadership briefings)
+- `technical` - Deep research analysis (engineering/research teams)
+
 See [Phase 4 Documentation](docs/PHASE4_IMPLEMENTATION.md) for details.
 
 ## Roadmap
@@ -132,6 +165,7 @@ See [Phase 4 Documentation](docs/PHASE4_IMPLEMENTATION.md) for details.
 
 - [Implementation Plan](IMPLEMENTATION_PLAN.md) - Overall project plan
 - [Phase 4 Guide](docs/PHASE4_IMPLEMENTATION.md) - Pipeline automation details
+- [Multi-Newsletter Guide](docs/MULTI_NEWSLETTER_GUIDE.md) - Managing multiple newsletters and configs
 
 ## Development
 

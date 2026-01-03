@@ -1,16 +1,53 @@
-# Newsletter Whitelist
-# Add newsletters you want to process here
+# Newsletter Whitelist Configuration
+#
+# This file defines which newsletters to process and how to process them.
+# You can customize extraction config and target databases per newsletter.
 
 newsletters:
+  # The Batch - AI Newsletter from DeepLearning.AI
   - name: "The Batch"
     email: "thebatch@deeplearning.ai"
+    enabled: true
+
+    # Extraction configuration
+    # Options: "default", "executive", "technical", or path to custom config
+    extraction_config: "default"  # Uses config/extraction_config.yaml
+
+    # Database set to use (defined in credentials.yaml)
+    # Options: "default", "executive", "technical", or custom database set name
+    database_set: "default"
+
+    # Metadata for tracking
     type: "analysis"
     priority: "high"
-    method: "agentic"  # Using test2_agentic (proven best method)
-    
-  # Add more newsletters here:
-  # - name: "TLDR"
-  #   email: "dan@tldrnewsletter.com"
-  #   type: "aggregator"
+    tags: ["AI", "ML", "industry-news"]
+
+  # Example: Executive Summary Newsletter
+  # - name: "Executive AI Brief"
+  #   email: "brief@example.com"
+  #   enabled: true
+  #   extraction_config: "executive"  # Uses config/extraction_executive.yaml
+  #   database_set: "executive"       # Uses different Notion databases
+  #   type: "summary"
+  #   priority: "high"
+  #   tags: ["executive", "brief"]
+
+  # Example: Technical Deep Dive
+  # - name: "AI Research Weekly"
+  #   email: "research@example.com"
+  #   enabled: true
+  #   extraction_config: "technical"  # Uses config/extraction_technical.yaml
+  #   database_set: "technical"       # Uses research-focused databases
+  #   type: "research"
   #   priority: "medium"
-  #   method: "deep"  # Link aggregators need deep extraction
+  #   tags: ["research", "papers"]
+
+  # Add more newsletters here - just copy the template and modify:
+  # - name: "Your Newsletter Name"
+  #   email: "newsletter@example.com"
+  #   enabled: true
+  #   extraction_config: "default"    # or "executive", "technical", or custom path
+  #   database_set: "default"         # or your custom database set
+  #   type: "analysis"
+  #   priority: "medium"
+  #   tags: ["tag1", "tag2"]

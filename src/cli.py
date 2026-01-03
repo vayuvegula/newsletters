@@ -448,7 +448,7 @@ def run(max_emails, dry_run, force):
 
                     # Extract insights
                     click.echo(f"    🧠 Extracting insights...")
-                    extraction_result = extractor.extract(eml_path)
+                    extraction_result = extractor.extract(eml_path, config_path=extraction_config_path)
 
                     # Save extraction to file
                     extraction_dir = Path("data/extractions")

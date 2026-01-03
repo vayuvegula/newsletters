@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Optional, Callable
 
 import anthropic
+import yaml
 
 from .base import BaseExtractor
 
@@ -52,12 +53,13 @@ class AgenticExtractor(BaseExtractor):
         self.verbose = verbose
         self.client = anthropic.Anthropic(api_key=self.api_key)
 
-    def extract(self, eml_path: str | Path) -> dict:
+    def extract(self, eml_path: str | Path, config_path: Optional[str | Path] = None) -> dict:
         """
         Extract insights from newsletter using two-pass agentic analysis.
 
         Args:
             eml_path: Path to .eml file
+            config_path: Optional path to extraction config YAML
 
         Returns:
             Structured extraction result as dict
@@ -69,14 +71,17 @@ class AgenticExtractor(BaseExtractor):
         """
         path = self._validate_eml_file(eml_path)
 
+        # Load extraction config if provided
+        config = self._load_config(config_path) if config_path else None
+
         self._log_progress(f"Reading {path.name}...")
         eml_content = self._read_eml(path)
 
         self._log_progress("Running pass 1: Analysis...")
-        analysis_text, pass1_usage = self._analyze(eml_content)
+        analysis_text, pass1_usage = self._analyze(eml_content, config)
 
         self._log_progress("Running pass 2: Structuring...")
-        result, pass2_usage = self._structure(eml_content, analysis_text)
+        result, pass2_usage = self._structure(eml_content, analysis_text, config)
 
         # Add metadata
         result['_metadata'] = {
@@ -100,6 +105,22 @@ class AgenticExtractor(BaseExtractor):
 
         return result
 
+    def _load_config(self, config_path: str | Path) -> dict:
+        """Load extraction config from YAML file."""
+        path = Path(config_path)
+        if not path.exists():
+            logger.warning(f"Config file not found: {path}, using defaults")
+            return {}
+
+        try:
+            with open(path) as f:
+                config = yaml.safe_load(f)
+            logger.info(f"Loaded extraction config: {path.name}")
+            return config
+        except Exception as e:
+            logger.warning(f"Failed to load config {path}: {e}, using defaults")
+            return {}
+
     def _read_eml(self, path: Path) -> str:
         """Read and truncate EML file content."""
         with open(path, 'r', errors='replace') as f:
@@ -111,54 +132,26 @@ class AgenticExtractor(BaseExtractor):
 
         return content
 
-    def _analyze(self, eml_content: str) -> tuple[str, anthropic.types.Usage]:
+    def _analyze(self, eml_content: str, config: Optional[dict] = None) -> tuple[str, anthropic.types.Usage]:
         """
         Pass 1: Let Claude analyze the newsletter and reason through it.
+
+        Args:
+            eml_content: Email content
+            config: Optional extraction config dict
 
         Returns:
             (analysis_text, usage_stats)
         """
-        system_prompt = """You are an AI research analyst with access to tools.
-Your task is to analyze a newsletter email for a VP at Google.
-
-You should:
-1. First, understand the structure of the email (it's in EML format)
-2. Identify the main stories/sections
-3. For each story, extract key facts, companies mentioned, and implications
-4. Identify which links would be worth following for deeper context
-5. Synthesize into actionable insights
-
-Think step by step. Explain your reasoning as you analyze.
-
-The VP cares about:
-- Competitive moves by Meta, OpenAI, Microsoft, AWS
-- Talent market dynamics
-- Infrastructure investments
-- Technical trends
-- Strategic opportunities/threats for Google
-
-Be specific and actionable. Distinguish between confirmed facts and speculation."""
-
-        user_prompt = f"""Please analyze this newsletter email. It's from "The Batch" by DeepLearning.AI.
-
-Here is the raw EML file content:
-
-```
-{eml_content}
-```
-
-Please:
-1. Parse the email structure (identify HTML content, plain text, metadata)
-2. Extract the main stories covered
-3. For each story, identify:
-   - Key facts and numbers
-   - Companies mentioned
-   - What this means for Google specifically
-   - Which links would be worth following for more detail
-4. Identify any trend signals across the stories
-5. Provide a final executive summary
-
-Think through this step by step, showing your reasoning."""
+        # Use config prompts if available, otherwise fall back to defaults
+        if config and 'extraction' in config and 'prompts' in config['extraction']:
+            prompts = config['extraction']['prompts']
+            system_prompt = prompts.get('analysis_system_prompt', self._default_system_prompt())
+            user_prompt_template = prompts.get('analysis_task_prompt', self._default_user_prompt())
+            user_prompt = user_prompt_template.replace('{eml_content}', eml_content)
+        else:
+            system_prompt = self._default_system_prompt()
+            user_prompt = self._default_user_prompt().replace('{eml_content}', eml_content)
 
         response = self.client.messages.create(
             model=self.model,
@@ -183,47 +176,35 @@ Think through this step by step, showing your reasoning."""
     def _structure(
         self,
         eml_content: str,
-        analysis_text: str
+        analysis_text: str,
+        config: Optional[dict] = None
     ) -> tuple[dict, anthropic.types.Usage]:
         """
         Pass 2: Ask Claude to structure the analysis into JSON.
 
+        Args:
+            eml_content: Email content
+            analysis_text: Analysis from pass 1
+            config: Optional extraction config dict
+
         Returns:
             (structured_result_dict, usage_stats)
         """
-        structuring_prompt = f"""Based on your analysis above, now provide a structured JSON output.
+        # Build JSON schema from config if available
+        if config and 'extraction' in config:
+            json_schema = self._build_json_schema(config['extraction'])
+            structuring_prompt = f"""Based on your analysis above, now provide a structured JSON output.
 
 Your analysis:
 {analysis_text}
 
-Please provide the final output as JSON with this structure:
+Please provide the final output as JSON with this EXACT structure:
 
-{{
-  "executive_summary": "3-4 sentences for a VP",
-  "stories": [
-    {{
-      "title": "Story title",
-      "category": "competitive_intelligence | talent_market | infrastructure | product_development | regulation | research",
-      "key_facts": ["fact1", "fact2"],
-      "companies": ["company1", "company2"],
-      "google_implications": "What this means for Google",
-      "confidence": "high | medium | low",
-      "reasoning": "Brief explanation of how you arrived at this analysis",
-      "links_to_follow": ["link descriptions worth fetching"]
-    }}
-  ],
-  "trend_signals": [
-    {{
-      "trend": "Trend name",
-      "evidence": "Evidence from newsletter",
-      "trajectory": "accelerating | stable | uncertain"
-    }}
-  ],
-  "action_items": ["Specific recommendations"],
-  "analysis_notes": "Any caveats or limitations in this analysis"
-}}
+{json_schema}
 
-Respond with ONLY valid JSON."""
+IMPORTANT: Respond with ONLY valid JSON. No markdown, no code blocks, no commentary. Just the JSON object."""
+        else:
+            structuring_prompt = self._default_structuring_prompt(analysis_text)
 
         # Build message history (include pass 1 context)
         user_prompt = f"""Please analyze this newsletter email. It's from "The Batch" by DeepLearning.AI.
@@ -274,3 +255,112 @@ Here is the raw EML file content:
                 }
 
         return result, response.usage
+
+    def _build_json_schema(self, extraction_config: dict) -> str:
+        """Build JSON schema from extraction config."""
+        stories_config = extraction_config.get('stories', {})
+        required_fields = stories_config.get('required_fields', [])
+        optional_fields = stories_config.get('optional_fields', [])
+
+        # Build example story object
+        story_fields = {}
+        for field in required_fields:
+            if field in ['companies', 'affected_functions', 'key_facts', 'follow_up_questions']:
+                story_fields[field] = ["item1", "item2"]
+            else:
+                story_fields[field] = f"<{field} value>"
+
+        for field in optional_fields:
+            if field in ['companies', 'affected_functions']:
+                story_fields[field] = ["item1", "item2"]
+            else:
+                story_fields[field] = f"<{field} value (optional)>"
+
+        schema = {
+            "executive_summary": "<3-4 sentence summary>",
+            "stories": [story_fields]
+        }
+
+        return json.dumps(schema, indent=2)
+
+    def _default_system_prompt(self) -> str:
+        """Default system prompt for pass 1."""
+        return """You are an AI research analyst with access to tools.
+Your task is to analyze a newsletter email for a VP at Google.
+
+You should:
+1. First, understand the structure of the email (it's in EML format)
+2. Identify the main stories/sections
+3. For each story, extract key facts, companies mentioned, and implications
+4. Identify which links would be worth following for deeper context
+5. Synthesize into actionable insights
+
+Think step by step. Explain your reasoning as you analyze.
+
+The VP cares about:
+- Competitive moves by Meta, OpenAI, Microsoft, AWS
+- Talent market dynamics
+- Infrastructure investments
+- Technical trends
+- Strategic opportunities/threats for Google
+
+Be specific and actionable. Distinguish between confirmed facts and speculation."""
+
+    def _default_user_prompt(self) -> str:
+        """Default user prompt template for pass 1."""
+        return """Please analyze this newsletter email. It's from "The Batch" by DeepLearning.AI.
+
+Here is the raw EML file content:
+
+```
+{eml_content}
+```
+
+Please:
+1. Parse the email structure (identify HTML content, plain text, metadata)
+2. Extract the main stories covered
+3. For each story, identify:
+   - Key facts and numbers
+   - Companies mentioned
+   - What this means for Google specifically
+   - Which links would be worth following for more detail
+4. Identify any trend signals across the stories
+5. Provide a final executive summary
+
+Think through this step by step, showing your reasoning."""
+
+    def _default_structuring_prompt(self, analysis_text: str) -> str:
+        """Default structuring prompt for pass 2."""
+        return f"""Based on your analysis above, now provide a structured JSON output.
+
+Your analysis:
+{analysis_text}
+
+Please provide the final output as JSON with this structure:
+
+{{
+  "executive_summary": "3-4 sentences for a VP",
+  "stories": [
+    {{
+      "title": "Story title",
+      "category": "competitive_intelligence | talent_market | infrastructure | product_development | regulation | research",
+      "key_facts": ["fact1", "fact2"],
+      "companies": ["company1", "company2"],
+      "google_implications": "What this means for Google",
+      "confidence": "high | medium | low",
+      "reasoning": "Brief explanation of how you arrived at this analysis",
+      "links_to_follow": ["link descriptions worth fetching"]
+    }}
+  ],
+  "trend_signals": [
+    {{
+      "trend": "Trend name",
+      "evidence": "Evidence from newsletter",
+      "trajectory": "accelerating | stable | uncertain"
+    }}
+  ],
+  "action_items": ["Specific recommendations"],
+  "analysis_notes": "Any caveats or limitations in this analysis"
+}}
+
+Respond with ONLY valid JSON."""

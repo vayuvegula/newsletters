@@ -1,10 +1,20 @@
-# API keys
+# API keys and credentials
 .env
 *.env
+config/credentials.yaml
+config/gmail_credentials.json
+config/gmail_token.json
+config/.env
 
 # Results (large JSON files) - keep structure but not data
 experiments/**/results/*.json
 !experiments/**/results/.gitkeep
+
+# Production data (downloaded newsletters and extractions)
+data/newsletters/*.eml
+data/extractions/*.json
+data/*.db
+data/*.sqlite
 
 # Python
 __pycache__/
@@ -32,3 +42,4 @@ Thumbs.db
 # Temp files
 *.tmp
 *.temp
+test_*.py

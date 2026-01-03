@@ -1,0 +1,114 @@
+# Executive Summary Extraction Configuration
+# Optimized for high-level strategic insights and executive briefings
+
+extraction:
+  # Executive summary - concise and strategic
+  executive_summary:
+    enabled: true
+    max_length: 300  # Shorter for executives
+    focus_areas:
+      - "Strategic implications"
+      - "Competitive landscape changes"
+      - "Investment opportunities"
+      - "Risk assessment"
+
+  # Stories - focus on impact
+  stories:
+    enabled: true
+    min_stories: 1
+    max_stories: 5  # Top stories only
+    required_fields:
+      - title
+      - category
+      - executive_summary  # Concise version
+      - strategic_importance
+      - business_impact
+      - action_items
+    optional_fields:
+      - timeline
+      - budget_implications
+      - stakeholders
+
+    categories:
+      - "Strategic Opportunity"
+      - "Competitive Threat"
+      - "Market Shift"
+      - "Regulatory Change"
+      - "Technology Breakthrough"
+      - "Partnership Opportunity"
+
+  # Trends - strategic focus
+  trends:
+    enabled: true
+    max_trends: 3  # Top trends only
+    required_fields:
+      - trend
+      - trajectory
+      - strategic_impact
+      - time_to_impact
+      - recommended_action
+
+    trajectories:
+      - "Critical - Immediate Action"
+      - "Growing - Monitor Closely"
+      - "Emerging - Watch"
+
+  # Entity extraction - decision makers
+  entities:
+    companies:
+      enabled: true
+      track_mentions: true
+      include_market_position: true
+
+    technologies:
+      enabled: true
+      track_mentions: true
+      include_maturity_stage: true
+
+    people:
+      enabled: true  # Track key executives
+      track_mentions: true
+      include_role: true
+
+  # Strategic analysis
+  strategic_analysis:
+    enabled: true
+    focus_areas:
+      - "Investment implications"
+      - "Partnership opportunities"
+      - "Competitive positioning"
+      - "Market timing"
+      - "Resource allocation"
+
+# Prompt templates - executive focused
+prompts:
+  analysis_system_prompt: |
+    You are a strategic analyst preparing executive briefings.
+    Focus on actionable insights, business impact, and strategic implications.
+    Be concise and highlight what matters for decision-making.
+
+  analysis_task_prompt: |
+    Analyze this newsletter for executive briefing:
+    1. What are the top strategic insights? (max 3)
+    2. What requires immediate attention or action?
+    3. What are the competitive implications?
+    4. What investment or partnership opportunities exist?
+    5. What are the key risks to monitor?
+
+    Focus on: business impact, strategic importance, actionability.
+
+  structure_system_prompt: |
+    You are formatting executive briefing data. Be concise and structured.
+
+  structure_task_prompt: |
+    Format the analysis into executive-friendly JSON.
+    Prioritize clarity and actionability.
+
+# Model configuration
+model:
+  name: "claude-sonnet-4-20250514"
+  max_tokens: 8000  # Shorter responses
+  temperature: 0.0
+
+  fallbacks:
+    - "claude-3-5-sonnet-20241022"

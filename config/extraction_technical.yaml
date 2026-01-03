@@ -1,0 +1,166 @@
+# Technical Deep Dive Extraction Configuration
+# Optimized for detailed technical analysis and research insights
+
+extraction:
+  # Executive summary - technical focus
+  executive_summary:
+    enabled: true
+    max_length: 800  # Longer for technical details
+    focus_areas:
+      - "Technical innovations and breakthroughs"
+      - "Architecture and implementation details"
+      - "Performance metrics and benchmarks"
+      - "Research methodology"
+      - "Limitations and challenges"
+
+  # Stories - comprehensive technical analysis
+  stories:
+    enabled: true
+    min_stories: 1
+    max_stories: 15  # Capture all technical details
+    required_fields:
+      - title
+      - category
+      - detailed_summary
+      - technical_approach
+      - key_innovations
+      - benchmarks_metrics
+      - code_examples
+      - research_citations
+      - implementation_details
+      - limitations
+      - future_work
+    optional_fields:
+      - github_repos
+      - arxiv_links
+      - demo_links
+      - datasets_used
+
+    categories:
+      - "Research Paper"
+      - "Model Architecture"
+      - "Training Technique"
+      - "Dataset Release"
+      - "Benchmark Results"
+      - "Open Source Tool"
+      - "Implementation Guide"
+      - "Technical Tutorial"
+
+  # Trends - technical trajectory
+  trends:
+    enabled: true
+    max_trends: 10
+    required_fields:
+      - trend
+      - technical_details
+      - research_direction
+      - key_papers
+      - adoption_barriers
+      - maturity_level
+
+    trajectories:
+      - "Breakthrough - Active Research"
+      - "Maturing - Early Adoption"
+      - "Established - Production Ready"
+      - "Declining - Superseded"
+
+  # Entity extraction - comprehensive
+  entities:
+    companies:
+      enabled: true
+      track_mentions: true
+      include_research_contributions: true
+
+    technologies:
+      enabled: true
+      track_mentions: true
+      include_technical_specs: true
+      include_github_stats: true
+
+    people:
+      enabled: true
+      track_mentions: true
+      include_affiliation: true
+      include_publications: true
+
+    datasets:
+      enabled: true
+      track_mentions: true
+
+    models:
+      enabled: true
+      track_mentions: true
+      include_parameters: true
+      include_performance: true
+
+  # Technical analysis
+  technical_analysis:
+    enabled: true
+    focus_areas:
+      - "Novel architectures and approaches"
+      - "Performance improvements"
+      - "Scalability considerations"
+      - "Implementation challenges"
+      - "Reproducibility"
+      - "Open source availability"
+      - "Research implications"
+
+# Prompt templates - technical focus
+prompts:
+  analysis_system_prompt: |
+    You are a senior AI researcher and engineer analyzing technical content.
+    Provide deep technical analysis with specific details on:
+    - Architectural innovations
+    - Training methodologies
+    - Performance metrics
+    - Implementation details
+    - Research contributions
+    - Code and reproducibility
+
+  analysis_task_prompt: |
+    Perform comprehensive technical analysis of this newsletter:
+
+    1. Technical Innovations:
+       - What new architectures, algorithms, or techniques are introduced?
+       - What are the key technical insights?
+       - How do they differ from prior work?
+
+    2. Research Contributions:
+       - What research papers are discussed?
+       - What are the main findings and methodologies?
+       - What benchmarks and metrics are reported?
+
+    3. Implementation Details:
+       - What code repositories or tools are released?
+       - What datasets are used or released?
+       - Are there reproducibility resources?
+
+    4. Performance Analysis:
+       - What metrics and benchmarks are reported?
+       - How do results compare to baselines?
+       - What are the limitations?
+
+    5. Future Directions:
+       - What open problems are identified?
+       - What future research is suggested?
+       - What are the next steps?
+
+    Extract ALL technical details, code links, paper citations, metrics, and implementation notes.
+
+  structure_system_prompt: |
+    You are structuring technical research data with maximum detail.
+
+  structure_task_prompt: |
+    Format the technical analysis into detailed JSON.
+    Include all technical specifications, metrics, links, and citations.
+    Preserve technical accuracy and completeness.
+
+# Model configuration - use most capable model
+model:
+  name: "claude-sonnet-4-20250514"
+  max_tokens: 16000  # Maximum for detailed analysis
+  temperature: 0.0
+
+  fallbacks:
+    - "claude-3-5-sonnet-20241022"
+    - "claude-3-opus-20240229"

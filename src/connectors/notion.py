@@ -289,6 +289,67 @@ class NotionConnector:
 
         return properties
 
+    def _ensure_database_properties(self, database_id: str, story: dict) -> None:
+        """
+        Ensure database has all required properties for this story.
+        Auto-creates missing properties dynamically.
+
+        Args:
+            database_id: Notion database ID
+            story: Story dict with fields to check
+        """
+        # Get current database schema
+        try:
+            database = self.client.databases.retrieve(database_id=database_id)
+            existing_props = set(database.get("properties", {}).keys())
+        except Exception as e:
+            logger.warning(f"Could not retrieve database schema: {e}")
+            return
+
+        # Map story fields to Notion property names
+        field_to_property = {
+            'insight_type': 'Insight Type',
+            'core_claim': 'Core Claim',
+            'why_it_matters': 'Why It Matters',
+            'affected_functions': 'Affected Functions',
+            'time_horizon': 'Time Horizon',
+            'confidence_level': 'Confidence Level',
+            'contrarian_angle': 'Contrarian Angle',
+            'execution_constraint': 'Execution Constraint',
+            'second_order_effect': 'Second-Order Effect',
+            'follow_up_questions': 'Follow-Up Questions',
+            'strategic_implication': 'Strategic Implication',
+            'source_context': 'Source Context',
+            'category': 'Category',
+            'companies': 'Companies',
+            'key_facts': 'Key Facts',
+            'google_implications': 'Google Implications',
+            'confidence': 'Confidence'
+        }
+
+        # Find missing properties
+        missing_props = {}
+        for field, prop_name in field_to_property.items():
+            if field in story and prop_name not in existing_props:
+                # Determine property type based on field
+                if field in ['affected_functions', 'companies']:
+                    missing_props[prop_name] = {"multi_select": {"options": []}}
+                elif field in ['insight_type', 'time_horizon', 'confidence_level', 'category', 'confidence']:
+                    missing_props[prop_name] = {"select": {"options": []}}
+                else:
+                    missing_props[prop_name] = {"rich_text": {}}
+
+        # Add missing properties if any
+        if missing_props:
+            logger.info(f"Auto-creating {len(missing_props)} new database properties: {list(missing_props.keys())}")
+            try:
+                self.client.databases.update(
+                    database_id=database_id,
+                    properties=missing_props
+                )
+            except Exception as e:
+                logger.warning(f"Could not auto-create properties: {e}")
+
     def create_story_pages(
         self,
         newsletter_page_id: str,
@@ -297,6 +358,7 @@ class NotionConnector:
     ) -> List[str]:
         """
         Create story pages in the Stories database.
+        Automatically creates missing database properties as needed.
 
         Args:
             newsletter_page_id: Parent newsletter page ID
@@ -307,6 +369,10 @@ class NotionConnector:
             List of created page IDs
         """
         page_ids = []
+
+        # Ensure database has all needed properties (check first story as representative)
+        if stories:
+            self._ensure_database_properties(database_id, stories[0])
 
         for story in stories:
             # Build properties dynamically based on extraction fields

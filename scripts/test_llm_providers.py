@@ -159,13 +159,10 @@ def test_gemini():
             client = genai.Client(api_key=api_key)
             print("✓ Client initialized")
 
-            # Test simple completion
+            # Test simple completion (new SDK doesn't use GenerateContentConfig)
             response = client.models.generate_content(
                 model='gemini-2.0-flash-exp',
-                contents="Say 'Hello from Gemini!' and nothing else.",
-                config=genai.GenerateContentConfig(
-                    max_output_tokens=100,
-                )
+                contents="Say 'Hello from Gemini!' and nothing else."
             )
 
             content = response.text

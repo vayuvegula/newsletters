@@ -289,6 +289,7 @@ def run(max_emails, dry_run, force):
             credentials_path=gmail_config.get('credentials_file', 'config/gmail_credentials.json'),
             token_path=gmail_config.get('token_file', 'config/gmail_token.json')
         )
+        gmail.authenticate()  # Authenticate before using
         click.echo("  ✓ Gmail connected")
 
         # Notion connector

@@ -429,13 +429,14 @@ def run(max_emails, dry_run, force):
                     metadata = gmail.download_message(message_id, str(output_path))
                     eml_path = Path(metadata['file_path'])
 
-                    # Add to database
-                    db.add_newsletter(
-                        message_id=message_id,
-                        sender_email=email,
-                        subject=metadata.get('subject'),
-                        received_date=metadata.get('date')
-                    )
+                    # Add to database (only if not already exists)
+                    if not db.is_processed(message_id):
+                        db.add_newsletter(
+                            message_id=message_id,
+                            sender_email=email,
+                            subject=metadata.get('subject'),
+                            received_date=metadata.get('date')
+                        )
                     db.mark_downloaded(message_id, str(eml_path))
 
                     # Extract insights

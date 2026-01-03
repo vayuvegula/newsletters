@@ -16,9 +16,10 @@ from googleapiclient.errors import HttpError
 
 logger = logging.getLogger(__name__)
 
-# Gmail API scopes
-SCOPES = ['https://www.googleapis.com/auth/gmail.readonly',
-          'https://www.googleapis.com/auth/gmail.modify']
+# Gmail API scopes - using readonly only for security
+# Note: Without modify scope, we can't mark messages as processed in Gmail
+# We'll track processed messages in local database instead
+SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 
 class GmailConnector:
@@ -177,48 +178,22 @@ class GmailConnector:
 
     def mark_as_processed(self, message_id: str, label_name: str = "Newsletters/Processed") -> None:
         """
-        Add a label to mark message as processed.
+        Mark message as processed (readonly mode - no-op).
+
+        Note: In readonly mode, we can't modify Gmail.
+        Processed messages are tracked in local database instead.
 
         Args:
             message_id: Gmail message ID
-            label_name: Label name to add (will be created if doesn't exist)
+            label_name: Label name (ignored in readonly mode)
         """
-        if not self.service:
-            raise RuntimeError("Not authenticated. Call authenticate() first.")
-
-        try:
-            # Get or create label
-            label_id = self._get_or_create_label(label_name)
-
-            # Add label to message
-            self.service.users().messages().modify(
-                userId='me',
-                id=message_id,
-                body={'addLabelIds': [label_id]}
-            ).execute()
-
-            logger.info(f"Marked message {message_id} as processed")
-
-        except HttpError as error:
-            logger.error(f"Failed to mark message: {error}")
-            raise
+        logger.info(f"Readonly mode: Skipping Gmail label for {message_id} (will track in database)")
+        # No-op in readonly mode
 
     def mark_as_read(self, message_id: str) -> None:
-        """Mark a message as read."""
-        if not self.service:
-            raise RuntimeError("Not authenticated. Call authenticate() first.")
-
-        try:
-            self.service.users().messages().modify(
-                userId='me',
-                id=message_id,
-                body={'removeLabelIds': ['UNREAD']}
-            ).execute()
-
-            logger.info(f"Marked message {message_id} as read")
-
-        except HttpError as error:
-            logger.error(f"Failed to mark as read: {error}")
+        """Mark a message as read (readonly mode - no-op)."""
+        logger.info(f"Readonly mode: Skipping mark as read for {message_id}")
+        # No-op in readonly mode
 
     def _get_or_create_label(self, label_name: str) -> str:
         """

@@ -137,9 +137,9 @@ def test_openai():
 
 
 def test_gemini():
-    """Test Google Gemini API using new google-genai SDK."""
+    """Test Google Gemini API (tries new SDK, falls back to old SDK)."""
     print("\n" + "=" * 60)
-    print("Testing Google Gemini API (Google Gen AI SDK)")
+    print("Testing Google Gemini API")
     print("=" * 60)
 
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
@@ -149,46 +149,89 @@ def test_gemini():
             print("⏭️  Skipping Gemini test")
             return None
 
+    # Try new SDK first
     try:
         from google import genai
         print("✓ google-genai library imported (new SDK)")
-    except ImportError:
-        print("❌ google-genai library not installed")
-        print("   Install with: pip install google-genai")
-        print("   Note: google-generativeai is deprecated as of Nov 2025")
-        return None
 
+        try:
+            # Create client
+            client = genai.Client(api_key=api_key)
+            print("✓ Client initialized")
+
+            # Test simple completion
+            response = client.models.generate_content(
+                model='gemini-2.0-flash-exp',
+                contents="Say 'Hello from Gemini!' and nothing else.",
+                config=genai.GenerateContentConfig(
+                    max_output_tokens=100,
+                )
+            )
+
+            content = response.text
+            print(f"✓ API call successful (new SDK)")
+            print(f"  Response: {content[:100]}")
+            print(f"  Model: gemini-2.0-flash-exp")
+
+            # Token usage in new SDK
+            if hasattr(response, 'usage_metadata'):
+                print(f"  Input tokens: {response.usage_metadata.prompt_token_count}")
+                print(f"  Output tokens: {response.usage_metadata.candidates_token_count}")
+
+            return {
+                "provider": "gemini",
+                "success": True,
+                "model": "gemini-2.0-flash-exp",
+                "response": content,
+                "sdk": "new"
+            }
+
+        except Exception as e:
+            print(f"⚠️  New SDK failed: {e}")
+            print("   Trying old SDK...")
+
+    except ImportError:
+        print("⚠️  google-genai not available, trying old SDK...")
+
+    # Fall back to old SDK
     try:
-        # Create client
-        client = genai.Client(api_key=api_key)
-        print("✓ Client initialized")
+        import google.generativeai as genai
+        print("✓ google-generativeai library imported (deprecated SDK)")
+
+        genai.configure(api_key=api_key)
+        print("✓ API key configured")
 
         # Test simple completion
-        response = client.models.generate_content(
-            model='gemini-2.0-flash-exp',
-            contents="Say 'Hello from Gemini!' and nothing else.",
-            config=genai.GenerateContentConfig(
+        model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        print("✓ Model initialized")
+
+        response = model.generate_content(
+            "Say 'Hello from Gemini!' and nothing else.",
+            generation_config=genai.GenerationConfig(
                 max_output_tokens=100,
             )
         )
 
         content = response.text
-        print(f"✓ API call successful")
+        print(f"✓ API call successful (old SDK)")
         print(f"  Response: {content[:100]}")
         print(f"  Model: gemini-2.0-flash-exp")
-
-        # Token usage in new SDK
-        if hasattr(response, 'usage_metadata'):
-            print(f"  Input tokens: {response.usage_metadata.prompt_token_count}")
-            print(f"  Output tokens: {response.usage_metadata.candidates_token_count}")
+        print(f"  Input tokens: {response.usage_metadata.prompt_token_count}")
+        print(f"  Output tokens: {response.usage_metadata.candidates_token_count}")
 
         return {
             "provider": "gemini",
             "success": True,
             "model": "gemini-2.0-flash-exp",
-            "response": content
+            "response": content,
+            "sdk": "old (deprecated)"
         }
 
+    except ImportError:
+        print("❌ Neither google-genai nor google-generativeai installed")
+        print("   Install with: pip install google-generativeai")
+        print("   Note: google-genai has dependency conflicts with gmail auth")
+        return None
     except Exception as e:
         print(f"❌ Error: {e}")
         import traceback
@@ -279,9 +322,11 @@ Respond with ONLY valid JSON. No markdown, no code blocks, no commentary."""
             print(f"❌ OpenAI JSON test failed: {e}")
             results["openai"] = {"success": False, "error": str(e)}
 
-    # Test Gemini (new SDK)
+    # Test Gemini (try both SDKs)
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
     if api_key:
+        content = None
+        # Try new SDK first
         try:
             from google import genai
             import json
@@ -291,7 +336,20 @@ Respond with ONLY valid JSON. No markdown, no code blocks, no commentary."""
                 contents=test_prompt
             )
             content = response.text
+        except:
+            # Fall back to old SDK
+            try:
+                import google.generativeai as genai
+                import json
+                genai.configure(api_key=api_key)
+                model = genai.GenerativeModel('gemini-2.0-flash-exp')
+                response = model.generate_content(test_prompt)
+                content = response.text
+            except Exception as e:
+                print(f"❌ Gemini JSON test failed: {e}")
+                results["gemini"] = {"success": False, "error": str(e)}
 
+        if content:
             # Try to parse as JSON
             try:
                 parsed = json.loads(content)
@@ -301,9 +359,6 @@ Respond with ONLY valid JSON. No markdown, no code blocks, no commentary."""
                 print("⚠️  Gemini: Does not return pure JSON, needs parsing")
                 print(f"   Response preview: {content[:200]}")
                 results["gemini"] = {"success": True, "returns_json": False}
-        except Exception as e:
-            print(f"❌ Gemini JSON test failed: {e}")
-            results["gemini"] = {"success": False, "error": str(e)}
 
     return results
 

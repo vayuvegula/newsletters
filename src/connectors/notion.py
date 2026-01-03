@@ -174,6 +174,121 @@ class NotionConnector:
         logger.info(f"✓ Created newsletter page: {page_id}")
         return page_id
 
+    def _build_story_properties(self, story: dict) -> dict:
+        """
+        Dynamically build Notion properties from story dict.
+        Handles both default extraction and VP insights extraction.
+
+        Args:
+            story: Story dict from extraction
+
+        Returns:
+            Notion properties dict
+        """
+        properties = {}
+
+        # Title is always required
+        properties["Title"] = {
+            "title": [{"text": {"content": story.get('title', 'Untitled')[:100]}}]
+        }
+
+        # VP Insights fields
+        if 'insight_type' in story:
+            properties["Insight Type"] = {
+                "select": {"name": story.get('insight_type', 'Strategic Implication')}
+            }
+
+        if 'core_claim' in story:
+            properties["Core Claim"] = {
+                "rich_text": [{"text": {"content": story.get('core_claim', '')[:2000]}}]
+            }
+
+        if 'why_it_matters' in story:
+            properties["Why It Matters"] = {
+                "rich_text": [{"text": {"content": story.get('why_it_matters', '')[:2000]}}]
+            }
+
+        if 'affected_functions' in story:
+            functions = story.get('affected_functions', [])
+            if isinstance(functions, list):
+                properties["Affected Functions"] = {
+                    "multi_select": [{"name": func} for func in functions[:10]]
+                }
+
+        if 'time_horizon' in story:
+            properties["Time Horizon"] = {
+                "select": {"name": story.get('time_horizon', 'Now')}
+            }
+
+        if 'confidence_level' in story:
+            properties["Confidence Level"] = {
+                "select": {"name": story.get('confidence_level', 'Medium')}
+            }
+
+        if 'contrarian_angle' in story:
+            properties["Contrarian Angle"] = {
+                "rich_text": [{"text": {"content": story.get('contrarian_angle', '')[:2000]}}]
+            }
+
+        if 'execution_constraint' in story:
+            properties["Execution Constraint"] = {
+                "rich_text": [{"text": {"content": story.get('execution_constraint', '')[:2000]}}]
+            }
+
+        if 'second_order_effect' in story:
+            properties["Second-Order Effect"] = {
+                "rich_text": [{"text": {"content": story.get('second_order_effect', '')[:2000]}}]
+            }
+
+        if 'follow_up_questions' in story:
+            questions = story.get('follow_up_questions', '')
+            if isinstance(questions, list):
+                questions = "\n".join(questions)
+            properties["Follow-Up Questions"] = {
+                "rich_text": [{"text": {"content": questions[:2000]}}]
+            }
+
+        if 'strategic_implication' in story:
+            properties["Strategic Implication"] = {
+                "rich_text": [{"text": {"content": story.get('strategic_implication', '')[:2000]}}]
+            }
+
+        if 'source_context' in story:
+            properties["Source Context"] = {
+                "rich_text": [{"text": {"content": story.get('source_context', '')[:2000]}}]
+            }
+
+        # Default extraction fields (for backwards compatibility)
+        if 'category' in story:
+            properties["Category"] = {
+                "select": {"name": story.get('category', 'research')}
+            }
+
+        if 'companies' in story:
+            properties["Companies"] = {
+                "multi_select": [{"name": company} for company in story.get('companies', [])[:10]]
+            }
+
+        if 'key_facts' in story:
+            key_facts = story.get('key_facts', [])
+            if isinstance(key_facts, list):
+                key_facts = "\n".join(key_facts)
+            properties["Key Facts"] = {
+                "rich_text": [{"text": {"content": key_facts[:2000]}}]
+            }
+
+        if 'google_implications' in story:
+            properties["Google Implications"] = {
+                "rich_text": [{"text": {"content": story.get('google_implications', '')[:2000]}}]
+            }
+
+        if 'confidence' in story and 'confidence_level' not in story:
+            properties["Confidence"] = {
+                "select": {"name": story.get('confidence', 'medium').capitalize()}
+            }
+
+        return properties
+
     def create_story_pages(
         self,
         newsletter_page_id: str,
@@ -194,27 +309,8 @@ class NotionConnector:
         page_ids = []
 
         for story in stories:
-            # Build properties
-            properties = {
-                "Title": {
-                    "title": [{"text": {"content": story.get('title', 'Untitled')[:100]}}]
-                },
-                "Category": {
-                    "select": {"name": story.get('category', 'research')}
-                },
-                "Companies": {
-                    "multi_select": [{"name": company} for company in story.get('companies', [])[:10]]
-                },
-                "Key Facts": {
-                    "rich_text": [{"text": {"content": "\n".join(story.get('key_facts', []))[:2000]}}]
-                },
-                "Google Implications": {
-                    "rich_text": [{"text": {"content": story.get('google_implications', '')[:2000]}}]
-                },
-                "Confidence": {
-                    "select": {"name": story.get('confidence', 'medium').capitalize()}
-                }
-            }
+            # Build properties dynamically based on extraction fields
+            properties = self._build_story_properties(story)
 
             # Create page
             page = self.client.pages.create(

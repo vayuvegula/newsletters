@@ -345,10 +345,17 @@ def run(max_emails, dry_run, force):
         extraction_config_name = newsletter.get('extraction_config', 'default')
         if extraction_config_name == 'default':
             extraction_config_path = Path("config/extraction_config.yaml")
-        elif extraction_config_name in ['executive', 'technical', 'vp_insights']:
-            extraction_config_path = Path(f"config/extraction_{extraction_config_name}.yaml")
-        else:
+        elif '/' in extraction_config_name or '\\' in extraction_config_name:
+            # Full path provided
             extraction_config_path = Path(extraction_config_name)
+        else:
+            # Try as shorthand name (e.g., "vp_insights" -> "config/extraction_vp_insights.yaml")
+            shorthand_path = Path(f"config/extraction_{extraction_config_name}.yaml")
+            if shorthand_path.exists():
+                extraction_config_path = shorthand_path
+            else:
+                # Fallback to treating as relative path
+                extraction_config_path = Path(extraction_config_name)
 
         if extraction_config_path.exists():
             click.echo(f"  📋 Using extraction config: {extraction_config_path.name}")

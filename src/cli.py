@@ -16,6 +16,7 @@ from .extractors import AgenticExtractor
 from .connectors.gmail import GmailConnector
 from .connectors.notion import NotionConnector
 from .storage import Database
+from .llm import LLMProviderFactory
 
 
 # Load environment variables
@@ -297,14 +298,29 @@ def run(max_emails, dry_run, force):
         notion = NotionConnector(api_key=notion_config.get('api_key'))
         click.echo("  ✓ Notion connected")
 
-        # Extractor
-        anthropic_config = config.get('anthropic', {})
-        extractor = AgenticExtractor(
-            api_key=anthropic_config.get('api_key'),
-            progress_callback=lambda msg: click.echo(f"    {msg}"),
-            verbose=False
-        )
-        click.echo("  ✓ Extractor initialized")
+        # LLM configuration (provider will be created per newsletter)
+        llm_config = config.get('llm', {})
+        if not llm_config:
+            # Legacy support: try old anthropic config
+            anthropic_config = config.get('anthropic', {})
+            if anthropic_config:
+                click.echo("  ⚠️  Using legacy anthropic config. Consider updating to llm.providers format.")
+                llm_config = {
+                    'default_provider': 'anthropic',
+                    'providers': {
+                        'anthropic': {
+                            'api_key': anthropic_config.get('api_key'),
+                            'default_model': 'claude-sonnet-4-20250514'
+                        }
+                    }
+                }
+
+        if not llm_config.get('providers'):
+            click.echo("\n❌ No LLM providers configured in credentials.yaml", err=True)
+            click.echo("  Add llm.providers section with at least one provider")
+            sys.exit(1)
+
+        click.echo("  ✓ LLM providers configured")
 
     except Exception as e:
         click.echo(f"\n❌ Initialization failed: {e}", err=True)
@@ -361,6 +377,38 @@ def run(max_emails, dry_run, force):
             click.echo(f"  📋 Using extraction config: {extraction_config_path.name}")
         else:
             click.echo(f"  ⚠️  Extraction config not found: {extraction_config_path}, using default extractor")
+
+        # Create LLM provider for this newsletter
+        provider_name = newsletter.get('llm_provider', llm_config.get('default_provider', 'anthropic'))
+        model_override = newsletter.get('llm_model')
+
+        # Get provider config
+        provider_config = llm_config['providers'].get(provider_name)
+        if not provider_config:
+            click.echo(f"  ❌ LLM provider '{provider_name}' not found in credentials.yaml", err=True)
+            click.echo(f"  Available providers: {', '.join(llm_config['providers'].keys())}")
+            continue
+
+        api_key = provider_config.get('api_key')
+        model = model_override or provider_config.get('default_model')
+
+        try:
+            llm_provider = LLMProviderFactory.create(provider_name, api_key, model)
+            click.echo(f"  🤖 Using LLM: {provider_name}/{model}")
+        except Exception as e:
+            click.echo(f"  ❌ Failed to create LLM provider: {e}", err=True)
+            continue
+
+        # Create extractor with the provider
+        try:
+            extractor = AgenticExtractor(
+                llm_provider=llm_provider,
+                progress_callback=lambda msg: click.echo(f"    {msg}"),
+                verbose=False
+            )
+        except Exception as e:
+            click.echo(f"  ❌ Failed to create extractor: {e}", err=True)
+            continue
 
         # Get newsletter-specific database set
         database_set_name = newsletter.get('database_set', 'default')

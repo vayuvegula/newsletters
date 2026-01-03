@@ -13,6 +13,13 @@ newsletters:
     # Options: "default", "executive", "technical", "vp_insights", or path to custom config
     extraction_config: "default"  # Uses config/extraction_config.yaml
 
+    # LLM Provider (optional - defaults to llm.default_provider in credentials.yaml)
+    # Options: "anthropic", "openai", "gemini"
+    # llm_provider: "anthropic"
+
+    # LLM Model (optional - defaults to provider's default_model)
+    # llm_model: "claude-sonnet-4-20250514"
+
     # Database set to use (defined in credentials.yaml)
     # Options: "default", "executive", "technical", or custom database set name
     database_set: "default"
@@ -51,6 +58,31 @@ newsletters:
   #   type: "strategic"
   #   priority: "high"
   #   tags: ["VP", "decision-signals", "strategic"]
+
+  # Example: Using Different LLM Providers
+  # Use Claude for high-quality analysis
+  # - name: "Premium Newsletter"
+  #   email: "premium@example.com"
+  #   enabled: true
+  #   llm_provider: "anthropic"
+  #   llm_model: "claude-sonnet-4-20250514"
+  #   extraction_config: "default"
+
+  # Use GPT for cost-effective processing
+  # - name: "Daily Brief"
+  #   email: "daily@example.com"
+  #   enabled: true
+  #   llm_provider: "openai"
+  #   llm_model: "gpt-4o-mini"  # Cheaper model
+  #   extraction_config: "default"
+
+  # Use Gemini for balanced cost/quality
+  # - name: "Tech News"
+  #   email: "tech@example.com"
+  #   enabled: true
+  #   llm_provider: "gemini"
+  #   llm_model: "gemini-2.0-flash-exp"
+  #   extraction_config: "default"
 
   # Add more newsletters here - just copy the template and modify:
   # - name: "Your Newsletter Name"
